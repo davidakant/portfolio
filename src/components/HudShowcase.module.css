@@ -1,0 +1,684 @@
+.holo {
+  --cyan: #7ffcff;
+  --magenta: #ff5fe0;
+  --green: #5fff9d;
+  position: relative;
+  min-height: 100vh;
+  padding: calc(var(--space-lg) + 1rem) 0 var(--space-xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse 85% 65% at 32% 8%, #1a3f73 0%, #241b52 42%, #07050f 100%);
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(127, 252, 255, 0.1), transparent 42%),
+    radial-gradient(circle at 85% 75%, rgba(255, 95, 224, 0.1), transparent 42%);
+}
+
+.chrome {
+  position: relative;
+  z-index: 2;
+}
+
+.back {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: var(--size-small);
+  letter-spacing: 0.08em;
+  color: var(--color-fg-muted);
+  margin-bottom: var(--space-md);
+}
+
+.back:hover {
+  color: var(--cyan);
+}
+
+.modeTabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+/* Marks the boundary between "serious work" (magenta) and "just for fun"
+   (green) modes — same glowing-line device as the thumbnail rail's own
+   divider, but its gradient itself transitions magenta-to-green instead of
+   being a single color. */
+.modeTabsDivider {
+  align-self: stretch;
+  width: 2px;
+  flex: 0 0 auto;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, transparent, var(--magenta) 20%, var(--green) 80%, transparent);
+  box-shadow:
+    0 0 10px 1px rgba(255, 95, 224, 0.5),
+    0 0 10px 1px rgba(95, 255, 157, 0.5);
+}
+
+/* Shared "liquid glass" recipe (also used by .tab, .readoutTL/.readoutTR and
+   .spatialToggle): layered top-lit/bottom-shaded gradient body, inset rim
+   highlight + bottom shadow for physical depth, an outer drop shadow, and a
+   radial specular highlight (::before) simulating light catching curved
+   glass. Text is wrapped in .badgeLabel (own stacking context) so the
+   ::after shimmer sweep never washes it out. */
+.modeTab {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 95, 224, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  color: var(--color-fg-muted);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.modeTab::before {
+  content: '';
+  position: absolute;
+  top: -55%;
+  left: 8%;
+  width: 55%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.modeTab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background-size: 240% 240%;
+  pointer-events: none;
+  animation: sheen-sweep 4.5s ease-in-out infinite;
+  animation-delay: var(--tab-delay, 0s);
+}
+
+.modeTab:hover::after {
+  animation-duration: 1.4s;
+}
+
+.modeTab:hover {
+  color: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.modeTabActive {
+  color: #1a0512;
+  background: linear-gradient(180deg, rgba(255, 95, 224, 0.5) 0%, rgba(255, 95, 224, 0.14) 45%, rgba(255, 95, 224, 0.28) 100%);
+  border-color: rgba(255, 95, 224, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(45, 0, 35, 0.35),
+    0 0 24px rgba(255, 95, 224, 0.65),
+    0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.modeTabActive:hover {
+  color: #1a0512;
+}
+
+/* Green variant for the Ferris Videos / Ferris Stills mode tabs — same glass
+   chrome, just a different accent color from the rest (magenta). */
+.modeTabGreen {
+  border-color: rgba(95, 255, 157, 0.35);
+}
+
+.modeTabGreen:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.modeTabGreen.modeTabActive {
+  color: #052b17;
+  background: linear-gradient(180deg, rgba(95, 255, 157, 0.5) 0%, rgba(95, 255, 157, 0.14) 45%, rgba(95, 255, 157, 0.28) 100%);
+  border-color: rgba(95, 255, 157, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 45, 20, 0.35),
+    0 0 24px rgba(95, 255, 157, 0.65),
+    0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.modeTabGreen.modeTabActive:hover {
+  color: #052b17;
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(127, 252, 255, 0.2);
+  padding-bottom: var(--space-sm);
+}
+
+.eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  max-width: 100%;
+}
+
+.tab {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 252, 255, 0.3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  color: var(--color-fg-muted);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  top: -55%;
+  left: 8%;
+  width: 55%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background-size: 240% 240%;
+  pointer-events: none;
+  animation: sheen-sweep 4.5s ease-in-out infinite;
+  animation-delay: var(--tab-delay, 0s);
+}
+
+.tab:hover::after {
+  animation-duration: 1.4s;
+}
+
+.tab:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.tabActive {
+  color: #05171a;
+  background: linear-gradient(180deg, rgba(127, 252, 255, 0.5) 0%, rgba(127, 252, 255, 0.14) 45%, rgba(127, 252, 255, 0.28) 100%);
+  border-color: rgba(127, 252, 255, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 40, 45, 0.35),
+    0 0 24px rgba(127, 252, 255, 0.65),
+    0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tabActive:hover {
+  color: #05171a;
+}
+
+.stage {
+  position: relative;
+  margin-top: var(--space-md);
+}
+
+.panel {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.panelInner {
+  position: relative;
+  height: 58vh;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.12) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -10px 16px -10px rgba(0, 0, 0, 0.35),
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Specular highlight for the HudDisplay panel itself — no explicit z-index
+   (stays "auto" so it paints behind the image content in tree order) rather
+   than covering whatever's currently displayed. */
+.panelInner::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 6%;
+  width: 45%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+.glassSheen {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0.03) 50%, transparent 65%);
+  background-size: 250% 250%;
+  animation: sheen-sweep 8s ease-in-out infinite;
+}
+
+@keyframes sheen-sweep {
+  0% { background-position: 130% 130%; }
+  50% { background-position: -30% -30%; }
+  100% { background-position: 130% 130%; }
+}
+
+.hudBorder {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .panelInner {
+    height: 42vh;
+  }
+}
+
+/* Compound selector beats the single-class rules above (and their mobile
+   media-query override) regardless of source order, so the fixed-height
+   viewer becomes a box shaped by the displayed image's own aspect ratio. */
+.panelInner.panelInnerDynamic {
+  height: auto;
+  aspect-ratio: var(--ratio, 16 / 9);
+  max-height: 75vh;
+  margin: 0 auto;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  overflow: hidden;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--cyan);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 50%;
+  border: 1px solid rgba(127, 252, 255, 0.4);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -6px 10px -6px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  text-shadow:
+    0 0 4px rgba(127, 252, 255, 0.9),
+    0 0 10px rgba(127, 252, 255, 0.6),
+    0 0 18px rgba(127, 252, 255, 0.4);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.navBtn::before {
+  content: '';
+  position: absolute;
+  top: -45%;
+  left: 10%;
+  width: 55%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.navBtn:hover {
+  background: linear-gradient(180deg, rgba(127, 252, 255, 0.35) 0%, rgba(127, 252, 255, 0.1) 45%, rgba(127, 252, 255, 0.2) 100%);
+  border-color: var(--cyan);
+}
+
+.navPrev {
+  left: 14px;
+}
+
+.navNext {
+  right: 14px;
+}
+
+/* Same "liquid glass" chrome as .spatialToggle (layered gradient body, inset
+   rim highlight + drop shadow for physical depth, radial specular highlight
+   via ::before) but deliberately without its ::after shimmer sweep — these
+   are passive readouts, not an interactive control worth drawing extra
+   attention to. */
+.readoutTL,
+.readoutTR {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(127, 252, 255, 0.3);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  color: #33363b;
+  text-shadow:
+    0 0 4px rgba(127, 252, 255, 0.9),
+    0 0 10px rgba(127, 252, 255, 0.6),
+    0 0 18px rgba(127, 252, 255, 0.4);
+  z-index: 5;
+}
+
+.readoutTL::before,
+.readoutTR::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 6%;
+  width: 45%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.readoutTL {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+}
+
+.readoutTR {
+  color: #33363b;
+  border-color: rgba(255, 95, 224, 0.35);
+  text-shadow:
+    0 0 4px rgba(255, 95, 224, 0.9),
+    0 0 10px rgba(255, 95, 224, 0.6),
+    0 0 18px rgba(255, 95, 224, 0.4);
+}
+
+/* Wraps the category readout and (for videos) the VideoEqualizer below it —
+   stacked in a column so the equalizer's box never has to fight the
+   readout's variable width for space. */
+.topRightStack {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.dataStream {
+  position: relative;
+  margin-top: var(--space-sm);
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid rgba(127, 252, 255, 0.15);
+  border-bottom: 1px solid rgba(127, 252, 255, 0.15);
+  padding: 6px 0;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.dataStreamTrack {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+  animation: ticker 22s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Stacked-rails mode (see HudShowcase's `stackedRails` prop): one labeled
+   ThumbnailRail per category, all visible at once, instead of tab chips
+   switching between a single shared rail. */
+.stackedRails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.railGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.railLabel {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 640px) {
+  .navBtn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.3rem;
+  }
+}
+
+/* iOS-style "liquid glass" pill: a layered gradient body (top-lit, bottom-
+   shaded like a curved surface), an inset rim highlight + drop shadow for
+   physical depth, a radial specular highlight (::before) simulating a light
+   catching the top of the glass, and a continuous diagonal shimmer (::after,
+   same sheen-sweep mechanism as the category tabs) so it reads as glass
+   rather than a flat pill even before the user interacts with it. */
+.spatialToggle {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 10px 24px;
+  border-radius: 999px;
+  color: #33363b;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.spatialToggle::before {
+  content: '';
+  position: absolute;
+  top: -55%;
+  left: 8%;
+  width: 55%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Sits behind .badgeLabel (z-index below it) so the shimmer sweeps across
+   the glass without ever washing out the text on top of it. */
+.spatialToggle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background-size: 240% 240%;
+  pointer-events: none;
+  animation: sheen-sweep 4.5s ease-in-out infinite;
+}
+
+/* Shared by every glass badge (mode tabs, category tabs, spatial toggle) —
+   keeps the label text stacked above each one's ::after shimmer sweep. */
+.badgeLabel {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Self-illuminating glow — layered blur radii so the text reads as lit from
+   within rather than just outlined, tinted to match each badge family's own
+   accent color (cyan: category tabs + spatial toggle; magenta: mode tabs). */
+.tab .badgeLabel,
+.spatialToggle .badgeLabel {
+  text-shadow:
+    0 0 4px rgba(127, 252, 255, 0.9),
+    0 0 10px rgba(127, 252, 255, 0.6),
+    0 0 18px rgba(127, 252, 255, 0.4);
+}
+
+.modeTab .badgeLabel {
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.25;
+  text-shadow:
+    0 0 4px rgba(255, 95, 224, 0.9),
+    0 0 10px rgba(255, 95, 224, 0.6),
+    0 0 18px rgba(255, 95, 224, 0.4);
+}
+
+/* Must come after .modeTab .badgeLabel (same specificity) to win. */
+.modeTabGreen .badgeLabel {
+  text-shadow:
+    0 0 4px rgba(95, 255, 157, 0.9),
+    0 0 10px rgba(95, 255, 157, 0.6),
+    0 0 18px rgba(95, 255, 157, 0.4);
+}
+
+.badgeSubLabel {
+  font-size: 0.72em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.spatialToggle:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateX(-50%) translateY(-1px);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 12px 28px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.spatialToggle:hover::after {
+  animation-duration: 1.4s;
+}
+
+.spatialToggleActive {
+  color: #33363b;
+  background: linear-gradient(180deg, rgba(127, 252, 255, 0.38) 0%, rgba(127, 252, 255, 0.1) 45%, rgba(127, 252, 255, 0.2) 100%);
+  border-color: rgba(127, 252, 255, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 40, 45, 0.35),
+    0 0 24px rgba(127, 252, 255, 0.65),
+    0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.spatialToggleActive:hover {
+  color: #33363b;
+}
+
+@media (max-width: 640px) {
+  .spatialToggle {
+    bottom: 12px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,70 @@
+/* Sits in the same grid row as the screenshot (MediaGallery's own 3-column
+   grid — the image occupies column 1, this spans the remaining two) rather
+   than a separate layout, so the image keeps its original small grid size. */
+.appDescription {
+  grid-column: span 2;
+  align-self: start;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.appDescription p {
+  margin: 0 0 var(--space-sm);
+}
+
+.appDescription p:last-child {
+  margin-bottom: 0;
+}
+
+/* No gap between the opening sentence and the bullet list right below it.
+   (Compound selector needed to outrank ".appDescription p" above.) */
+.appDescription .introText {
+  margin: 0;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bulletList {
+  margin: 0;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+.bulletList li {
+  margin: 0 0 4px;
+}
+
+.bulletList li:last-child {
+  margin-bottom: 0;
+}
+
+/* Extra blank line below the bullets, on top of the normal paragraph gap. */
+.appDescription .finalParagraph {
+  margin-top: calc(var(--space-md) + var(--space-sm));
+}
+
+.descLabel {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.highlightMagenta {
+  color: var(--magenta);
+}
+
+.noteMagenta {
+  color: var(--magenta);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 800px) {
+  .appDescription {
+    grid-column: span 1;
+  }
+}

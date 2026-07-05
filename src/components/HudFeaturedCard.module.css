@@ -1,0 +1,94 @@
+.wrapper {
+  width: 100%;
+}
+
+.card {
+  display: block;
+}
+
+.panel {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  transform-style: preserve-3d;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.card:hover .image {
+  transform: scale(1.06);
+  filter: saturate(1.15);
+}
+
+/* Clean/clear white diagonal shimmer over the full photo, no color tint.
+   Duration/delay come from --shimmer-duration/--shimmer-delay (set inline,
+   randomized per card on mount) so the grid's sweeps don't stay in lockstep;
+   hover speeds it up the same way for every card regardless of its random
+   base duration, since this rule sets animation-duration directly rather
+   than through the custom property. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.05) 50%, transparent 65%);
+  background-size: 250% 250%;
+  animation: sheen-sweep var(--shimmer-duration, 7s) ease-in-out infinite;
+  animation-delay: var(--shimmer-delay, 0s);
+}
+
+.card:hover .sheen {
+  animation-duration: 1.8s;
+}
+
+@keyframes sheen-sweep {
+  0% { background-position: 130% 130%; }
+  50% { background-position: -30% -30%; }
+  100% { background-position: 130% 130%; }
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+}
+
+.title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  color: #eefdff;
+  letter-spacing: 0.02em;
+}
+
+.category {
+  flex: 0 0 auto;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(127, 252, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}

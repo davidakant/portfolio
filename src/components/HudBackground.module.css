@@ -1,0 +1,23 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gridPlane {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 220vw;
+  height: 220vh;
+  transform: translate(-50%, -50%) perspective(700px) rotateX(62deg) rotateZ(-6deg);
+  background-image:
+    linear-gradient(rgba(127, 252, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 252, 255, 0.14) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 55% 45% at 50% 35%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 55% 45% at 50% 35%, black 0%, transparent 70%);
+  opacity: 0.55;
+}

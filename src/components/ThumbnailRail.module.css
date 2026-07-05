@@ -1,0 +1,108 @@
+.railOuter {
+  position: relative;
+  margin-top: var(--space-sm);
+  padding: 12px 14px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: grab;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* No explicit z-index — stays "auto" so it paints behind the rail's own
+   thumbnails (later in tree order) rather than covering them. */
+.railOuter::before {
+  content: '';
+  position: absolute;
+  top: -80%;
+  left: 4%;
+  width: 30%;
+  height: 140%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+.railOuter:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 640px) {
+  .railOuter {
+    padding: 8px 10px;
+    border-radius: 16px;
+  }
+}
+
+.rail {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+}
+
+.thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 62px;
+  height: 110px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 252, 255, 0.2);
+  overflow: hidden;
+  filter: grayscale(1);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease, border-color 0.2s ease;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.22) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+.thumb:hover {
+  width: 110px;
+  filter: grayscale(0);
+  border-color: rgba(127, 252, 255, 0.5);
+}
+
+.thumbActive {
+  border-color: var(--cyan, #7ffcff);
+  box-shadow: 0 0 12px rgba(127, 252, 255, 0.5);
+}
+
+.divider {
+  flex: 0 0 auto;
+  position: relative;
+  width: 40px;
+  height: 110px;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, #ff5fe0 15%, #ff5fe0 85%, transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 10px 2px rgba(255, 95, 224, 0.75), 0 0 22px 4px rgba(255, 95, 224, 0.4);
+}

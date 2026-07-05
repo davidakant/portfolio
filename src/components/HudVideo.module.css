@@ -1,0 +1,173 @@
+.videoFill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+/* Same "liquid glass" recipe as the badges (layered gradient body, inset rim
+   highlight + bottom shadow for depth, outer drop shadow, radial specular
+   highlight, continuous shimmer) — just circular and much larger, since this
+   is a one-shot centerpiece control rather than a small label pill. */
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.playButton::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 12%;
+  width: 55%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.playButton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.5) 48%, transparent 60%);
+  background-size: 240% 240%;
+  pointer-events: none;
+  animation: sheen-sweep 4.5s ease-in-out infinite;
+}
+
+.playButton:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 14px 36px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.playButton:hover::after {
+  animation-duration: 1.4s;
+}
+
+.playIcon {
+  position: relative;
+  z-index: 1;
+  width: 42%;
+  height: 42%;
+  margin-left: 6%;
+  color: rgba(20, 22, 26, 0.85);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes sheen-sweep {
+  0% {
+    background-position: 130% 130%;
+  }
+  50% {
+    background-position: -30% -30%;
+  }
+  100% {
+    background-position: 130% 130%;
+  }
+}
+
+/* Same glass recipe as the readout badges (no shimmer — this is a passive
+   label, not an interactive control) — left-aligned directly under the
+   video-number badge (top-left, itself at left: 14px), since videos don't
+   have the spatial-toggle badge occupying the bottom of the frame. */
+.caption {
+  position: absolute;
+  top: 50px;
+  left: 14px;
+  z-index: 5;
+  max-width: 60%;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(127, 252, 255, 0.3);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  color: #33363b;
+}
+
+.caption::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 6%;
+  width: 45%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.captionLabel {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  text-shadow:
+    0 0 4px rgba(127, 252, 255, 0.9),
+    0 0 10px rgba(127, 252, 255, 0.6),
+    0 0 18px rgba(127, 252, 255, 0.4);
+}
+
+/* Placed after the base .playButton/.caption rules (same specificity, so
+   source order decides) — must come last to actually win on small screens. */
+@media (max-width: 640px) {
+  /* Shrunk a bit further from the desktop size (110px) — the panel itself is
+     much shorter on narrow viewports, and the enlarged caption below the
+     video-number badge needs enough clearance above this to not overlap it. */
+  .playButton {
+    width: 64px;
+    height: 64px;
+  }
+
+  .caption {
+    top: 32px;
+    left: 14px;
+    max-width: 65%;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    padding: 4px 10px;
+  }
+}

@@ -1,0 +1,15 @@
+# Display order for the 3D Printing "Prints" section.
+# One filename per line (matches files in src/assets/projects/3d-printing/prints/).
+# Lines starting with # are ignored. Anything on disk but not listed here is
+# appended automatically, so a newly-added image is never silently hidden.
+photo-oct-07-4-18-49-pm.webp
+photo-oct-07-4-18-57-pm.webp
+photo-oct-07-4-19-09-pm.webp
+photo-oct-07-4-19-13-pm.webp
+photo-oct-07-4-20-09-pm.webp
+photo-oct-07-4-20-15-pm.webp
+photo-oct-07-4-20-29-pm.webp
+photo-oct-07-4-23-55-pm.webp
+photo-oct-07-4-23-59-pm.webp
+photo-oct-07-4-24-05-pm.webp
+photo-oct-07-4-24-08-pm.webp

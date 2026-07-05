@@ -1,0 +1,99 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-sm) 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 11, 0.85), transparent);
+  backdrop-filter: blur(6px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin: 0 var(--space-sm);
+}
+
+.link {
+  position: relative;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-fg-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover,
+.active {
+  color: var(--color-fg);
+}
+
+.toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background: var(--color-fg);
+  transition: transform var(--duration-fast) var(--ease-out), opacity var(--duration-fast);
+}
+
+.barOpen1 {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.barOpen2 {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+/* 6 quick-links need more room than the old 2-link nav did — switch to the
+   hamburger earlier (860px) so mid-width viewports never hit the awkward
+   wrap where both the logo and the link row break onto a second line. */
+@media (max-width: 860px) {
+  .links {
+    display: none;
+  }
+
+  .toggle {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-md) var(--space-md) var(--space-lg);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobileLink {
+    padding: var(--space-sm) 0;
+    font-size: var(--size-h2);
+    font-family: var(--font-display);
+  }
+}

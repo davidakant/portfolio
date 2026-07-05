@@ -1,0 +1,43 @@
+# Order of images in the "Exteriors" section of the Architectural
+# Visualization page.
+#
+# One filename per line. The order of the lines = the order images appear
+# on the site (top to bottom in the list, left to right in the gallery).
+#
+# To reorder: just cut and paste lines around, then save this file.
+# Lines starting with # are ignored. Blank lines are ignored.
+# If you add a new image file to the exteriors folder and don't add its
+# filename here, it will still show up (added automatically to the end)
+# until you place it where you want.
+
+walker01-day.webp
+walker01-evening.webp
+toll01.webp
+toll02.webp
+toll03.webp
+toll04.webp
+toll05.webp
+toll06.webp
+toll07.webp
+assistedliving-enhance-evening.webp
+assistedliving-enhance-morning.webp
+fourstory-enhanced.webp
+coastal01.webp
+cpastal02.webp
+craftsman01.webp
+rider-enhanced.webp
+conshohocken01.webp
+livingwaterchurch-enhanced-day.webp
+livingwaterchurch-enhanced-evening.webp
+pricechopper01-enhanced.webp
+harpoon-willys-draft01.webp
+pnc-bridgewater-enhanced01.webp
+pnc-bridgewater-enhanced02.webp
+pnc01-enhanced-morning.webp
+brunswicktownship-day.webp
+brunswicktownship-night.webp
+
+
+
+
+
