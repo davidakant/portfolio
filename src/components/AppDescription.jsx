@@ -6,11 +6,23 @@ import styles from './AppDescription.module.css'
 // space. Page-wide scheme is white + cyan; pink (via `highlight`) is
 // reserved only for a single deliberate accent phrase, not used for
 // section-to-section differentiation. Optional `note` (e.g. a draft/WIP
-// disclaimer) renders in magenta above everything else.
-export default function AppDescription({ note, noteColor = 'magenta', intro, bullets, final, highlight }) {
+// disclaimer) renders above everything else by default (`notePosition="top"`,
+// e.g. Web Games' Storybook draft note), or after the Description paragraph
+// via `notePosition="bottom"` (the Web Applications page's red disclaimers).
+export default function AppDescription({
+  note,
+  noteColor = 'magenta',
+  notePosition = 'top',
+  intro,
+  bullets,
+  final,
+  highlight,
+}) {
+  const noteEl = note && <p className={noteColor === 'red' ? styles.noteRed : styles.noteMagenta}>{note}</p>
+
   return (
     <div className={styles.appDescription}>
-      {note && <p className={noteColor === 'red' ? styles.noteRed : styles.noteMagenta}>{note}</p>}
+      {notePosition === 'top' && noteEl}
       <p className={styles.introText}>{intro}</p>
       <ul className={styles.bulletList}>
         {bullets.map((bullet, idx) => (
@@ -32,6 +44,7 @@ export default function AppDescription({ note, noteColor = 'magenta', intro, bul
           final
         )}
       </p>
+      {notePosition === 'bottom' && noteEl}
     </div>
   )
 }

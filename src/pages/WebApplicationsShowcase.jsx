@@ -82,8 +82,11 @@ const PROJECT_MANAGEMENT_HIGHLIGHT = {
     ", the dashboard successfully saves and retrieves all project data using the browser's built-in storage architecture, ensuring progress is never lost.",
 }
 
+const PROJECT_COORDINATION_NOTE =
+  'NOTE: This front-end app is designed to operate with local cache. This is for demonstration only. There is no database, no login, and no email actually sent. Refreshing the page resets every module back to its starting data. Client names, product lines, batch numbers, meeting notes, and message copy are all realistic placeholder content.'
+
 const PROJECT_COORDINATION_INTRO =
-  'A custom-built project coordination dashboard designed to streamline the daily workflows and administrative tasks of a project manager.'
+  'A custom-built project coordination dashboard designed to streamline the daily workflows and administrative tasks of a Project Coordinator for Account Management, Production Scheduling, and Administrative Support.'
 
 const PROJECT_COORDINATION_BULLETS = [
   {
@@ -108,7 +111,7 @@ const PROJECT_COORDINATION_BULLETS = [
 // highlighted phrases on this page.
 const PROJECT_COORDINATION_HIGHLIGHT = {
   before:
-    'This web application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Drawing directly on my background in pipeline development, I designed the interface to take ',
+    'This web application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Using my experience in pipeline development, I designed the interface to take ',
   text: 'complex, overlapping project data and turn it into a clear, actionable workflow',
   after:
     '. Building this tool was a practical exercise in applying technical problem-solving to real-world administrative challenges, resulting in a straightforward interface that keeps projects organized and moving forward.',
@@ -119,6 +122,9 @@ const PROJECT_COORDINATION_HIGHLIGHT = {
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
 const SECTION_DESCRIPTIONS = {
   'Project Coordination': {
+    note: PROJECT_COORDINATION_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
     intro: PROJECT_COORDINATION_INTRO,
     bullets: PROJECT_COORDINATION_BULLETS,
     highlight: PROJECT_COORDINATION_HIGHLIGHT,
@@ -126,6 +132,7 @@ const SECTION_DESCRIPTIONS = {
   'Project Management': {
     note: PROJECT_MANAGEMENT_NOTE,
     noteColor: 'red',
+    notePosition: 'bottom',
     intro: PROJECT_MANAGEMENT_INTRO,
     bullets: PROJECT_MANAGEMENT_BULLETS,
     highlight: PROJECT_MANAGEMENT_HIGHLIGHT,
