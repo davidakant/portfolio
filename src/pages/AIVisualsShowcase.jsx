@@ -10,6 +10,7 @@ export default function AIVisualsShowcase() {
       bordered={false}
       showTicker={false}
       dynamicAspect
+      minimal
     />
   )
 }

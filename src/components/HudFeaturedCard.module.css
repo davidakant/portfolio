@@ -12,13 +12,39 @@
   transform-style: preserve-3d;
 }
 
+/* Liquid-glass bezel around the cover photo — same recipe as the HudDisplay
+   panel: a thick glass frame (border + layered box-shadow for an inset rim +
+   drop shadow, plus a radial specular highlight via ::before). The photo
+   sits flush with the frame edge; the glass read comes from the border +
+   shadow + specular highlight + the existing .sheen sweep, not a gap. */
 .media {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -14px 20px -12px rgba(0, 0, 0, 0.4),
+    0 26px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Positioned (not static like the <img>), so it paints above the photo
+   without needing an explicit z-index — same stacking behavior as .sheen. */
+.media::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: 6%;
+  width: 45%;
+  height: 55%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 70%);
+  pointer-events: none;
+  filter: blur(8px);
 }
 
 .image {

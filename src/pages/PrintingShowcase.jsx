@@ -9,6 +9,7 @@ export default function PrintingShowcase() {
       showTicker={false}
       dynamicAspect
       stackedRails
+      minimal
     />
   )
 }

@@ -5,6 +5,7 @@ import printsOrderRaw from '../../image-order-3d-printing.txt?raw'
 import printsAssemblyVideo from '../assets/projects/3d-printing/prints/video-oct-07-4-24-41-pm.mp4'
 import realtorDashboardScreenshot from '../assets/projects/realtor-dashboard/screenshots/dashboard-overview.webp'
 import projectManagementScreenshot from '../assets/projects/project-management/screenshots/dashboard-overview.webp'
+import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-screenshot.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
 import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
@@ -504,6 +505,7 @@ export const UPPERCASE_URL = 'https://dak-uppercase.netlify.app/'
 export const CODE_BREAKER_URL = 'https://davidakant.github.io/CodeBreaker/'
 export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDataTest1/'
 export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/ConstructionProjectDashboard/'
+export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
 
 export const projects = [
   {
@@ -613,14 +615,14 @@ export const projects = [
     externalLabel: 'View live app',
     sections: [
       {
-        heading: 'Realtor Dashboard',
+        heading: 'Project Coordination',
         media: [
           {
             type: 'image',
-            src: realtorDashboardScreenshot,
-            alt: 'Realtor dashboard showing parcel map lookup and census demographics data',
-            caption: 'Parcel Lookup & Census Demographics',
-            href: REALTOR_DASHBOARD_URL,
+            src: projectCoordinationScreenshot,
+            alt: 'Project Coordination dashboard showing production pipeline snapshot, risk alerts, and open action items',
+            caption: 'Coordinator Console Overview',
+            href: PROJECT_COORDINATION_URL,
           },
         ],
       },
@@ -633,6 +635,18 @@ export const projects = [
             alt: 'Project management dashboard showing a calendar view and task list',
             caption: 'Calendar & Task Dashboard',
             href: PROJECT_MANAGEMENT_URL,
+          },
+        ],
+      },
+      {
+        heading: 'Realtor Dashboard',
+        media: [
+          {
+            type: 'image',
+            src: realtorDashboardScreenshot,
+            alt: 'Realtor dashboard showing parcel map lookup and census demographics data',
+            caption: 'Parcel Lookup & Census Demographics',
+            href: REALTOR_DASHBOARD_URL,
           },
         ],
       },

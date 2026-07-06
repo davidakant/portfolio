@@ -9,6 +9,7 @@ export default function ArchitectureShowcase() {
       bordered={false}
       showTicker={false}
       dynamicAspect
+      minimal
     />
   )
 }

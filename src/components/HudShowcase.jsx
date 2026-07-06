@@ -26,7 +26,10 @@ import styles from './HudShowcase.module.css'
 // `bordered`/`showTicker`/`dynamicAspect` let a page opt out of the angular
 // HUD frame + mask, the data-stream ticker/equalizer, and the fixed-height
 // viewer respectively (Architecture uses a plainer, image-shaped viewer;
-// AI Generated Visuals keeps the original full HUD treatment).
+// AI Generated Visuals keeps the original full HUD treatment). The liquid-
+// glass sheen overlay is independent of `bordered` — it's the panel's own
+// glass material, not part of the angular frame decoration, so it always
+// renders (just without the frame's clip-path shape when unbordered).
 //
 // `stackedRails` (e.g. 3D Printing's "Condominium 3D Floorplan" +
 // "Miscellaneous") swaps the usual category-tab-chips + single shared rail
@@ -34,6 +37,12 @@ import styles from './HudShowcase.module.css'
 // independently scrollable — rather than a tab switching which category's
 // rail is shown. Clicking any thumbnail in any rail still drives the same
 // single viewer above.
+//
+// `minimal` (opt-in — Architecture, AI Generated Visuals, 3D Printing) tones
+// down the passive chrome — corner readouts and nav arrows — so the
+// photography competes less with the UI. It's additive/visual-only: nothing
+// it touches is hover-gated, so touch devices see the exact same (quieter)
+// elements at full tap-ability, just dimmer at rest.
 export default function HudShowcase({
   slug,
   eyebrow,
@@ -44,6 +53,7 @@ export default function HudShowcase({
   showTicker = true,
   dynamicAspect = false,
   stackedRails = false,
+  minimal = false,
 }) {
   const project = useMemo(() => getProjectBySlug(slug), [slug])
   const [modeIndex, setModeIndex] = useState(0)
@@ -159,7 +169,11 @@ export default function HudShowcase({
   }
 
   return (
-    <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <div
+      className={`${styles.holo} ${minimal ? styles.minimal : ''}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <HudBackground mx={mx} my={my} />
       <div className={styles.ambient} aria-hidden="true" />
 
@@ -273,7 +287,11 @@ export default function HudShowcase({
                 </motion.div>
               </AnimatePresence>
 
-              {bordered && <div className={styles.glassSheen} style={{ clipPath: HUD_FRAME_CLIP_PATH }} aria-hidden="true" />}
+              <div
+                className={styles.glassSheen}
+                style={{ clipPath: bordered ? HUD_FRAME_CLIP_PATH : 'none' }}
+                aria-hidden="true"
+              />
 
               <div className={styles.readoutTL}>
                 {active.type === 'video' ? 'VID_' : 'IMG_'}

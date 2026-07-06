@@ -47,6 +47,9 @@ const REALTOR_HIGHLIGHT = {
   after: '—including nine distinct county systems—into a single, user-friendly interface.',
 }
 
+const PROJECT_MANAGEMENT_NOTE =
+  'NOTE: This app is designed to operate on a local network with local cache. This is for demonstration only, and most operational functionailty will not work. It has been populated with simulated data.'
+
 const PROJECT_MANAGEMENT_INTRO =
   'A self-contained project management dashboard built to centralize construction workflows from initial charter to final closeout.'
 
@@ -79,6 +82,61 @@ const PROJECT_MANAGEMENT_HIGHLIGHT = {
     ", the dashboard successfully saves and retrieves all project data using the browser's built-in storage architecture, ensuring progress is never lost.",
 }
 
+const PROJECT_COORDINATION_INTRO =
+  'A custom-built project coordination dashboard designed to streamline the daily workflows and administrative tasks of a project manager.'
+
+const PROJECT_COORDINATION_BULLETS = [
+  {
+    label: 'Centralized Operations:',
+    text: ' Consolidates task tracking, timeline management, and stakeholder organization into a single, easy-to-read interface.',
+  },
+  {
+    label: 'Workflow Optimization:',
+    text: ' Applies pipeline development principles to organize complex, overlapping project data into clear, actionable steps.',
+  },
+  {
+    label: 'Practical Utility:',
+    text: ' Engineered specifically to handle the real-world operational challenges of managing cross-functional projects.',
+  },
+  {
+    label: 'Intuitive UI/UX:',
+    text: ' Features a clean, accessible layout that allows users to quickly assess project health and prioritize daily tasks without unnecessary friction.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const PROJECT_COORDINATION_HIGHLIGHT = {
+  before:
+    'This web application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Drawing directly on my background in pipeline development, I designed the interface to take ',
+  text: 'complex, overlapping project data and turn it into a clear, actionable workflow',
+  after:
+    '. Building this tool was a practical exercise in applying technical problem-solving to real-world administrative challenges, resulting in a straightforward interface that keeps projects organized and moving forward.',
+}
+
+// Keyed by section heading (rather than array index) so reordering
+// `sections` in projects.js can't silently mismatch a section with the
+// wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
+const SECTION_DESCRIPTIONS = {
+  'Project Coordination': {
+    intro: PROJECT_COORDINATION_INTRO,
+    bullets: PROJECT_COORDINATION_BULLETS,
+    highlight: PROJECT_COORDINATION_HIGHLIGHT,
+  },
+  'Project Management': {
+    note: PROJECT_MANAGEMENT_NOTE,
+    noteColor: 'red',
+    intro: PROJECT_MANAGEMENT_INTRO,
+    bullets: PROJECT_MANAGEMENT_BULLETS,
+    highlight: PROJECT_MANAGEMENT_HIGHLIGHT,
+  },
+  'Realtor Dashboard': {
+    intro: REALTOR_INTRO,
+    bullets: REALTOR_BULLETS,
+    highlight: REALTOR_HIGHLIGHT,
+  },
+}
+
 export default function WebApplicationsShowcase() {
   const project = getProjectBySlug('web-applications')
   const mx = useMotionValue(0)
@@ -107,25 +165,34 @@ export default function WebApplicationsShowcase() {
           <span className={styles.eyebrow}>WEB APPLICATIONS // PRODUCTIVITY ARCHIVE</span>
         </div>
 
-        {project.sections.map((section, i) => (
-          <section key={section.heading} className={styles.section}>
-            <div className={styles.panel}>
-              <h2 className={styles.sectionHeading}>{section.heading}</h2>
-              <MediaGallery media={section.media}>
-                {i === 0 && (
-                  <AppDescription intro={REALTOR_INTRO} bullets={REALTOR_BULLETS} highlight={REALTOR_HIGHLIGHT} />
-                )}
-                {i === 1 && (
-                  <AppDescription
-                    intro={PROJECT_MANAGEMENT_INTRO}
-                    bullets={PROJECT_MANAGEMENT_BULLETS}
-                    highlight={PROJECT_MANAGEMENT_HIGHLIGHT}
-                  />
-                )}
-              </MediaGallery>
-            </div>
-          </section>
-        ))}
+        {project.sections.map((section) => {
+          const link = section.media[0]?.href
+          const description = SECTION_DESCRIPTIONS[section.heading]
+          return (
+            <section key={section.heading} className={styles.section}>
+              <div className={styles.panel}>
+                <h2 className={styles.sectionHeading}>
+                  {link ? (
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.sectionHeadingLink}
+                      data-cursor-hover
+                    >
+                      {section.heading}
+                    </a>
+                  ) : (
+                    section.heading
+                  )}
+                </h2>
+                <MediaGallery media={section.media}>
+                  {description && <AppDescription {...description} />}
+                </MediaGallery>
+              </div>
+            </section>
+          )
+        })}
       </div>
     </div>
   )

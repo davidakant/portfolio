@@ -7,10 +7,10 @@ import styles from './AppDescription.module.css'
 // reserved only for a single deliberate accent phrase, not used for
 // section-to-section differentiation. Optional `note` (e.g. a draft/WIP
 // disclaimer) renders in magenta above everything else.
-export default function AppDescription({ note, intro, bullets, final, highlight }) {
+export default function AppDescription({ note, noteColor = 'magenta', intro, bullets, final, highlight }) {
   return (
     <div className={styles.appDescription}>
-      {note && <p className={styles.noteMagenta}>{note}</p>}
+      {note && <p className={noteColor === 'red' ? styles.noteRed : styles.noteMagenta}>{note}</p>}
       <p className={styles.introText}>{intro}</p>
       <ul className={styles.bulletList}>
         {bullets.map((bullet, idx) => (

@@ -73,7 +73,7 @@
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
-  padding: 10px 22px;
+  padding: 5px 22px;
   border-radius: 999px;
   border: 1px solid rgba(255, 95, 224, 0.35);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
@@ -274,22 +274,23 @@
 .panelInner {
   position: relative;
   height: 58vh;
-  border-radius: 16px;
+  border-radius: 26px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.12) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.8),
-    inset 0 -10px 16px -10px rgba(0, 0, 0, 0.35),
-    0 20px 60px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(0, 0, 0, 0.08);
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -16px 22px -14px rgba(0, 0, 0, 0.45),
+    0 32px 70px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 /* Specular highlight for the HudDisplay panel itself — no explicit z-index
-   (stays "auto" so it paints behind the image content in tree order) rather
-   than covering whatever's currently displayed. */
+   (stays "auto" so it paints behind the image content in tree order); now
+   that the media sits inset from the frame edge (see .imageWrap), this
+   shows through the exposed bezel band instead of being fully hidden. */
 .panelInner::before {
   content: '';
   position: absolute;
@@ -298,7 +299,7 @@
   width: 45%;
   height: 60%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5), transparent 70%);
   pointer-events: none;
   filter: blur(6px);
 }
@@ -625,7 +626,7 @@
 .modeTab .badgeLabel {
   flex-direction: column;
   gap: 0;
-  line-height: 1.25;
+  line-height: 1.1;
   text-shadow:
     0 0 4px rgba(255, 95, 224, 0.9),
     0 0 10px rgba(255, 95, 224, 0.6),
@@ -681,4 +682,50 @@
     padding: 8px 18px;
     font-size: 0.85rem;
   }
+}
+
+/* Reduced-chrome variant (`minimal` prop): the corner readouts and nav
+   arrows are demoted from "glass button" to "quiet watermark" so they
+   compete less with the photo/video underneath. Text-only readouts keep
+   their color-coded glow (cyan for the frame counter, magenta for the
+   category) at lower intensity, backed by a soft scrim instead of a full
+   glass box, for legibility over any image. Nav arrows sit at a dim-but-
+   still-visible idle opacity — deliberately not near-zero, since fading to
+   invisible would make them undiscoverable on touch devices, which have no
+   hover state to reveal them. */
+.minimal .readoutTL,
+.minimal .readoutTR {
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: none;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.minimal .readoutTL::before,
+.minimal .readoutTR::before {
+  content: none;
+}
+
+.minimal .readoutTL {
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.45);
+}
+
+.minimal .readoutTR {
+  text-shadow: 0 0 6px rgba(255, 95, 224, 0.45);
+}
+
+.minimal .navBtn {
+  opacity: 0.5;
+}
+
+.minimal .navBtn:hover,
+.minimal .navBtn:focus-visible {
+  opacity: 1;
+}
+
+.minimal .eyebrow {
+  text-shadow: none;
+  opacity: 0.85;
 }

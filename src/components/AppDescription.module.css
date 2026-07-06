@@ -55,12 +55,20 @@
   color: var(--magenta);
 }
 
-.noteMagenta {
-  color: var(--magenta);
+.noteMagenta,
+.noteRed {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.85rem;
+}
+
+.noteMagenta {
+  color: var(--magenta);
+}
+
+.noteRed {
+  color: #ff3b3b;
 }
 
 @media (max-width: 800px) {
