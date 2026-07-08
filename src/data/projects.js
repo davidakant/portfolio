@@ -39,7 +39,7 @@ import ferrisIceCreamPoster from '../assets/projects/ferris-video/ads-videos/fer
 import milkVideo from '../assets/projects/ferris-video/ads-videos/milk.mp4'
 import milkPoster from '../assets/projects/ferris-video/ads-videos/milk-poster.webp'
 
-// AI Generated Visuals — each folder is one thematic category (mirrors how
+// AI Assisted Visuals — each folder is one thematic category (mirrors how
 // architecture splits into interiors/exteriors), eagerly globbed so new
 // files just need to be dropped in + imported via scripts/import-media.mjs.
 const moviesTvModules = import.meta.glob('../assets/projects/ferris-video/movies-tv/*.webp', {
@@ -328,7 +328,7 @@ function gallery(count, startIndex = 0) {
   }))
 }
 
-// AI Generated Visuals images aren't individually captioned (there are too
+// AI Assisted Visuals images aren't individually captioned (there are too
 // many, and the HUD viewer only ever shows the caption as non-visible
 // accessibility text — see ThumbnailRail/ZoomableImage) — a per-category
 // label is enough. Sorted alphabetically by filename since there's no
@@ -339,7 +339,7 @@ function themedGallery(modules, categoryLabel) {
     .map((path) => ({
       type: 'image',
       src: modules[path],
-      alt: `${categoryLabel} — AI-generated image of Ferris`,
+      alt: `${categoryLabel} — AI-assisted image of Ferris`,
       caption: categoryLabel,
     }))
 }
@@ -371,35 +371,35 @@ const videosMedia = [
     src: extremeSportsVideo,
     poster: extremeSportsPoster,
     caption: 'The Most Extreme Dog In The World',
-    alt: 'AI-generated video — The Most Extreme Dog In The World',
+    alt: 'AI-assisted video — The Most Extreme Dog In The World',
   },
   {
     type: 'video',
     src: greekGodsVideo,
     poster: greekGodsPoster,
     caption: 'Gods of Olympus',
-    alt: 'AI-generated video — Gods of Olympus',
+    alt: 'AI-assisted video — Gods of Olympus',
   },
   {
     type: 'video',
     src: royalFerrisResortVideo,
     poster: royalFerrisResortPoster,
     caption: 'Royal Ferris Resort',
-    alt: 'AI-generated video — Royal Ferris Resort',
+    alt: 'AI-assisted video — Royal Ferris Resort',
   },
   {
     type: 'video',
     src: ferrisParkVideo,
     poster: ferrisParkPoster,
     caption: 'Ferris Park',
-    alt: 'AI-generated video — Ferris Park',
+    alt: 'AI-assisted video — Ferris Park',
   },
   {
     type: 'video',
     src: dancingOrangutanVideo,
     poster: dancingOrangutanPoster,
     caption: 'Dancing Orangutan',
-    alt: 'AI-generated video — Dancing Orangutan',
+    alt: 'AI-assisted video — Dancing Orangutan',
   },
 ]
 
@@ -552,7 +552,7 @@ export const projects = [
     slug: 'products',
     title: 'Products & Services',
     category: 'AI / Commercial',
-    summary: 'AI-generated advertising content for products and services.',
+    summary: 'AI-assisted advertising content for products and services.',
     description: 'Commercial content exploring what AI generation can do for product and service marketing.',
     externalUrl: '',
     sections: [{ heading: 'AI Ads', media: adsMedia }],
@@ -580,13 +580,13 @@ export const projects = [
     slug: 'ferris-video',
     title: 'Ferris (AI Video)',
     category: 'AI',
-    summary: 'AI-generated video series starring my dog, Ferris.',
+    summary: 'AI-assisted video series starring my dog, Ferris.',
     description:
-      'This is my dog, Ferris. These AI-generated video series are also cross-posted to YouTube.',
+      'This is my dog, Ferris. These AI-assisted video series are also cross-posted to YouTube.',
     externalUrl: 'https://www.youtube.com/@Ferris-AI',
     externalLabel: 'Watch on YouTube',
     sections: ferrisStillsSections,
-    // Top-level content sets shown on the AI Generated Visuals page, switched
+    // Top-level content sets shown on the AI Assisted Visuals page, switched
     // via HudShowcase's mode tabs. Each mode has its own category tabs (built
     // the same way as `sections` above).
     modes: [
@@ -600,7 +600,7 @@ export const projects = [
     slug: 'ferris-stills',
     title: 'Ferris (AI Stills)',
     category: 'AI Image',
-    summary: 'AI-generated still imagery, same subject as the video series.',
+    summary: 'AI-assisted still imagery, same subject as the video series.',
     description: 'Still frames and generated imagery exploring the same character and world as the video series.',
     externalUrl: '',
     sections: [{ heading: 'Stills', media: gallery(6, 5) }],

@@ -5,6 +5,7 @@ import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
 import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
+import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/comfort-canines-poster.webp'
 import styles from './Home.module.css'
 
 // Standalone home-page feature — not one of the /work/:slug categories below,
@@ -23,14 +24,15 @@ const CALETA_FILM_POSTER = 'https://caletaresidences.netlify.app/assets/video/ca
 const HOME_CATEGORIES = [
   { slug: 'web-applications', title: 'Web Applications' },
   { slug: 'architecture', title: 'Architectural Visualization' },
-  { slug: 'ferris-video', title: 'AI Generated Visuals' },
+  { slug: 'ferris-video', title: 'AI Assisted Visuals', cover: comfortCaninesPoster },
   { slug: 'web-games', title: 'Web Games' },
   { slug: '3d-printing', title: '3D Printing' },
 ]
 
-const homeCards = HOME_CATEGORIES.map(({ slug, title }) => ({
+const homeCards = HOME_CATEGORIES.map(({ slug, title, cover }) => ({
   ...getProjectBySlug(slug),
   title,
+  ...(cover ? { cover } : {}),
 }))
 
 const EMAIL = 'david.a.kant@gmail.com'
@@ -149,11 +151,11 @@ export default function Home() {
               <p className={styles.featuredProjectTagline}>"Low-rise living. Boundless island."</p>
               <p className={styles.featuredProjectText}>
                 A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private
-                island — architecture, AI-generated visualization, brand identity, and the full marketing
+                island — architecture, AI-assisted visualization, brand identity, and the full marketing
                 site, designed and built end-to-end.
               </p>
               <p className={styles.featuredProjectNote}>
-                Fictional development — AI-generated architecture, renders, and brand, created for
+                Fictional development — AI-assisted architecture, renders, and brand, created for
                 portfolio demonstration only.
               </p>
               <div className={styles.featuredProjectCtaRow}>

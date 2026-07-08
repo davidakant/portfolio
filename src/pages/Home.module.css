@@ -201,8 +201,8 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
+  color: #ffd700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-xs);
   border-bottom: 1px solid rgba(255, 95, 224, 0.2);

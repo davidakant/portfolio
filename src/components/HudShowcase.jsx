@@ -15,10 +15,10 @@ import styles from './HudShowcase.module.css'
 // Sci-fi FUI/HUD viewer shared by any project page that wants the same
 // holographic panel + category-tab + thumbnail-rail treatment as the
 // Architecture page (originally built just for that page, generalized so
-// AI Generated Visuals — and any future project — can reuse it as-is).
+// AI Assisted Visuals — and any future project — can reuse it as-is).
 //
 // `modes` (optional) adds a second, higher-level tab row above the category
-// tabs — e.g. AI Generated Visuals switches between entirely different
+// tabs — e.g. AI Assisted Visuals switches between entirely different
 // content sets ("Ferris Stills", "Ads", "Conceptual", "Ferris Videos"), each
 // with its own categories, where a plain single-level `sections` list isn't
 // enough. When omitted, behavior is identical to before (Architecture).
@@ -26,7 +26,7 @@ import styles from './HudShowcase.module.css'
 // `bordered`/`showTicker`/`dynamicAspect` let a page opt out of the angular
 // HUD frame + mask, the data-stream ticker/equalizer, and the fixed-height
 // viewer respectively (Architecture uses a plainer, image-shaped viewer;
-// AI Generated Visuals keeps the original full HUD treatment). The liquid-
+// AI Assisted Visuals keeps the original full HUD treatment). The liquid-
 // glass sheen overlay is independent of `bordered` — it's the panel's own
 // glass material, not part of the angular frame decoration, so it always
 // renders (just without the frame's clip-path shape when unbordered).
@@ -38,7 +38,7 @@ import styles from './HudShowcase.module.css'
 // rail is shown. Clicking any thumbnail in any rail still drives the same
 // single viewer above.
 //
-// `minimal` (opt-in — Architecture, AI Generated Visuals, 3D Printing) tones
+// `minimal` (opt-in — Architecture, AI Assisted Visuals, 3D Printing) tones
 // down the passive chrome — corner readouts and nav arrows — so the
 // photography competes less with the UI. It's additive/visual-only: nothing
 // it touches is hover-gated, so touch devices see the exact same (quieter)

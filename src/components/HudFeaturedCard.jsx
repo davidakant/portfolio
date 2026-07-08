@@ -4,7 +4,10 @@ import { motion, useSpring, useTransform } from 'framer-motion'
 import styles from './HudFeaturedCard.module.css'
 
 export default function HudFeaturedCard({ project, index = 0, mx, my }) {
-  const cover = project.sections[0]?.media.find((item) => item.type !== 'video')?.src
+  // `project.cover` lets a home-page category (see HOME_CATEGORIES in
+  // Home.jsx) pin a specific image instead of defaulting to the first
+  // non-video item in the project's first section.
+  const cover = project.cover ?? project.sections[0]?.media.find((item) => item.type !== 'video')?.src
 
   // Tilts toward the cursor using the same page-wide mouse tracking as the
   // HudDisplay panel on the Architecture page — one shared mx/my source, so
