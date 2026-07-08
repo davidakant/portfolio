@@ -1,4 +1,6 @@
-import { motion, useMotionValue } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
@@ -6,8 +8,14 @@ import caletaScreenshot from '../assets/projects/caleta-residences/homepage/cale
 import styles from './Home.module.css'
 
 // Standalone home-page feature — not one of the /work/:slug categories below,
-// so its content/link lives here rather than in data/projects.js.
+// so its content/link lives here rather than in data/projects.js. The film
+// streams directly from the live Caleta site rather than being bundled into
+// this repo — embedding an actual video file would bloat the standalone
+// single-file build considerably for no benefit, since it's the same file
+// either way.
 const CALETA_URL = 'https://caletaresidences.netlify.app/'
+const CALETA_FILM_URL = 'https://caletaresidences.netlify.app/assets/video/caleta-film.mp4'
+const CALETA_FILM_POSTER = 'https://caletaresidences.netlify.app/assets/video/caleta-film-poster.webp'
 
 // The 4 home category tiles are broader groupings than the underlying project
 // slugs — each links through to one representative project page. `web-games`
@@ -46,6 +54,16 @@ export default function Home() {
     mx.set(0)
     my.set(0)
   }
+
+  const [filmOpen, setFilmOpen] = useState(false)
+  useEffect(() => {
+    if (!filmOpen) return undefined
+    const onKey = (e) => {
+      if (e.key === 'Escape') setFilmOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [filmOpen])
 
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
@@ -103,18 +121,21 @@ export default function Home() {
 
         <section className={styles.featuredProjectSection}>
           <span className={styles.featuredProjectEyebrow}>FEATURED_PROJECT // ARCHITECTURAL VISUALIZATION</span>
-          <motion.a
-            href={CALETA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
             className={styles.featuredProjectCard}
-            data-cursor-hover
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-10%' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={styles.featuredProjectMedia}>
+            <a
+              href={CALETA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.featuredProjectMedia}
+              data-cursor-hover
+              aria-label="View Caleta — Private Island Residences live site"
+            >
               <img
                 src={caletaScreenshot}
                 alt="Caleta — Private Island Residences homepage hero"
@@ -122,7 +143,7 @@ export default function Home() {
                 loading="lazy"
               />
               <div className={styles.featuredProjectSheen} aria-hidden="true" />
-            </div>
+            </a>
             <div className={styles.featuredProjectBody}>
               <h2 className={styles.featuredProjectTitle}>Caleta — Private Island Residences</h2>
               <p className={styles.featuredProjectTagline}>"Low-rise living. Boundless island."</p>
@@ -135,9 +156,33 @@ export default function Home() {
                 Fictional development — AI-generated architecture, renders, and brand, created for
                 portfolio demonstration only.
               </p>
-              <span className={styles.featuredProjectCta}>View Live Site ↗</span>
+              <div className={styles.featuredProjectCtaRow}>
+                <a
+                  href={CALETA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.featuredProjectCta}
+                  data-cursor-hover
+                >
+                  View Live Site ↗
+                </a>
+                <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
+                  |
+                </span>
+                <button
+                  type="button"
+                  className={styles.featuredProjectFilmBtn}
+                  onClick={() => setFilmOpen(true)}
+                  data-cursor-hover
+                >
+                  <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                  </svg>
+                  Watch the Film <span className={styles.featuredProjectFilmDuration}>1:22</span>
+                </button>
+              </div>
             </div>
-          </motion.a>
+          </motion.div>
         </section>
 
         <section className={styles.featured}>
@@ -147,6 +192,52 @@ export default function Home() {
           <ProjectGrid projects={homeCards} mx={mx} my={my} />
         </section>
       </div>
+
+      {/* Rendered via portal to document.body — .chrome's `position:relative;
+          z-index:2` forms its own stacking context, which would otherwise
+          cap this modal below Nav's z-index:100 regardless of its own
+          z-index value. Portaling out of that subtree is the real fix. */}
+      {createPortal(
+        <AnimatePresence>
+          {filmOpen && (
+            <motion.div
+              className={styles.filmModalBackdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setFilmOpen(false)}
+            >
+              <motion.div
+                className={styles.filmModalPanel}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className={styles.filmModalClose}
+                  onClick={() => setFilmOpen(false)}
+                  aria-label="Close video"
+                  data-cursor-hover
+                >
+                  ✕
+                </button>
+                <video
+                  className={styles.filmModalVideo}
+                  src={CALETA_FILM_URL}
+                  poster={CALETA_FILM_POSTER}
+                  controls
+                  playsInline
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </div>
   )
 }
