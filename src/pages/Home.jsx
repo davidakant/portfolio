@@ -2,7 +2,12 @@ import { motion, useMotionValue } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
+import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
 import styles from './Home.module.css'
+
+// Standalone home-page feature — not one of the /work/:slug categories below,
+// so its content/link lives here rather than in data/projects.js.
+const CALETA_URL = 'https://caletaresidences.netlify.app/'
 
 // The 4 home category tiles are broader groupings than the underlying project
 // slugs — each links through to one representative project page. `web-games`
@@ -94,6 +99,45 @@ export default function Home() {
               </span>
             ))}
           </motion.div>
+        </section>
+
+        <section className={styles.featuredProjectSection}>
+          <span className={styles.featuredProjectEyebrow}>FEATURED_PROJECT // ARCHITECTURAL VISUALIZATION</span>
+          <motion.a
+            href={CALETA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.featuredProjectCard}
+            data-cursor-hover
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className={styles.featuredProjectMedia}>
+              <img
+                src={caletaScreenshot}
+                alt="Caleta — Private Island Residences homepage hero"
+                className={styles.featuredProjectImage}
+                loading="lazy"
+              />
+              <div className={styles.featuredProjectSheen} aria-hidden="true" />
+            </div>
+            <div className={styles.featuredProjectBody}>
+              <h2 className={styles.featuredProjectTitle}>Caleta — Private Island Residences</h2>
+              <p className={styles.featuredProjectTagline}>"Low-rise living. Boundless island."</p>
+              <p className={styles.featuredProjectText}>
+                A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private
+                island — architecture, AI-generated visualization, brand identity, and the full marketing
+                site, designed and built end-to-end.
+              </p>
+              <p className={styles.featuredProjectNote}>
+                Fictional development — AI-generated architecture, renders, and brand, created for
+                portfolio demonstration only.
+              </p>
+              <span className={styles.featuredProjectCta}>View Live Site ↗</span>
+            </div>
+          </motion.a>
         </section>
 
         <section className={styles.featured}>

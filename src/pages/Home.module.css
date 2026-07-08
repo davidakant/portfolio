@@ -192,6 +192,149 @@
     0 0 18px rgba(255, 95, 224, 0.4);
 }
 
+.featuredProjectSection {
+  padding: 0 0 var(--space-lg);
+}
+
+.featuredProjectEyebrow {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid rgba(255, 95, 224, 0.2);
+}
+
+/* Same pronounced liquid-glass bezel as the HudDisplay panel and the
+   Selected_Work cards below (thick border, layered box-shadow, backdrop
+   blur/saturate). `overflow: hidden` on this frame is what clips the media
+   flush to the frame's rounded corners — no inset padding around the image
+   itself, matching the rest of the site's glass-media treatment. */
+.featuredProjectCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -16px 22px -14px rgba(0, 0, 0, 0.45),
+    0 32px 70px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.featuredProjectCard:hover {
+  border-color: var(--cyan);
+}
+
+.featuredProjectMedia {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.featuredProjectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featuredProjectCard:hover .featuredProjectImage {
+  transform: scale(1.04);
+}
+
+/* Same continuous diagonal shimmer as the HudDisplay panel's .glassSheen —
+   the persistent "light catching glass" cue, independent of hover. */
+.featuredProjectSheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.14) 45%, rgba(255, 255, 255, 0.04) 50%, transparent 65%);
+  background-size: 250% 250%;
+  animation: featured-sheen-sweep 9s ease-in-out infinite;
+}
+
+@keyframes featured-sheen-sweep {
+  0% { background-position: 130% 130%; }
+  50% { background-position: -30% -30%; }
+  100% { background-position: 130% 130%; }
+}
+
+.featuredProjectBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: 40px 44px;
+  align-self: center;
+}
+
+.featuredProjectTitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  color: #eefdff;
+}
+
+.featuredProjectTagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--cyan);
+  margin: 0 0 var(--space-xs);
+}
+
+.featuredProjectText {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.featuredProjectNote {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: var(--space-xs) 0 0;
+}
+
+.featuredProjectCta {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+}
+
+@media (max-width: 800px) {
+  .featuredProjectCard {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredProjectMedia {
+    min-height: 220px;
+  }
+
+  .featuredProjectBody {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
+
 .featured {
   padding: 0 0 var(--space-lg);
 }
