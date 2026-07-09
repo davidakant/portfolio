@@ -9,6 +9,7 @@ import projectCoordinationScreenshot from '../assets/projects/project-coordinati
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-screenshot.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
 import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
+import videoJigsawScreenshot from '../assets/projects/web-games/video-jigsaw/jigsaw-gameplay.webp'
 
 import dancingOrangutanVideo from '../assets/projects/ferris-video/videos/dancing-orangutan.mp4'
 import dancingOrangutanPoster from '../assets/projects/ferris-video/videos/dancing-orangutan-poster.webp'
@@ -503,6 +504,7 @@ const ferrisStillsSections = [
 export const INTERACTIVE_STORYBOOK_URL = 'https://storybook-norascolorfulworld.netlify.app/'
 export const UPPERCASE_URL = 'https://dak-uppercase.netlify.app/'
 export const CODE_BREAKER_URL = 'https://davidakant.github.io/CodeBreaker/'
+export const VIDEO_JIGSAW_URL = 'https://dak-videojigsaw.netlify.app/'
 export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDataTest1/'
 export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/ConstructionProjectDashboard/'
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
@@ -705,6 +707,20 @@ export const projects = [
             // 4:3 landscape crop so the full module shows uncropped.
             aspectRatio: '366 / 590',
             scale: '75%',
+          },
+        ],
+      },
+      {
+        heading: 'Video Jigsaw',
+        media: [
+          {
+            type: 'image',
+            src: videoJigsawScreenshot,
+            alt: 'Video Jigsaw gameplay showing scattered puzzle pieces made from a looping dolphin video',
+            href: VIDEO_JIGSAW_URL,
+            // Landscape gameplay capture (1600 × 1000) — overrides MediaGallery's
+            // default 4:3 crop so no scattered pieces get cut off at the edges.
+            aspectRatio: '8 / 5',
           },
         ],
       },

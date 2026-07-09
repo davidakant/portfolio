@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useMotionValue } from 'framer-motion'
-import { getProjectBySlug, INTERACTIVE_STORYBOOK_URL, UPPERCASE_URL, CODE_BREAKER_URL } from '../data/projects'
+import {
+  getProjectBySlug,
+  INTERACTIVE_STORYBOOK_URL,
+  UPPERCASE_URL,
+  CODE_BREAKER_URL,
+  VIDEO_JIGSAW_URL,
+} from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import MediaGallery from '../components/MediaGallery'
 import AppDescription from '../components/AppDescription'
@@ -13,6 +19,7 @@ const SECTION_LINKS = {
   'Interactive Digital Storybook': INTERACTIVE_STORYBOOK_URL,
   Uppercase: UPPERCASE_URL,
   'Code Breaker': CODE_BREAKER_URL,
+  'Video Jigsaw': VIDEO_JIGSAW_URL,
 }
 
 // Same bespoke layout as WebApplicationsShowcase (liquid glass panel per
@@ -116,6 +123,38 @@ const CODE_BREAKER_HIGHLIGHT = {
   after: ' into a reliable, straightforward interface.',
 }
 
+const VIDEO_JIGSAW_INTRO =
+  'A custom-built interactive jigsaw puzzle where the individual pieces are generated from a live, continuously playing video stream. This was designed specifically for the iPad.'
+
+const VIDEO_JIGSAW_BULLETS = [
+  {
+    label: 'Multimedia Integration:',
+    text: ' Engineered a custom solution using browser canvas tools to slice a live video feed into interlocking, draggable puzzle pieces.',
+  },
+  {
+    label: 'Performance Optimization:',
+    text: ' Structured the drawing logic to update the video frames continuously, ensuring smooth playback without lagging or crashing the browser.',
+  },
+  {
+    label: 'Dynamic Interaction:',
+    text: ' Built the interface to handle complex drag-and-drop interactions while maintaining the state and position of moving video elements.',
+  },
+  {
+    label: 'Engaging UX:',
+    text: ' Transformed a standard programming exercise into a highly interactive, media-rich experience that runs seamlessly on the client side.',
+  },
+]
+
+// Split around the phrase called out in pink, same pattern as the other
+// highlighted phrases on this page.
+const VIDEO_JIGSAW_HIGHLIGHT = {
+  before:
+    'This web application is an interactive jigsaw puzzle, but with a twist: instead of a static image, the puzzle pieces are sliced from a continuously playing video. Recreating a puzzle with a live video feed is a unique technical challenge. It requires taking the video stream, cutting it into complex interlocking shapes, and constantly updating those pieces so the video keeps playing smoothly, even as you drag them around the screen. Ultimately, ',
+  text: 'building this was an exercise in performance optimization',
+  after:
+    '—managing heavy multimedia processes behind the scenes to ensure the interface remains fast, responsive, and fun to use.',
+}
+
 // Keyed by section heading — the shared AppDescription component's props for
 // each project write-up that already has real copy. Anything not listed
 // here (still a placeholder) falls back to a plain "coming soon" note.
@@ -135,6 +174,11 @@ const SECTION_DESCRIPTIONS = {
     intro: CODE_BREAKER_INTRO,
     bullets: CODE_BREAKER_BULLETS,
     highlight: CODE_BREAKER_HIGHLIGHT,
+  },
+  'Video Jigsaw': {
+    intro: VIDEO_JIGSAW_INTRO,
+    bullets: VIDEO_JIGSAW_BULLETS,
+    highlight: VIDEO_JIGSAW_HIGHLIGHT,
   },
 }
 
