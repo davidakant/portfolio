@@ -7,7 +7,7 @@ import styles from './Nav.module.css'
 // pages/Home.jsx) so any page can jump straight to a section without
 // detouring through the home grid.
 const links = [
-  { to: '/work/web-applications', label: 'Web Apps' },
+  { to: '/work/web-applications', label: 'Applications' },
   { to: '/work/architecture', label: 'Architecture' },
   { to: '/work/ferris-video', label: 'AI Visuals' },
   { to: '/work/web-games', label: 'Web Games' },

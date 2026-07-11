@@ -42,7 +42,7 @@ const REALTOR_BULLETS = [
 // highlighted <span>.
 const REALTOR_HIGHLIGHT = {
   before:
-    'This web application is a comprehensive location intelligence tool that instantly aggregates real-world data from nearly a dozen public and government sources. Users can search any city for live weather updates, or enter a Pennsylvania address to unlock detailed property insights—including ownership, zoning, tax assessments, utility providers, and broadband access. These insights are paired with interactive parcel maps, 3D satellite imagery, and street-level photos to provide a complete picture of the location. Additionally, a built-in demographic tool offers quick access to Census data, such as population and income, for any state, county, or neighborhood. Behind the scenes, ',
+    'This application is a comprehensive location intelligence tool that instantly aggregates real-world data from nearly a dozen public and government sources. Users can search any city for live weather updates, or enter a Pennsylvania address to unlock detailed property insights—including ownership, zoning, tax assessments, utility providers, and broadband access. These insights are paired with interactive parcel maps, 3D satellite imagery, and street-level photos to provide a complete picture of the location. Additionally, a built-in demographic tool offers quick access to Census data, such as population and income, for any state, county, or neighborhood. Behind the scenes, ',
   text: 'the application solves a complex data-engineering challenge: seamlessly standardizing and unifying fragmented information from multiple incompatible databases',
   after: '—including nine distinct county systems—into a single, user-friendly interface.',
 }
@@ -111,7 +111,7 @@ const PROJECT_COORDINATION_BULLETS = [
 // highlighted phrases on this page.
 const PROJECT_COORDINATION_HIGHLIGHT = {
   before:
-    'This web application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Using my experience in pipeline development, I designed the interface to take ',
+    'This application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Using my experience in pipeline development, I designed the interface to take ',
   text: 'complex, overlapping project data and turn it into a clear, actionable workflow',
   after:
     '. Building this tool was a practical exercise in applying technical problem-solving to real-world administrative challenges, resulting in a straightforward interface that keeps projects organized and moving forward.',
@@ -169,7 +169,7 @@ export default function WebApplicationsShowcase() {
         </Link>
 
         <div className={styles.headRow}>
-          <span className={styles.eyebrow}>WEB APPLICATIONS // PRODUCTIVITY ARCHIVE</span>
+          <span className={styles.eyebrow}>APPLICATIONS // PRODUCTIVITY ARCHIVE</span>
         </div>
 
         {project.sections.map((section) => {

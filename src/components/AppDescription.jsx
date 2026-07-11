@@ -1,6 +1,6 @@
 import styles from './AppDescription.module.css'
 
-// Shared layout for project write-ups on the Web Applications / Web Games
+// Shared layout for project write-ups on the Applications / Web Games
 // pages: a bold intro sentence flush against a bullet list of labeled
 // callouts, then a "Description:"-labeled paragraph set apart by extra
 // space. Page-wide scheme is white + cyan; pink (via `highlight`) is
@@ -8,7 +8,7 @@ import styles from './AppDescription.module.css'
 // section-to-section differentiation. Optional `note` (e.g. a draft/WIP
 // disclaimer) renders above everything else by default (`notePosition="top"`,
 // e.g. Web Games' Storybook draft note), or after the Description paragraph
-// via `notePosition="bottom"` (the Web Applications page's red disclaimers).
+// via `notePosition="bottom"` (the Applications page's red disclaimers).
 export default function AppDescription({
   note,
   noteColor = 'magenta',

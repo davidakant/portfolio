@@ -609,9 +609,9 @@ export const projects = [
   },
   {
     slug: 'web-applications',
-    title: 'Web Applications',
+    title: 'Applications',
     category: 'Productivity',
-    summary: 'Dashboard web applications for real estate professionals and project management.',
+    summary: 'Dashboard applications for real estate professionals and project management.',
     description: 'Click through to view the live applications.',
     externalUrl: '',
     externalLabel: 'View live app',

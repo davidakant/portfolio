@@ -25,10 +25,10 @@ const SECTION_LINKS = {
 // Same bespoke layout as WebApplicationsShowcase (liquid glass panel per
 // project, reusing its CSS module directly) rather than the HudShowcase
 // viewer. All three sections now have real copy (same intro+bullets+
-// description format as the Web Applications page, via the shared
+// description format as the Applications page, via the shared
 // AppDescription component) — see SECTION_DESCRIPTIONS below.
 const STORYBOOK_INTRO =
-  'An interactive digital storybook application that combines modern frontend web development with advanced multimedia integration.'
+  'Designed primarily for iPad, this is an interactive digital storybook application that combines modern frontend web development with advanced multimedia integration.'
 
 const STORYBOOK_BULLETS = [
   {
@@ -49,13 +49,11 @@ const STORYBOOK_BULLETS = [
   },
 ]
 
-const STORYBOOK_NOTE = 'Draft — this is an unfinished, in-progress live project. (as of 07/04/2026)'
-
 // Split around the phrase called out in pink, same pattern as the Web
 // Applications page's highlighted phrases.
 const STORYBOOK_HIGHLIGHT = {
   before:
-    'This web application is an interactive, multimedia digital storybook that merges creative storytelling with modern front-end development. Designed as an engaging and accessible experience for young readers, the application features seamless page navigation, responsive design, and richly integrated visual assets. Behind the scenes, ',
+    'This application is an interactive, multimedia digital storybook that merges creative storytelling with modern front-end development. Designed as an engaging and accessible experience for young readers, the application features seamless page navigation, responsive design, and richly integrated visual assets. Behind the scenes, ',
   text: 'the project demonstrates advanced workflows in AI-driven content generation—ensuring strict character continuity and cohesive art direction throughout the narrative',
   after: '.',
 }
@@ -78,22 +76,22 @@ const UPPERCASE_BULLETS = [
   },
   {
     label: 'Frictionless Accessibility:',
-    text: ' Engineered as a lightweight web application that runs instantly in the browser, allowing users to play immediately without the need for external software or app downloads.',
+    text: ' Engineered as a lightweight application that runs instantly in the browser, allowing users to play immediately without the need for external software or app downloads.',
   },
 ]
 
 // Split around the phrase called out in pink, same pattern as the other
-// highlighted phrases on this page and on Web Applications.
+// highlighted phrases on this page and on Applications.
 const UPPERCASE_HIGHLIGHT = {
   before:
-    'This web application is an original browser-based game, conceptualized and built entirely from scratch. Developing a custom game goes beyond standard website design; it requires engineering complex logic to handle instant user interactions, dynamic scoring, and real-time data management. ',
+    'This application is an original browser-based game, conceptualized and built entirely from scratch. Developing a custom game goes beyond standard website design; it requires engineering complex logic to handle instant user interactions, dynamic scoring, and real-time data management. ',
   text: 'Drawing directly from my background in pipeline development, I applied a systematic problem-solving, structuring data and anticipating technical hurdles to keep the application running',
   after:
     '. I designed the interface to be highly responsive and intuitive, ensuring an engaging experience whether the user is on a desktop or a tablet. By taking this project from the initial creative concept to a fully deployed application, it demonstrates my ability to build interactive digital products that balance user experience with efficient code.',
 }
 
 const CODE_BREAKER_INTRO =
-  'A fully functional digital adaptation of a classic code-breaking game, demonstrating the ability to translate strict logic and rules into a polished web application.'
+  'A fully functional digital adaptation of a classic code-breaking game, demonstrating the ability to translate strict logic and rules into a polished application.'
 
 const CODE_BREAKER_BULLETS = [
   {
@@ -115,10 +113,10 @@ const CODE_BREAKER_BULLETS = [
 ]
 
 // Split around the phrase called out in pink, same pattern as the other
-// highlighted phrases on this page and on Web Applications.
+// highlighted phrases on this page and on Applications.
 const CODE_BREAKER_HIGHLIGHT = {
   before:
-    'This web application is a custom digital adaptation of a classic code-breaking puzzle game. While the original game concept is a familiar classic, the technical execution required translating its strict, pre-defined rules into a seamless browser experience. Developing this required writing precise algorithmic logic to evaluate user guesses against a hidden sequence, instantly returning accurate feedback, and managing the state of the game across multiple attempts. Ultimately, recreating this game was an exercise in ',
+    'This application is a custom digital adaptation of a classic code-breaking puzzle game. While the original game concept is a familiar classic, the technical execution required translating its strict, pre-defined rules into a seamless browser experience. Developing this required writing precise algorithmic logic to evaluate user guesses against a hidden sequence, instantly returning accurate feedback, and managing the state of the game across multiple attempts. Ultimately, recreating this game was an exercise in ',
   text: 'taking a strict set of predefined rules and translating them',
   after: ' into a reliable, straightforward interface.',
 }
@@ -149,7 +147,7 @@ const VIDEO_JIGSAW_BULLETS = [
 // highlighted phrases on this page.
 const VIDEO_JIGSAW_HIGHLIGHT = {
   before:
-    'This web application is an interactive jigsaw puzzle, but with a twist: instead of a static image, the puzzle pieces are sliced from a continuously playing video. Recreating a puzzle with a live video feed is a unique technical challenge. It requires taking the video stream, cutting it into complex interlocking shapes, and constantly updating those pieces so the video keeps playing smoothly, even as you drag them around the screen. Ultimately, ',
+    'This application is an interactive jigsaw puzzle, but with a twist: instead of a static image, the puzzle pieces are sliced from a continuously playing video. Recreating a puzzle with a live video feed is a unique technical challenge. It requires taking the video stream, cutting it into complex interlocking shapes, and constantly updating those pieces so the video keeps playing smoothly, even as you drag them around the screen. Ultimately, ',
   text: 'building this was an exercise in performance optimization',
   after:
     '—managing heavy multimedia processes behind the scenes to ensure the interface remains fast, responsive, and fun to use.',
@@ -160,7 +158,6 @@ const VIDEO_JIGSAW_HIGHLIGHT = {
 // here (still a placeholder) falls back to a plain "coming soon" note.
 const SECTION_DESCRIPTIONS = {
   'Interactive Digital Storybook': {
-    note: STORYBOOK_NOTE,
     intro: STORYBOOK_INTRO,
     bullets: STORYBOOK_BULLETS,
     highlight: STORYBOOK_HIGHLIGHT,

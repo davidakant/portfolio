@@ -22,7 +22,7 @@ const CALETA_FILM_POSTER = 'https://caletaresidences.netlify.app/assets/video/ca
 // slugs — each links through to one representative project page. `web-games`
 // has no real project yet, so it's a placeholder (see src/data/projects.js).
 const HOME_CATEGORIES = [
-  { slug: 'web-applications', title: 'Web Applications' },
+  { slug: 'web-applications', title: 'Applications' },
   { slug: 'architecture', title: 'Architectural Visualization' },
   { slug: 'ferris-video', title: 'AI Assisted Visuals', cover: comfortCaninesPoster },
   { slug: 'web-games', title: 'Web Games' },
