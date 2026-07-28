@@ -17,6 +17,13 @@ dist-standalone
 # see README "Adding real project media")
 originals/
 
+# CaletaResidences/Isle-Residences is a standalone source project (CAD files,
+# full-res renders, brochure PDF) that isn't set up as its own git repo yet —
+# unlike the other project folders here, which are submodules. Ignored so it
+# can't get swept into a commit (e.g. via VS Code's "Smart Commit" auto-stage)
+# before it has proper repo of its own.
+CaletaResidences/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
