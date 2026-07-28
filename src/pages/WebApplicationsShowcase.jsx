@@ -117,6 +117,38 @@ const PROJECT_COORDINATION_HIGHLIGHT = {
     '. Building this tool was a practical exercise in applying technical problem-solving to real-world administrative challenges, resulting in a straightforward interface that keeps projects organized and moving forward.',
 }
 
+const MOBILE_LENS_INTRO =
+  'An interactive instructional module that teaches the three core decisions behind every smartphone photograph: composition, lighting, and depth of field.'
+
+const MOBILE_LENS_BULLETS = [
+  {
+    label: 'Composition:',
+    text: ' Overlays live Rule of Thirds and Golden Spiral grids directly on the frame so users can see compositional guides against a real photograph.',
+  },
+  {
+    label: 'Lighting:',
+    text: ' Lets users drag a divider between two exposures of the same scene to compare midday sun against golden hour light.',
+  },
+  {
+    label: 'Depth of Field:',
+    text: ' Allows users to tap any subject to lock focus and blur the background, demonstrating shallow depth of field in real time.',
+  },
+  {
+    label: 'Accessible by Design:',
+    text: ' Built with no framework or runtime dependencies, with full keyboard support and all animation gated behind prefers-reduced-motion.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const MOBILE_LENS_HIGHLIGHT = {
+  before:
+    'This application is a hands-on instructional tool that breaks smartphone photography down into three interactive exercises: composition, lighting, and depth of field. Rather than simply describing these concepts, each module lets the user manipulate the photograph directly—toggling grid overlays, dragging between two exposures, or tapping to rack focus—so the effect is felt immediately rather than just read about. Built with ',
+  text: 'no framework and no runtime dependencies',
+  after:
+    ', the entire lesson runs from a single page, with full keyboard support and reduced-motion handling built in from the start.',
+}
+
 // Keyed by section heading (rather than array index) so reordering
 // `sections` in projects.js can't silently mismatch a section with the
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
@@ -141,6 +173,11 @@ const SECTION_DESCRIPTIONS = {
     intro: REALTOR_INTRO,
     bullets: REALTOR_BULLETS,
     highlight: REALTOR_HIGHLIGHT,
+  },
+  'The Mobile Lens': {
+    intro: MOBILE_LENS_INTRO,
+    bullets: MOBILE_LENS_BULLETS,
+    highlight: MOBILE_LENS_HIGHLIGHT,
   },
 }
 

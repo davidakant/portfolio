@@ -6,6 +6,7 @@ import printsAssemblyVideo from '../assets/projects/3d-printing/prints/video-oct
 import realtorDashboardScreenshot from '../assets/projects/realtor-dashboard/screenshots/dashboard-overview.webp'
 import projectManagementScreenshot from '../assets/projects/project-management/screenshots/dashboard-overview.webp'
 import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
+import mobileLensScreenshot from '../assets/projects/web-applications/mobile-lens/mobilelens-screenshot.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-screenshot.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
 import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
@@ -508,6 +509,7 @@ export const VIDEO_JIGSAW_URL = 'https://dak-videojigsaw.netlify.app/'
 export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDataTest1/'
 export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/ConstructionProjectDashboard/'
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
+export const MOBILE_LENS_URL = 'https://dak-mobilelens.netlify.app/'
 
 export const projects = [
   {
@@ -649,6 +651,18 @@ export const projects = [
             alt: 'Realtor dashboard showing parcel map lookup and census demographics data',
             caption: 'Parcel Lookup & Census Demographics',
             href: REALTOR_DASHBOARD_URL,
+          },
+        ],
+      },
+      {
+        heading: 'The Mobile Lens',
+        media: [
+          {
+            type: 'image',
+            src: mobileLensScreenshot,
+            alt: 'The Mobile Lens landing page showing the interactive composition, lighting, and depth of field lesson modules',
+            caption: 'Visual Fundamentals — Composition Module',
+            href: MOBILE_LENS_URL,
           },
         ],
       },
