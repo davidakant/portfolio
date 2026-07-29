@@ -152,6 +152,41 @@ const MOBILE_LENS_HIGHLIGHT = {
     ', the entire lesson runs from a single page, with full keyboard support and reduced-motion handling built in from the start.',
 }
 
+const PIPELINE_AUTOMATION_NOTE =
+  'NOTE: This is a demonstration dashboard populated with hardcoded mock data. There is no live backend or automation engine behind it. The Simulate Intake, Run Compliance Scan, and Print / Export PDF actions are intentionally inert in this build.'
+
+const PIPELINE_AUTOMATION_INTRO =
+  'A custom-built pipeline automation dashboard designed to track commercial mechanical and HVAC construction projects from initial intake through live execution.'
+
+const PIPELINE_AUTOMATION_BULLETS = [
+  {
+    label: 'Stage-Gated Pipeline:',
+    text: ' Visualizes every project as a Kanban board moving through Intake, Engineering Review, Subcontractor Assignment, and Live Execution.',
+  },
+  {
+    label: 'Schedule & Compliance Tracking:',
+    text: ' Pairs a Gantt-style milestone timeline with a subcontractor compliance grid covering insurance, purchase orders, and change orders.',
+  },
+  {
+    label: 'Financial Oversight:',
+    text: ' Visualizes budgeted-vs-actual hours and purchase order drawdown to surface cost risk at a glance.',
+  },
+  {
+    label: 'Guided Onboarding:',
+    text: ' Includes a built-in guided tour that walks a new user through every module.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const PIPELINE_AUTOMATION_HIGHLIGHT = {
+  before:
+    'This application is a pipeline automation dashboard built to manage commercial mechanical and HVAC construction projects from first contact through completion. It organizes active work into a stage-gated Kanban board—Intake, Engineering Review, Subcontractor Assignment, and Live Execution—alongside a Gantt-style schedule, a vendor compliance grid, and budget-vs-actual financial tracking. Ultimately, ',
+  text: 'modeling a multi-stage approval pipeline as a single, at-a-glance board',
+  after:
+    ' let the whole team see exactly where a project stood and what was blocking it, without digging through separate spreadsheets for scheduling, compliance, and budget.',
+}
+
 // Keyed by section heading (rather than array index) so reordering
 // `sections` in projects.js can't silently mismatch a section with the
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
@@ -181,6 +216,14 @@ const SECTION_DESCRIPTIONS = {
     intro: MOBILE_LENS_INTRO,
     bullets: MOBILE_LENS_BULLETS,
     highlight: MOBILE_LENS_HIGHLIGHT,
+  },
+  'Pipeline Automation': {
+    note: PIPELINE_AUTOMATION_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: PIPELINE_AUTOMATION_INTRO,
+    bullets: PIPELINE_AUTOMATION_BULLETS,
+    highlight: PIPELINE_AUTOMATION_HIGHLIGHT,
   },
 }
 

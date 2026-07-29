@@ -4,6 +4,7 @@ import { useMotionValue } from 'framer-motion'
 import {
   getProjectBySlug,
   INTERACTIVE_STORYBOOK_URL,
+  SPOT_THE_DIFFERENCE_URL,
   UPPERCASE_URL,
   CODE_BREAKER_URL,
   VIDEO_JIGSAW_URL,
@@ -20,6 +21,7 @@ const slugify = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').r
 // here renders as plain heading text.
 const SECTION_LINKS = {
   'Interactive Digital Storybook': INTERACTIVE_STORYBOOK_URL,
+  'Spot the Difference': SPOT_THE_DIFFERENCE_URL,
   Uppercase: UPPERCASE_URL,
   'Code Breaker': CODE_BREAKER_URL,
   'Video Jigsaw': VIDEO_JIGSAW_URL,
@@ -59,6 +61,37 @@ const STORYBOOK_HIGHLIGHT = {
     'This application is an interactive, multimedia digital storybook that merges creative storytelling with modern front-end development. Designed as an engaging and accessible experience for young readers, the application features seamless page navigation, responsive design, and richly integrated visual assets. Behind the scenes, ',
   text: 'the project demonstrates advanced workflows in AI-driven content generation—ensuring strict character continuity and cohesive art direction throughout the narrative',
   after: '.',
+}
+
+const SPOT_THE_DIFFERENCE_INTRO =
+  'A browser-based spot-the-difference game built around illustrated puzzle collections, each hiding ten differences between two nearly identical images.'
+
+const SPOT_THE_DIFFERENCE_BULLETS = [
+  {
+    label: 'Multiple Collections:',
+    text: ' Organizes dozens of AI-generated puzzle images into themed, unlockable collections, with more added over time.',
+  },
+  {
+    label: 'Touch-Friendly Precision:',
+    text: ' Supports pinch-to-zoom, drag-to-pan, and double-tap-to-reset, so spotting a small difference works as well on a phone as a desktop.',
+  },
+  {
+    label: 'Persistent Progress:',
+    text: " Tracks stars found per collection using the browser's built-in storage, so progress carries over between visits.",
+  },
+  {
+    label: 'Anti-Spam Safeguard:',
+    text: ' Enforces a short cooldown after every tap—longer after a wrong guess—so players can\'t rapid-fire their way through a puzzle.',
+  },
+]
+
+// Split around the phrase called out in pink, same pattern as the other
+// highlighted phrases on this page.
+const SPOT_THE_DIFFERENCE_HIGHLIGHT = {
+  before:
+    'This application is a browser-based spot-the-difference game built around dozens of AI-generated puzzle images, organized into unlockable collections. Each puzzle presents two nearly identical illustrations side by side, and the player taps to flag each of ten hidden differences, with a star lighting up per find and progress saved automatically between sessions. Pinch-to-zoom and drag-to-pan support make it just as playable on a phone as a desktop. To keep the game fair, ',
+  text: 'a short cooldown after every tap—longer after a wrong guess—stops players from rapid-fire guessing their way through a puzzle',
+  after: ', so finding a difference actually requires looking for it.',
 }
 
 const UPPERCASE_INTRO =
@@ -164,6 +197,11 @@ const SECTION_DESCRIPTIONS = {
     intro: STORYBOOK_INTRO,
     bullets: STORYBOOK_BULLETS,
     highlight: STORYBOOK_HIGHLIGHT,
+  },
+  'Spot the Difference': {
+    intro: SPOT_THE_DIFFERENCE_INTRO,
+    bullets: SPOT_THE_DIFFERENCE_BULLETS,
+    highlight: SPOT_THE_DIFFERENCE_HIGHLIGHT,
   },
   Uppercase: {
     intro: UPPERCASE_INTRO,

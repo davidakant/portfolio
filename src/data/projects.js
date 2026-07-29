@@ -7,7 +7,9 @@ import realtorDashboardScreenshot from '../assets/projects/realtor-dashboard/scr
 import projectManagementScreenshot from '../assets/projects/project-management/screenshots/dashboard-overview.webp'
 import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
 import mobileLensScreenshot from '../assets/projects/web-applications/mobile-lens/mobilelens-screenshot.webp'
+import pipelineAutomationScreenshot from '../assets/projects/web-applications/pipeline-automation/mech-pipeline.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'
+import spotTheDifferenceScreenshot from '../assets/projects/web-games/spot-the-difference/spotdiff-puzzle.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
 import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
 import videoJigsawScreenshot from '../assets/projects/web-games/video-jigsaw/jigsaw-gameplay.webp'
@@ -503,6 +505,7 @@ const ferrisStillsSections = [
 // above. Any `externalUrl: ''` still needs the real link filled in.
 
 export const INTERACTIVE_STORYBOOK_URL = 'https://storybook-norascolorfulworld.netlify.app/'
+export const SPOT_THE_DIFFERENCE_URL = 'https://dak-spotthedifference.netlify.app/'
 export const UPPERCASE_URL = 'https://dak-uppercase.netlify.app/'
 export const CODE_BREAKER_URL = 'https://davidakant.github.io/CodeBreaker/'
 export const VIDEO_JIGSAW_URL = 'https://dak-videojigsaw.netlify.app/'
@@ -510,6 +513,7 @@ export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDat
 export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/ConstructionProjectDashboard/'
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
 export const MOBILE_LENS_URL = 'https://dak-mobilelens.netlify.app/'
+export const PIPELINE_AUTOMATION_URL = 'https://coordinator-console2.netlify.app/#/pipeline'
 
 export const projects = [
   {
@@ -631,6 +635,18 @@ export const projects = [
         ],
       },
       {
+        heading: 'Pipeline Automation',
+        media: [
+          {
+            type: 'image',
+            src: pipelineAutomationScreenshot,
+            alt: 'Pipeline Automation dashboard showing a stage-gated Kanban board of mechanical construction projects moving from intake through live execution',
+            caption: 'Pipeline & Turnover Board',
+            href: PIPELINE_AUTOMATION_URL,
+          },
+        ],
+      },
+      {
         heading: 'Project Coordination',
         media: [
           {
@@ -692,6 +708,17 @@ export const projects = [
             // crop so the full cover shows uncropped.
             aspectRatio: '1792 / 2400',
             scale: '75%',
+          },
+        ],
+      },
+      {
+        heading: 'Spot the Difference',
+        media: [
+          {
+            type: 'image',
+            src: spotTheDifferenceScreenshot,
+            alt: 'Side-by-side spot-the-difference puzzle showing an illustrated forest scene with a castle',
+            href: SPOT_THE_DIFFERENCE_URL,
           },
         ],
       },
