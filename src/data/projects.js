@@ -8,6 +8,7 @@ import projectManagementScreenshot from '../assets/projects/project-management/s
 import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
 import mobileLensScreenshot from '../assets/projects/web-applications/mobile-lens/mobilelens-screenshot.webp'
 import pipelineAutomationScreenshot from '../assets/projects/web-applications/pipeline-automation/mech-pipeline.webp'
+import residentialArchitectureBrochureScreenshot from '../assets/projects/web-applications/residential-architecture-brochure/aha-hero2.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'
 import spotTheDifferenceScreenshot from '../assets/projects/web-games/spot-the-difference/spotdiff-puzzle.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
@@ -514,6 +515,7 @@ export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/Construction
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
 export const MOBILE_LENS_URL = 'https://dak-mobilelens.netlify.app/'
 export const PIPELINE_AUTOMATION_URL = 'https://coordinator-console2.netlify.app/#/pipeline'
+export const RESIDENTIAL_ARCHITECTURE_BROCHURE_URL = 'https://dak-ahatest.netlify.app/'
 
 export const projects = [
   {
@@ -643,6 +645,18 @@ export const projects = [
             alt: 'Pipeline Automation dashboard showing a stage-gated Kanban board of mechanical construction projects moving from intake through live execution',
             caption: 'Pipeline & Turnover Board',
             href: PIPELINE_AUTOMATION_URL,
+          },
+        ],
+      },
+      {
+        heading: 'Residential Architecture Brochure',
+        media: [
+          {
+            type: 'image',
+            src: residentialArchitectureBrochureScreenshot,
+            alt: 'Photorealistic exterior elevation render of "The Wallace" floor plan, with a virtual tour play button overlay',
+            caption: 'Floor Plan Configurator — The Wallace',
+            href: RESIDENTIAL_ARCHITECTURE_BROCHURE_URL,
           },
         ],
       },

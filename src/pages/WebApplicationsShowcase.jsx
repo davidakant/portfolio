@@ -187,6 +187,40 @@ const PIPELINE_AUTOMATION_HIGHLIGHT = {
     ' let the whole team see exactly where a project stood and what was blocking it, without digging through separate spreadsheets for scheduling, compliance, and budget.',
 }
 
+const RESIDENTIAL_ARCHITECTURE_BROCHURE_NOTE =
+  'NOTE: This is a demonstration brochure page populated with placeholder pricing, community, and description text. The floor plan renders and the interactive configurator are real; the surrounding marketing copy is not tied to any actual property.'
+
+const RESIDENTIAL_ARCHITECTURE_BROCHURE_INTRO =
+  'A custom-built residential architecture brochure and floor plan configurator, pairing marketing-ready pricing and feature copy with an interactive, zoomable floor plan viewer.'
+
+const RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS = [
+  {
+    label: 'Elevation Configurator:',
+    text: ' Lets buyers compare four distinct exterior elevation styles, each swappable between a photorealistic render and a technical line drawing, with its own price delta.',
+  },
+  {
+    label: 'Interactive Floor Plan Viewer:',
+    text: ' Supports pan, zoom, and floor switching between the 1st and 2nd story, with an overlay toggle and one-click re-centering.',
+  },
+  {
+    label: 'Marketing-Ready Layout:',
+    text: ' Pairs pricing, square footage, and feature highlights in a brochure format built to match a production home builder website.',
+  },
+  {
+    label: 'Virtual Tour Integration:',
+    text: ' Surfaces a virtual tour entry point directly from the primary elevation render.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT = {
+  before:
+    'This application is a residential architecture brochure and floor plan configurator built to match the look of a production home builder website. It presents a single floor plan—photorealistic exterior renders, pricing, square footage, and feature highlights—alongside four selectable elevation styles, each swappable between a photorealistic render and a technical line drawing. Underneath the marketing layer, ',
+  text: 'the floor plan itself is a fully interactive viewer supporting pan, zoom, and floor switching between the 1st and 2nd story',
+  after: ', turning a static brochure image into something a buyer can actually explore.',
+}
+
 // Keyed by section heading (rather than array index) so reordering
 // `sections` in projects.js can't silently mismatch a section with the
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
@@ -224,6 +258,14 @@ const SECTION_DESCRIPTIONS = {
     intro: PIPELINE_AUTOMATION_INTRO,
     bullets: PIPELINE_AUTOMATION_BULLETS,
     highlight: PIPELINE_AUTOMATION_HIGHLIGHT,
+  },
+  'Residential Architecture Brochure': {
+    note: RESIDENTIAL_ARCHITECTURE_BROCHURE_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: RESIDENTIAL_ARCHITECTURE_BROCHURE_INTRO,
+    bullets: RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS,
+    highlight: RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT,
   },
 }
 
