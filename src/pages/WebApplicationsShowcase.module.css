@@ -4,7 +4,14 @@
   position: relative;
   min-height: 100vh;
   padding: calc(var(--space-lg) + 1rem) 0 var(--space-xl);
-  overflow: hidden;
+  /* No overflow property here on purpose — the background layers
+     (HudBackground, .ambient) are fixed-position and self-clipping, so
+     nothing on this page relies on .holo clipping anything, and ANY
+     non-`visible` overflow value on either axis (even just overflow-x)
+     makes .holo a scroll-container, which breaks `position: sticky` on
+     .pageHeader below by hijacking its containing block away from the
+     real page scroll on <body> (which already has its own overflow-x:
+     hidden globally — see global.css). */
   background: radial-gradient(ellipse 85% 65% at 32% 8%, #1a3f73 0%, #241b52 42%, #07050f 100%);
 }
 
@@ -29,17 +36,67 @@
   font-size: var(--size-small);
   letter-spacing: 0.08em;
   color: var(--color-fg-muted);
-  margin-bottom: var(--space-md);
 }
 
 .back:hover {
   color: var(--cyan);
 }
 
-.headRow {
-  margin-bottom: var(--space-lg);
+/* Back-link, eyebrow, and the "On this page" list used to be three
+   separately-spaced blocks; unified here into one tight header. On desktop
+   it's pinned just below the global Nav bar (top: 60px ≈ Nav's own rendered
+   height) so the jump-links stay reachable while scrolling through the long
+   sections below — with a background so scrolling panels don't show through.
+   Below 800px it's left in normal flow: a permanently pinned bar would eat
+   too much of a small screen, and the .toc list already wraps to 2 lines
+   there. */
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
   padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
   border-bottom: 1px solid rgba(127, 252, 255, 0.2);
+}
+
+/* Same liquid-glass recipe as .panel below (layered gradient body, inset
+   rim highlight + bottom shadow, outer drop shadow, radial specular
+   highlight via ::before) so the sticky header reads as one more HUD glass
+   panel rather than a flat dark box. */
+@media (min-width: 801px) {
+  .pageHeader {
+    position: sticky;
+    top: 60px;
+    z-index: 5;
+    overflow: hidden;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid rgba(127, 252, 255, 0.3);
+    border-radius: 20px;
+    /* Darker/more opaque than .panel's own tint — .panel only ever sits
+       against the static page background, but this bar has to stay legible
+       over other panels' text and screenshots scrolling underneath it. */
+    background: linear-gradient(180deg, rgba(36, 27, 82, 0.92) 0%, rgba(7, 5, 15, 0.94) 100%);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.5),
+      inset 0 -10px 16px -10px rgba(0, 0, 0, 0.35),
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  .pageHeader::before {
+    content: '';
+    position: absolute;
+    top: -25%;
+    left: 6%;
+    width: 40%;
+    height: 45%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3), transparent 70%);
+    pointer-events: none;
+    filter: blur(8px);
+  }
 }
 
 .eyebrow {
@@ -50,12 +107,62 @@
   text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
 }
 
+/* Lets an in-page anchor jump (from .tocLink below) land with the section
+   heading clear of Nav's fixed header instead of tucked underneath it. */
 .section {
   margin-bottom: var(--space-lg);
+  scroll-margin-top: 6rem;
 }
 
 .section:last-child {
   margin-bottom: 0;
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.tocLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: var(--size-small);
+  letter-spacing: 0.08em;
+  color: var(--color-fg-muted);
+}
+
+.tocList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tocLink {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: var(--size-small);
+  letter-spacing: 0.04em;
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(127, 252, 255, 0.3);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.tocLink:hover {
+  color: #fff;
+  border-color: currentColor;
+}
+
+/* Marks whichever section is currently in view (scroll-spy, set in the
+   component) — solid glowing underline vs. hover's plain solid one, so it
+   still reads as distinct from a transient hover state. */
+.tocLink[aria-current='true'] {
+  color: #fff;
+  border-color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
 }
 
 /* Liquid glass rectangle housing one project — same recipe used throughout
@@ -136,4 +243,27 @@
   .appDescription {
     grid-column: span 1;
   }
+}
+
+/* Redundant with the linked heading/image, but calls out explicitly that
+   the whole panel leads somewhere — for anyone who doesn't register the
+   image/heading as clickable. */
+.sectionCtaRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-sm);
+}
+
+.sectionCta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  text-decoration: none;
+}
+
+.sectionCta:hover {
+  text-decoration: underline;
 }

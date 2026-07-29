@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMotionValue } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
@@ -5,6 +6,8 @@ import HudBackground from '../components/HudBackground'
 import MediaGallery from '../components/MediaGallery'
 import AppDescription from '../components/AppDescription'
 import styles from './WebApplicationsShowcase.module.css'
+
+const slugify = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
 // Unlike Architecture/AI Visuals, this page doesn't use the HudShowcase
 // viewer+thumbnail-rail+category-tabs — with only one screenshot per app,
@@ -195,25 +198,98 @@ export default function WebApplicationsShowcase() {
     my.set(0)
   }
 
+  const [activeId, setActiveId] = useState(() => slugify(project.sections[0]?.heading ?? ''))
+  const sectionEls = useRef({})
+  const pageHeaderRef = useRef(null)
+
+  // Scroll-spy for the TOC: whichever section is crossing a thin band near
+  // the vertical center of the viewport gets the active highlight.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id)
+        })
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+    )
+    Object.values(sectionEls.current).forEach((el) => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  // Plain `href="#id"` anchors would be hijacked by the standalone build's
+  // HashRouter (routes like #/work/web-applications) as a route-change
+  // attempt — the browser tries to navigate to a nonexistent page instead of
+  // jumping to the section, which reads as the whole app going blank. Doing
+  // the scroll in JS and never touching location.hash sidesteps that
+  // entirely; href stays for keyboard/right-click/semantics.
+  //
+  // Offset is computed live rather than via a fixed scroll-margin, since the
+  // header's actual height varies (the .toc list can wrap differently) and
+  // it's only sticky/overlapping at all on desktop — on mobile it's static
+  // and scrolls away, so only Nav's ~60px needs clearing there. Landing
+  // exactly at the section's top means the last section (near the bottom of
+  // the page) may not be able to scroll that far; window.scrollTo naturally
+  // clamps to the page's max scroll instead of overshooting.
+  const jumpTo = (e, id) => {
+    e.preventDefault()
+    const target = document.getElementById(id)
+    if (!target) return
+    const header = pageHeaderRef.current
+    const isStuck = header && getComputedStyle(header).position === 'sticky'
+    const offset = 60 + (isStuck ? header.getBoundingClientRect().height : 0)
+    const targetTop = target.getBoundingClientRect().top + window.scrollY
+    window.scrollTo({ top: targetTop - offset, behavior: 'smooth' })
+  }
+
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       <HudBackground mx={mx} my={my} />
       <div className={styles.ambient} aria-hidden="true" />
 
       <div className={`${styles.chrome} container`}>
-        <Link to="/" className={styles.back} data-cursor-hover>
-          ← HOME
-        </Link>
+        <div className={styles.pageHeader} ref={pageHeaderRef}>
+          <Link to="/" className={styles.back} data-cursor-hover>
+            ← HOME
+          </Link>
 
-        <div className={styles.headRow}>
           <span className={styles.eyebrow}>APPLICATIONS // PRODUCTIVITY ARCHIVE</span>
+
+          <nav className={styles.toc} aria-label="Applications on this page">
+            <span className={styles.tocLabel}>On this page:</span>
+            <ul className={styles.tocList}>
+              {project.sections.map((section) => {
+                const id = slugify(section.heading)
+                return (
+                  <li key={section.heading}>
+                    <a
+                      href={`#${id}`}
+                      onClick={(e) => jumpTo(e, id)}
+                      className={styles.tocLink}
+                      aria-current={activeId === id ? 'true' : undefined}
+                      data-cursor-hover
+                    >
+                      {section.heading}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
         </div>
 
         {project.sections.map((section) => {
           const link = section.media[0]?.href
           const description = SECTION_DESCRIPTIONS[section.heading]
           return (
-            <section key={section.heading} className={styles.section}>
+            <section
+              key={section.heading}
+              id={slugify(section.heading)}
+              ref={(el) => {
+                sectionEls.current[slugify(section.heading)] = el
+              }}
+              className={styles.section}
+            >
               <div className={styles.panel}>
                 <h2 className={styles.sectionHeading}>
                   {link ? (
@@ -233,6 +309,19 @@ export default function WebApplicationsShowcase() {
                 <MediaGallery media={section.media}>
                   {description && <AppDescription {...description} />}
                 </MediaGallery>
+                {link && (
+                  <div className={styles.sectionCtaRow}>
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.sectionCta}
+                      data-cursor-hover
+                    >
+                      View Live Site ↗
+                    </a>
+                  </div>
+                )}
               </div>
             </section>
           )

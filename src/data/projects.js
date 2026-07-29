@@ -619,6 +619,18 @@ export const projects = [
     externalLabel: 'View live app',
     sections: [
       {
+        heading: 'The Mobile Lens',
+        media: [
+          {
+            type: 'image',
+            src: mobileLensScreenshot,
+            alt: 'The Mobile Lens landing page showing the interactive composition, lighting, and depth of field lesson modules',
+            caption: 'Visual Fundamentals — Composition Module',
+            href: MOBILE_LENS_URL,
+          },
+        ],
+      },
+      {
         heading: 'Project Coordination',
         media: [
           {
@@ -651,18 +663,6 @@ export const projects = [
             alt: 'Realtor dashboard showing parcel map lookup and census demographics data',
             caption: 'Parcel Lookup & Census Demographics',
             href: REALTOR_DASHBOARD_URL,
-          },
-        ],
-      },
-      {
-        heading: 'The Mobile Lens',
-        media: [
-          {
-            type: 'image',
-            src: mobileLensScreenshot,
-            alt: 'The Mobile Lens landing page showing the interactive composition, lighting, and depth of field lesson modules',
-            caption: 'Visual Fundamentals — Composition Module',
-            href: MOBILE_LENS_URL,
           },
         ],
       },
