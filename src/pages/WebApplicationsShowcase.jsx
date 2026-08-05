@@ -32,15 +32,11 @@ const WATER_FILTRATION_BULLETS = [
   },
 ]
 
-// In place of the usual "Description:" write-up — this one's still in
-// progress, so the Description slot carries a status line instead, called
-// out in magenta (via `highlight`, entirely spanning `text` with empty
-// before/after) rather than the default white/cyan body copy.
-const WATER_FILTRATION_HIGHLIGHT = {
-  before: '',
-  text: 'Unfinished as of 08/05/2026, 12:00 PM ET. Estimated completion: 08/05/2026, 3:00 PM ET.',
-  after: '',
-}
+// No "Description:" write-up for this one — it's still in progress, so a
+// plain magenta status note stands in for it instead (same `note` mechanism
+// as the red demo disclaimers elsewhere on this page).
+const WATER_FILTRATION_NOTE =
+  'Unfinished as of 08/05/2026, 12:00 PM ET. Estimated completion: 08/05/2026, 3:00 PM ET.'
 
 const REALTOR_INTRO =
   'This location intelligence application aggregates real-world data from nearly a dozen public and government sources to provide instant, comprehensive property and demographic insights.'
@@ -250,9 +246,11 @@ const RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT = {
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
 const SECTION_DESCRIPTIONS = {
   'Water Filtration Infographic': {
+    note: WATER_FILTRATION_NOTE,
+    noteColor: 'magenta',
+    notePosition: 'bottom',
     intro: WATER_FILTRATION_INTRO,
     bullets: WATER_FILTRATION_BULLETS,
-    highlight: WATER_FILTRATION_HIGHLIGHT,
   },
   'Project Coordination': {
     note: PROJECT_COORDINATION_NOTE,

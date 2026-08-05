@@ -7,7 +7,7 @@ import realtorDashboardScreenshot from '../assets/projects/realtor-dashboard/scr
 import projectManagementScreenshot from '../assets/projects/project-management/screenshots/dashboard-overview.webp'
 import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
 import mobileLensScreenshot from '../assets/projects/web-applications/mobile-lens/mobilelens-screenshot.webp'
-import waterFiltrationScreenshot from '../assets/projects/web-applications/water-filtration-infographic/water-hero.webp'
+import waterFiltrationScreenshot from '../assets/projects/web-applications/water-filtration-infographic/water-hero-new.webp'
 import pipelineAutomationScreenshot from '../assets/projects/web-applications/pipeline-automation/mech-pipeline.webp'
 import residentialArchitectureBrochureScreenshot from '../assets/projects/web-applications/residential-architecture-brochure/aha-hero2.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'

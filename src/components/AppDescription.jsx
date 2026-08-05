@@ -32,18 +32,20 @@ export default function AppDescription({
           </li>
         ))}
       </ul>
-      <p className={styles.finalParagraph}>
-        <strong className={styles.descLabel}>Description:</strong>{' '}
-        {highlight ? (
-          <>
-            {highlight.before}
-            <span className={styles.highlightMagenta}>{highlight.text}</span>
-            {highlight.after}
-          </>
-        ) : (
-          final
-        )}
-      </p>
+      {(highlight || final) && (
+        <p className={styles.finalParagraph}>
+          <strong className={styles.descLabel}>Description:</strong>{' '}
+          {highlight ? (
+            <>
+              {highlight.before}
+              <span className={styles.highlightMagenta}>{highlight.text}</span>
+              {highlight.after}
+            </>
+          ) : (
+            final
+          )}
+        </p>
+      )}
       {notePosition === 'bottom' && noteEl}
     </div>
   )
