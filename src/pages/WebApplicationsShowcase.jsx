@@ -33,9 +33,14 @@ const WATER_FILTRATION_BULLETS = [
 ]
 
 // In place of the usual "Description:" write-up — this one's still in
-// progress, so the Description slot carries a plain status line instead.
-const WATER_FILTRATION_FINAL =
-  'Unfinished as of 08/05/2026, 12:00 PM ET. Estimated completion date as of 08/05/2026, 3:00 PM ET.'
+// progress, so the Description slot carries a status line instead, called
+// out in magenta (via `highlight`, entirely spanning `text` with empty
+// before/after) rather than the default white/cyan body copy.
+const WATER_FILTRATION_HIGHLIGHT = {
+  before: '',
+  text: 'Unfinished as of 08/05/2026, 12:00 PM ET. Estimated completion: 08/05/2026, 3:00 PM ET.',
+  after: '',
+}
 
 const REALTOR_INTRO =
   'This location intelligence application aggregates real-world data from nearly a dozen public and government sources to provide instant, comprehensive property and demographic insights.'
@@ -247,7 +252,7 @@ const SECTION_DESCRIPTIONS = {
   'Water Filtration Infographic': {
     intro: WATER_FILTRATION_INTRO,
     bullets: WATER_FILTRATION_BULLETS,
-    final: WATER_FILTRATION_FINAL,
+    highlight: WATER_FILTRATION_HIGHLIGHT,
   },
   'Project Coordination': {
     note: PROJECT_COORDINATION_NOTE,
