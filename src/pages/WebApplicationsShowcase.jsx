@@ -27,23 +27,15 @@ const WATER_FILTRATION_BULLETS = [
     text: " Assembled entirely from Amazon's fixed Seller Central templates—image header, sidebar, three-image feature grid, comparison chart, and text overlay—rather than free-form HTML.",
   },
   {
-    label: 'Build-Ready Specification:',
-    text: ' Pairs the visual mockup with a companion spec document detailing template names, image slot dimensions, and per-field character counts.',
-  },
-  {
     label: 'Product Storytelling:',
     text: " Walks a shopper through the filter's ceramic and carbon filtration stages, tool-free assembly, and environmental impact.",
-  },
-  {
-    label: 'Comparison Chart:',
-    text: ' Lays out capacity, flow rate, and ideal use across the product family side by side.',
   },
 ]
 
 // In place of the usual "Description:" write-up — this one's still in
 // progress, so the Description slot carries a plain status line instead.
 const WATER_FILTRATION_FINAL =
-  'Unfinished as of 08/05/2026, 12:00 PM ET. No estimated completion date as of 08/05/2026, 3:00 PM ET.'
+  'Unfinished as of 08/05/2026, 12:00 PM ET. Estimated completion date as of 08/05/2026, 3:00 PM ET.'
 
 const REALTOR_INTRO =
   'This location intelligence application aggregates real-world data from nearly a dozen public and government sources to provide instant, comprehensive property and demographic insights.'
