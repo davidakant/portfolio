@@ -208,6 +208,22 @@
   border-bottom: 1px solid rgba(255, 95, 224, 0.2);
 }
 
+/* Two cards side by side on desktop — each one stacks internally (image on
+   top, body below, see .featuredProjectCard) rather than the old single
+   card's wider horizontal split, since a horizontal split would feel
+   cramped at half the previous width. */
+.featuredProjectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (max-width: 900px) {
+  .featuredProjectGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Same pronounced liquid-glass bezel as the HudDisplay panel and the
    Selected_Work cards below (thick border, layered box-shadow, backdrop
    blur/saturate). `overflow: hidden` on this frame is what clips the media
@@ -216,7 +232,7 @@
 .featuredProjectCard {
   position: relative;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   overflow: hidden;
   border-radius: 28px;
   border: 2px solid rgba(255, 255, 255, 0.5);
@@ -240,7 +256,7 @@
 .featuredProjectMedia {
   position: relative;
   display: block;
-  min-height: 420px;
+  min-height: 260px;
   overflow: hidden;
   color: inherit;
 }
@@ -279,8 +295,17 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  padding: 40px 44px;
-  align-self: center;
+  padding: 32px 36px;
+}
+
+.featuredProjectTag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
 }
 
 .featuredProjectTitle {
@@ -373,10 +398,6 @@
 }
 
 @media (max-width: 800px) {
-  .featuredProjectCard {
-    grid-template-columns: 1fr;
-  }
-
   .featuredProjectMedia {
     min-height: 220px;
   }

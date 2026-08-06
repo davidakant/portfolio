@@ -23,6 +23,7 @@ originals/
 # into a Portfolio commit (e.g. via VS Code's "Smart Commit" auto-stage,
 # which already did this twice and broke Netlify's build via a bogus
 # submodule reference with no matching .gitmodules entry).
+B2BCampaign/
 CaletaResidences/
 HomeBuilder/
 MobileLensVisualFundamentals/

@@ -5,18 +5,46 @@ import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
 import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
+import b2bScreenshot from '../assets/projects/b2b-campaign/homepage/b2b-hero-crop.webp'
 import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/comfort-canines-poster.webp'
 import styles from './Home.module.css'
 
-// Standalone home-page feature — not one of the /work/:slug categories below,
-// so its content/link lives here rather than in data/projects.js. The film
-// streams directly from the live Caleta site rather than being bundled into
-// this repo — embedding an actual video file would bloat the standalone
-// single-file build considerably for no benefit, since it's the same file
-// either way.
-const CALETA_URL = 'https://caletaresidences.netlify.app/'
-const CALETA_FILM_URL = 'https://caletaresidences.netlify.app/assets/video/caleta-film.mp4'
-const CALETA_FILM_POSTER = 'https://caletaresidences.netlify.app/assets/video/caleta-film-poster.webp'
+// Standalone home-page features — not one of the /work/:slug categories
+// below, so their content/links live here rather than in data/projects.js.
+// Each film streams directly from its own live site rather than being
+// bundled into this repo — embedding actual video files would bloat the
+// standalone single-file build considerably for no benefit, since it's the
+// same file either way.
+const FEATURED_PROJECTS = [
+  {
+    id: 'caleta',
+    url: 'https://caletaresidences.netlify.app/',
+    filmUrl: 'https://caletaresidences.netlify.app/assets/video/caleta-film.mp4',
+    filmPoster: 'https://caletaresidences.netlify.app/assets/video/caleta-film-poster.webp',
+    filmDuration: '1:22',
+    image: caletaScreenshot,
+    imageAlt: 'Caleta — Private Island Residences homepage hero',
+    tag: 'Architectural Visualization',
+    title: 'Caleta — Private Island Residences',
+    tagline: '"Low-rise living. Boundless island."',
+    text: 'A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private island — architecture, AI-assisted visualization, brand identity, and the full marketing site, designed and built end-to-end.',
+    note: 'Fictional development — AI-assisted architecture, renders, and brand, created for portfolio demonstration only.',
+  },
+  {
+    id: 'buildhr',
+    url: 'https://dak-b2bcampaign.netlify.app/',
+    filmUrl: 'https://dak-b2bcampaign.netlify.app/assets/BuildHR.mp4',
+    filmPoster: 'https://dak-b2bcampaign.netlify.app/assets/video-poster.webp',
+    filmDuration: '0:20',
+    image: b2bScreenshot,
+    imageAlt: 'BuildHR marketing hero mockup — a product dashboard on a tablet staged at a construction site',
+    tag: 'B2B Marketing Campaign',
+    title: 'BuildHR — Integrated B2B Campaign',
+    tagline: '"Still tracking hours on paper?"',
+    text: 'A multi-channel marketing campaign for a fictional construction-software company — eBook, LinkedIn carousel, a :20 film, web hero, and tradeshow booth, all sharing one AI-generated image library and a consistent brand system.',
+    note: 'Fictional campaign — AI-assisted imagery, video, and copy, created for portfolio demonstration only.',
+  },
+]
 
 // The 4 home category tiles are broader groupings than the underlying project
 // slugs — each links through to one representative project page. `web-games`
@@ -57,15 +85,16 @@ export default function Home() {
     my.set(0)
   }
 
-  const [filmOpen, setFilmOpen] = useState(false)
+  const [openFilmId, setOpenFilmId] = useState(null)
+  const openFilm = FEATURED_PROJECTS.find((p) => p.id === openFilmId) ?? null
   useEffect(() => {
-    if (!filmOpen) return undefined
+    if (!openFilmId) return undefined
     const onKey = (e) => {
-      if (e.key === 'Escape') setFilmOpen(false)
+      if (e.key === 'Escape') setOpenFilmId(null)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [filmOpen])
+  }, [openFilmId])
 
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
@@ -122,69 +151,70 @@ export default function Home() {
         </section>
 
         <section className={styles.featuredProjectSection}>
-          <span className={styles.featuredProjectEyebrow}>FEATURED_PROJECT // ARCHITECTURAL VISUALIZATION</span>
-          <motion.div
-            className={styles.featuredProjectCard}
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-10%' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <a
-              href={CALETA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.featuredProjectMedia}
-              data-cursor-hover
-              aria-label="View Caleta — Private Island Residences live site"
-            >
-              <img
-                src={caletaScreenshot}
-                alt="Caleta — Private Island Residences homepage hero"
-                className={styles.featuredProjectImage}
-                loading="lazy"
-              />
-              <div className={styles.featuredProjectSheen} aria-hidden="true" />
-            </a>
-            <div className={styles.featuredProjectBody}>
-              <h2 className={styles.featuredProjectTitle}>Caleta — Private Island Residences</h2>
-              <p className={styles.featuredProjectTagline}>"Low-rise living. Boundless island."</p>
-              <p className={styles.featuredProjectText}>
-                A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private
-                island — architecture, AI-assisted visualization, brand identity, and the full marketing
-                site, designed and built end-to-end.
-              </p>
-              <p className={styles.featuredProjectNote}>
-                Fictional development — AI-assisted architecture, renders, and brand, created for
-                portfolio demonstration only.
-              </p>
-              <div className={styles.featuredProjectCtaRow}>
+          <span className={styles.featuredProjectEyebrow}>
+            FEATURED_PROJECTS // {String(FEATURED_PROJECTS.length).padStart(2, '0')} ENTRIES
+          </span>
+          <div className={styles.featuredProjectGrid}>
+            {FEATURED_PROJECTS.map((project) => (
+              <motion.div
+                key={project.id}
+                className={styles.featuredProjectCard}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <a
-                  href={CALETA_URL}
+                  href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.featuredProjectCta}
+                  className={styles.featuredProjectMedia}
                   data-cursor-hover
+                  aria-label={`View ${project.title} live site`}
                 >
-                  View Live Site ↗
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    className={styles.featuredProjectImage}
+                    loading="lazy"
+                  />
+                  <div className={styles.featuredProjectSheen} aria-hidden="true" />
                 </a>
-                <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
-                  |
-                </span>
-                <button
-                  type="button"
-                  className={styles.featuredProjectFilmBtn}
-                  onClick={() => setFilmOpen(true)}
-                  data-cursor-hover
-                >
-                  <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
-                  </svg>
-                  Watch the Film <span className={styles.featuredProjectFilmDuration}>1:22</span>
-                </button>
-              </div>
-            </div>
-          </motion.div>
+                <div className={styles.featuredProjectBody}>
+                  <span className={styles.featuredProjectTag}>{project.tag}</span>
+                  <h2 className={styles.featuredProjectTitle}>{project.title}</h2>
+                  <p className={styles.featuredProjectTagline}>{project.tagline}</p>
+                  <p className={styles.featuredProjectText}>{project.text}</p>
+                  <p className={styles.featuredProjectNote}>{project.note}</p>
+                  <div className={styles.featuredProjectCtaRow}>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.featuredProjectCta}
+                      data-cursor-hover
+                    >
+                      View Live Site ↗
+                    </a>
+                    <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
+                      |
+                    </span>
+                    <button
+                      type="button"
+                      className={styles.featuredProjectFilmBtn}
+                      onClick={() => setOpenFilmId(project.id)}
+                      data-cursor-hover
+                    >
+                      <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                      </svg>
+                      Watch the Film <span className={styles.featuredProjectFilmDuration}>{project.filmDuration}</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         <section className={styles.featured}>
@@ -201,14 +231,14 @@ export default function Home() {
           z-index value. Portaling out of that subtree is the real fix. */}
       {createPortal(
         <AnimatePresence>
-          {filmOpen && (
+          {openFilm && (
             <motion.div
               className={styles.filmModalBackdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              onClick={() => setFilmOpen(false)}
+              onClick={() => setOpenFilmId(null)}
             >
               <motion.div
                 className={styles.filmModalPanel}
@@ -221,16 +251,17 @@ export default function Home() {
                 <button
                   type="button"
                   className={styles.filmModalClose}
-                  onClick={() => setFilmOpen(false)}
+                  onClick={() => setOpenFilmId(null)}
                   aria-label="Close video"
                   data-cursor-hover
                 >
                   ✕
                 </button>
                 <video
+                  key={openFilm.id}
                   className={styles.filmModalVideo}
-                  src={CALETA_FILM_URL}
-                  poster={CALETA_FILM_POSTER}
+                  src={openFilm.filmUrl}
+                  poster={openFilm.filmPoster}
                   controls
                   playsInline
                 />
