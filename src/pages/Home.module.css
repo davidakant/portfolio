@@ -224,6 +224,46 @@
   }
 }
 
+/* Empty slot for a featured project not yet in place — same rough footprint
+   as a real .featuredProjectCard so the section doesn't visually collapse
+   while waiting for new content, but visually distinct (dashed border,
+   centered label, no media/CTA) so it reads as intentionally empty rather
+   than a broken card. */
+.featuredProjectPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 480px;
+  border-radius: 28px;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.featuredProjectPlaceholderLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.featuredProjectPlaceholderText {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .featuredProjectPlaceholder {
+    min-height: 280px;
+    padding: var(--space-md);
+  }
+}
+
 /* Same pronounced liquid-glass bezel as the HudDisplay panel and the
    Selected_Work cards below (thick border, layered box-shadow, backdrop
    blur/saturate). `overflow: hidden` on this frame is what clips the media

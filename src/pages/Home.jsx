@@ -4,9 +4,9 @@ import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
-import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
-import b2bScreenshot from '../assets/projects/b2b-campaign/homepage/b2b-hero-crop.webp'
 import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/comfort-canines-poster.webp'
+import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
+import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 import styles from './Home.module.css'
 
 // Standalone home-page features — not one of the /work/:slug categories
@@ -14,35 +14,33 @@ import styles from './Home.module.css'
 // Each film streams directly from its own live site rather than being
 // bundled into this repo — embedding actual video files would bloat the
 // standalone single-file build considerably for no benefit, since it's the
-// same file either way.
+// same file either way. `filmUrl`/`filmPoster`/`filmDuration` are optional —
+// omit them (as both entries below do — neither has a video) and the
+// "Watch the Film" button just doesn't render.
 const FEATURED_PROJECTS = [
   {
-    id: 'caleta',
-    url: 'https://caletaresidences.netlify.app/',
-    filmUrl: 'https://caletaresidences.netlify.app/assets/video/caleta-film.mp4',
-    filmPoster: 'https://caletaresidences.netlify.app/assets/video/caleta-film-poster.webp',
-    filmDuration: '1:22',
-    image: caletaScreenshot,
-    imageAlt: 'Caleta — Private Island Residences homepage hero',
-    tag: 'Architectural Visualization',
-    title: 'Caleta — Private Island Residences',
-    tagline: '"Low-rise living. Boundless island."',
-    text: 'A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private island — architecture, AI-assisted visualization, brand identity, and the full marketing site, designed and built end-to-end.',
-    note: 'Fictional development — AI-assisted architecture, renders, and brand, created for portfolio demonstration only.',
+    id: 'creativeops',
+    url: 'https://dak-creativeops.netlify.app/',
+    image: creativeOpsScreenshot,
+    imageAlt:
+      'CreativeOps Command Portal dashboard showing the Creative Request Intake form and a live AI Pre-Flight Audit with brief health score',
+    tag: 'Creative Operations Dashboard',
+    title: 'CreativeOps Command Portal',
+    tagline: '"Nothing enters the queue without passing pre-flight."',
+    text: 'A concept prototype of a creative operations dashboard for a fictional brand studio: intake with a rules based pre-flight check, designer workload in plain hours, an asset registry, and a four language localization pipeline. Fully interactive with two guided tours, it follows one request through its full lifecycle, with every number computed live.',
+    note: 'Fictional concept prototype, built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in the dashboard are invented, and nothing is connected to a real system.',
   },
   {
-    id: 'buildhr',
-    url: 'https://dak-b2bcampaign.netlify.app/',
-    filmUrl: 'https://dak-b2bcampaign.netlify.app/assets/BuildHR.mp4',
-    filmPoster: 'https://dak-b2bcampaign.netlify.app/assets/video-poster.webp',
-    filmDuration: '0:20',
-    image: b2bScreenshot,
-    imageAlt: 'BuildHR marketing hero mockup — a product dashboard on a tablet staged at a construction site',
-    tag: 'B2B Marketing Campaign',
-    title: 'BuildHR — Integrated B2B Campaign',
-    tagline: '"Still tracking hours on paper?"',
-    text: 'A multi-channel marketing campaign for a fictional construction-software company — eBook, LinkedIn carousel, a :20 film, web hero, and tradeshow booth, all sharing one AI-generated image library and a consistent brand system.',
-    note: 'Fictional campaign — AI-assisted imagery, video, and copy, created for portfolio demonstration only.',
+    id: 'minigames',
+    url: 'https://dak-minigames.netlify.app/',
+    image: miniGamesScreenshot,
+    imageAlt:
+      'Harbor Pilotage, a 3D sailboat placement puzzle from Mini Games, showing a lighthouse, colored harbor regions, and moored boats',
+    tag: 'Puzzle Game Collection',
+    title: 'Mini Games',
+    tagline: '"Every board is built fresh — you never see the same one twice."',
+    text: 'A growing collection of browser puzzle games built for iPad first, desktop second, including Sudoku, word and number puzzles, memory games, and several fully modeled 3D scenes rendered in WebGL. Boards are generated fresh every time, and the logic puzzles are checked for a single solution before they are ever shown to a player.',
+    note: 'Personal project, still growing: over a dozen games are playable today, with more logic puzzles in progress.',
   },
 ]
 
@@ -155,65 +153,84 @@ export default function Home() {
             FEATURED_PROJECTS // {String(FEATURED_PROJECTS.length).padStart(2, '0')} ENTRIES
           </span>
           <div className={styles.featuredProjectGrid}>
-            {FEATURED_PROJECTS.map((project) => (
-              <motion.div
-                key={project.id}
-                className={styles.featuredProjectCard}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-10%' }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.featuredProjectMedia}
-                  data-cursor-hover
-                  aria-label={`View ${project.title} live site`}
+            {FEATURED_PROJECTS.map((project) =>
+              project.isPlaceholder ? (
+                <motion.div
+                  key={project.id}
+                  className={styles.featuredProjectPlaceholder}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-10%' }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    className={styles.featuredProjectImage}
-                    loading="lazy"
-                  />
-                  <div className={styles.featuredProjectSheen} aria-hidden="true" />
-                </a>
-                <div className={styles.featuredProjectBody}>
-                  <span className={styles.featuredProjectTag}>{project.tag}</span>
-                  <h2 className={styles.featuredProjectTitle}>{project.title}</h2>
-                  <p className={styles.featuredProjectTagline}>{project.tagline}</p>
-                  <p className={styles.featuredProjectText}>{project.text}</p>
-                  <p className={styles.featuredProjectNote}>{project.note}</p>
-                  <div className={styles.featuredProjectCtaRow}>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.featuredProjectCta}
-                      data-cursor-hover
-                    >
-                      View Live Site ↗
-                    </a>
-                    <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
-                      |
-                    </span>
-                    <button
-                      type="button"
-                      className={styles.featuredProjectFilmBtn}
-                      onClick={() => setOpenFilmId(project.id)}
-                      data-cursor-hover
-                    >
-                      <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
-                      </svg>
-                      Watch the Film <span className={styles.featuredProjectFilmDuration}>{project.filmDuration}</span>
-                    </button>
+                  <span className={styles.featuredProjectPlaceholderLabel}>COMING SOON</span>
+                  <p className={styles.featuredProjectPlaceholderText}>A new featured project is on the way.</p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={project.id}
+                  className={styles.featuredProjectCard}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-10%' }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.featuredProjectMedia}
+                    data-cursor-hover
+                    aria-label={`View ${project.title} live site`}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      className={styles.featuredProjectImage}
+                      loading="lazy"
+                    />
+                    <div className={styles.featuredProjectSheen} aria-hidden="true" />
+                  </a>
+                  <div className={styles.featuredProjectBody}>
+                    <span className={styles.featuredProjectTag}>{project.tag}</span>
+                    <h2 className={styles.featuredProjectTitle}>{project.title}</h2>
+                    <p className={styles.featuredProjectTagline}>{project.tagline}</p>
+                    <p className={styles.featuredProjectText}>{project.text}</p>
+                    <p className={styles.featuredProjectNote}>{project.note}</p>
+                    <div className={styles.featuredProjectCtaRow}>
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.featuredProjectCta}
+                        data-cursor-hover
+                      >
+                        View Live Site ↗
+                      </a>
+                      {project.filmUrl && (
+                        <>
+                          <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
+                            |
+                          </span>
+                          <button
+                            type="button"
+                            className={styles.featuredProjectFilmBtn}
+                            onClick={() => setOpenFilmId(project.id)}
+                            data-cursor-hover
+                          >
+                            <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                            </svg>
+                            Watch the Film{' '}
+                            <span className={styles.featuredProjectFilmDuration}>{project.filmDuration}</span>
+                          </button>
+                        </>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ),
+            )}
           </div>
         </section>
 

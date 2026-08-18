@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useMotionValue } from 'framer-motion'
 import {
   getProjectBySlug,
+  MINI_GAMES_URL,
   INTERACTIVE_STORYBOOK_URL,
   SPOT_THE_DIFFERENCE_URL,
   UPPERCASE_URL,
@@ -20,6 +21,7 @@ const slugify = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').r
 // MediaGallery's `href` field, already links out too) — anything not listed
 // here renders as plain heading text.
 const SECTION_LINKS = {
+  'Mini Games': MINI_GAMES_URL,
   'Interactive Digital Storybook': INTERACTIVE_STORYBOOK_URL,
   'Spot the Difference': SPOT_THE_DIFFERENCE_URL,
   Uppercase: UPPERCASE_URL,
@@ -189,10 +191,46 @@ const VIDEO_JIGSAW_HIGHLIGHT = {
     '—managing heavy multimedia processes behind the scenes to ensure the interface remains fast, responsive, and fun to use.',
 }
 
+const MINI_GAMES_INTRO =
+  'A growing collection of browser puzzle games built for iPad first and desktop second, from Sudoku and Kakuro to several fully modeled 3D scenes.'
+
+const MINI_GAMES_BULLETS = [
+  {
+    label: 'Provably Fair Puzzles:',
+    text: ' Generates every board fresh with a seeded random number generator, and the logic puzzles are checked by a solver for exactly one solution before they are ever shown to a player.',
+  },
+  {
+    label: '3D Scenes Built From Scratch:',
+    text: ' Several games render in full WebGL, with orbiting cameras, baked lighting, and no textures anywhere, since every surface detail is built as real geometry.',
+  },
+  {
+    label: 'Taught, Not Just Explained:',
+    text: ' Every game ships a Rule Book, and several also play themselves through a scripted tutorial that narrates each move against the live board.',
+  },
+  {
+    label: 'No Framework, No Backend:',
+    text: ' Built as plain ES modules with zero runtime dependencies, installable to the iPad home screen, and playable fully offline.',
+  },
+]
+
+// Split around the phrase called out in pink, same pattern as the other
+// highlighted phrases on this page.
+const MINI_GAMES_HIGHLIGHT = {
+  before:
+    'This application is a growing collection of browser puzzle games, from familiar logic puzzles like Sudoku and Kakuro to several fully modeled 3D scenes rendered in WebGL, with orbiting cameras and baked lighting. Built for iPad first, ',
+  text: 'every board is generated fresh with a seeded random number generator, and the logic puzzles are checked by a solver for exactly one solution before a player ever sees them',
+  after: ', so no puzzle here can be unsolvable or ambiguous.',
+}
+
 // Keyed by section heading — the shared AppDescription component's props for
 // each project write-up that already has real copy. Anything not listed
 // here (still a placeholder) falls back to a plain "coming soon" note.
 const SECTION_DESCRIPTIONS = {
+  'Mini Games': {
+    intro: MINI_GAMES_INTRO,
+    bullets: MINI_GAMES_BULLETS,
+    highlight: MINI_GAMES_HIGHLIGHT,
+  },
   'Interactive Digital Storybook': {
     intro: STORYBOOK_INTRO,
     bullets: STORYBOOK_BULLETS,

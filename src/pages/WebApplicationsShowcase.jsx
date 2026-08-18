@@ -235,10 +235,121 @@ const RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT = {
   after: ', turning a static brochure image into something a buyer can actually explore.',
 }
 
+const CALETA_NOTE =
+  'NOTE: This is a fictional development created for portfolio demonstration only. The architecture, renders, brand identity, and marketing site are AI-assisted concept work, not built for or affiliated with any real property.'
+
+const CALETA_INTRO =
+  'A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private island, designed and built end-to-end from architecture through the full marketing site.'
+
+const CALETA_BULLETS = [
+  {
+    label: 'Full-Concept Architecture:',
+    text: ' Designed the building massing, unit layouts, and site plan for a fifty-residence, ten-story tower set on a 216-acre private island.',
+  },
+  {
+    label: 'AI-Assisted Visualization:',
+    text: ' Produced photorealistic exterior and interior renders across every finish level, amenity space, and time of day.',
+  },
+  {
+    label: 'Brand Identity:',
+    text: ' Developed the full brand system—logo, type, color, and voice—built around the "Low-rise living. Boundless island." positioning.',
+  },
+  {
+    label: 'Marketing Site & Film:',
+    text: ' Designed and built the complete marketing website plus a 1:22 brand film, both sharing the same visual system as the renders.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const CALETA_HIGHLIGHT = {
+  before:
+    'This application is the marketing site for a fictional ultra-luxury condominium development—a ten-story, fifty-residence tower set on a 216-acre private island. Every piece, from the architecture and interior finishes to the brand identity and the site itself, was designed and produced end-to-end as a single connected system. Ultimately, ',
+  text: 'carrying one architectural vision through renders, brand, film, and the live site itself',
+  after: ' demonstrates the full pipeline from concept to a finished, presentable marketing property.',
+}
+
+const BUILDHR_NOTE =
+  'NOTE: This is a fictional marketing campaign created for portfolio demonstration only. The company, product, and case study are AI-assisted concept work, not produced for or affiliated with any real business.'
+
+const BUILDHR_INTRO =
+  'A conceptual integrated marketing campaign for a fictional construction-software company, built as a single scrollable case study covering six channels from concept through delivery.'
+
+const BUILDHR_BULLETS = [
+  {
+    label: 'Content Marketing:',
+    text: ' Designed an eBook spread using art-directed, AI-generated lifestyle imagery finished in Photoshop, plus data visualizations built on a shared grid.',
+  },
+  {
+    label: 'Digital & Video:',
+    text: ' Produced a three-card LinkedIn ad carousel and a :20 brand film, both built around the same generated image and video library.',
+  },
+  {
+    label: 'Web & Brand Stewardship:',
+    text: ' Extended the same visual system into a homepage hero and a consistent type scale across every channel.',
+  },
+  {
+    label: 'Tradeshow & Print:',
+    text: ' Adapted the digital-first campaign for large-format booth graphics and CMYK print handoff.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const BUILDHR_HIGHLIGHT = {
+  before:
+    'This application is a conceptual marketing campaign for a fictional construction-software company, presented as a single scrollable case study across six channels—content marketing, digital advertising, video production, web and brand, tradeshow and print, and the underlying project workflow. Rather than relying on stock photography, every image was ',
+  text: 'art-directed and AI-generated from a written brief, then screened for the artifacts generative images tend to produce, before finishing in Photoshop',
+  after:
+    ', carrying one consistent visual system across an eBook, a LinkedIn carousel, a :20 film, a web hero, and a tradeshow booth.',
+}
+
+const CREATIVE_OPS_NOTE =
+  'NOTE: This is a fictional concept prototype built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in it, including every person, campaign, vendor, and metric, is invented. There is no backend and nothing here is connected to a real system.'
+
+const CREATIVE_OPS_INTRO =
+  'A concept prototype of a creative operations dashboard for a fictional brand studio, covering the full path a marketing request travels: intake, a rules based pre-flight check, designer assignment, and a four language localization pipeline.'
+
+const CREATIVE_OPS_BULLETS = [
+  {
+    label: 'Rules Based Pre-Flight:',
+    text: ' Checks every incoming brief against a fixed list of written rules and returns a health score out of 100, so a missing approver or an unspecified aspect ratio is caught before a designer ever sees the request.',
+  },
+  {
+    label: 'Designer Bandwidth in Plain Hours:',
+    text: ' Tracks each designer against roughly 80 bookable hours per sprint, so capacity is a simple ratio of hours booked to hours available rather than a subjective read of how busy someone looks.',
+  },
+  {
+    label: 'Connected Across Four Tabs:',
+    text: ' Approving a request creates a task, a registry row, and a translation lane at the same moment, and the header metrics recalculate live as work moves.',
+  },
+  {
+    label: 'Guided From the First Click:',
+    text: ' Ships a 30 second Quick Tour and a 2 minute Full Tour, plus a full user manual explaining every rule and how each number is calculated.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const CREATIVE_OPS_HIGHLIGHT = {
+  before:
+    'This application is a concept prototype of a creative operations dashboard for a fictional brand studio, DAK Labs. It follows one marketing request across its full lifecycle: an intake form checked by a rules based pre-flight audit, a designer resourcing board tracking workload in plain hours, a campaign asset registry with an approval clock, and a four language localization pipeline. Underneath the interface, ',
+  text: "every number on screen, from the pre-flight score to the header's team bandwidth reading, is computed live from what happens on the page rather than typed in",
+  after: ', so the four screens behave like one connected system instead of four separate reports.',
+}
+
 // Keyed by section heading (rather than array index) so reordering
 // `sections` in projects.js can't silently mismatch a section with the
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
 const SECTION_DESCRIPTIONS = {
+  'Creative Ops': {
+    note: CREATIVE_OPS_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: CREATIVE_OPS_INTRO,
+    bullets: CREATIVE_OPS_BULLETS,
+    highlight: CREATIVE_OPS_HIGHLIGHT,
+  },
   'Water Filtration Infographic': {
     intro: WATER_FILTRATION_INTRO,
     bullets: WATER_FILTRATION_BULLETS,
@@ -284,6 +395,22 @@ const SECTION_DESCRIPTIONS = {
     intro: RESIDENTIAL_ARCHITECTURE_BROCHURE_INTRO,
     bullets: RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS,
     highlight: RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT,
+  },
+  'Caleta — Private Island Residences': {
+    note: CALETA_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: CALETA_INTRO,
+    bullets: CALETA_BULLETS,
+    highlight: CALETA_HIGHLIGHT,
+  },
+  'BuildHR — Integrated B2B Campaign': {
+    note: BUILDHR_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: BUILDHR_INTRO,
+    bullets: BUILDHR_BULLETS,
+    highlight: BUILDHR_HIGHLIGHT,
   },
 }
 

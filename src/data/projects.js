@@ -10,11 +10,15 @@ import mobileLensScreenshot from '../assets/projects/web-applications/mobile-len
 import waterFiltrationScreenshot from '../assets/projects/web-applications/water-filtration-infographic/water-hero-new.webp'
 import pipelineAutomationScreenshot from '../assets/projects/web-applications/pipeline-automation/mech-pipeline.webp'
 import residentialArchitectureBrochureScreenshot from '../assets/projects/web-applications/residential-architecture-brochure/aha-hero2.webp'
+import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
+import b2bScreenshot from '../assets/projects/b2b-campaign/homepage/b2b-hero-crop.webp'
+import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'
 import spotTheDifferenceScreenshot from '../assets/projects/web-games/spot-the-difference/spotdiff-puzzle.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
 import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
 import videoJigsawScreenshot from '../assets/projects/web-games/video-jigsaw/jigsaw-gameplay.webp'
+import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 
 import dancingOrangutanVideo from '../assets/projects/ferris-video/videos/dancing-orangutan.mp4'
 import dancingOrangutanPoster from '../assets/projects/ferris-video/videos/dancing-orangutan-poster.webp'
@@ -515,9 +519,13 @@ export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDat
 export const PROJECT_MANAGEMENT_URL = 'https://davidakant.github.io/ConstructionProjectDashboard/'
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
 export const MOBILE_LENS_URL = 'https://dak-mobilelens.netlify.app/'
+export const CALETA_URL = 'https://caletaresidences.netlify.app/'
+export const BUILDHR_URL = 'https://dak-b2bcampaign.netlify.app/'
 export const PIPELINE_AUTOMATION_URL = 'https://coordinator-console2.netlify.app/#/pipeline'
 export const RESIDENTIAL_ARCHITECTURE_BROCHURE_URL = 'https://dak-ahatest.netlify.app/'
 export const WATER_FILTRATION_URL = 'https://dak-waterfiltration.netlify.app/'
+export const CREATIVE_OPS_URL = 'https://dak-creativeops.netlify.app/'
+export const MINI_GAMES_URL = 'https://dak-minigames.netlify.app/'
 
 export const projects = [
   {
@@ -627,6 +635,42 @@ export const projects = [
     externalLabel: 'View live app',
     sections: [
       {
+        heading: 'Creative Ops',
+        media: [
+          {
+            type: 'image',
+            src: creativeOpsScreenshot,
+            alt: 'CreativeOps Command Portal dashboard showing the Creative Request Intake form and a live AI Pre-Flight Audit with brief health score',
+            caption: 'CreativeOps Command Portal — Intake & Pre-Flight',
+            href: CREATIVE_OPS_URL,
+          },
+        ],
+      },
+      {
+        heading: 'Caleta — Private Island Residences',
+        media: [
+          {
+            type: 'image',
+            src: caletaScreenshot,
+            alt: 'Caleta — Private Island Residences homepage hero',
+            caption: 'Caleta — Homepage Hero',
+            href: CALETA_URL,
+          },
+        ],
+      },
+      {
+        heading: 'BuildHR — Integrated B2B Campaign',
+        media: [
+          {
+            type: 'image',
+            src: b2bScreenshot,
+            alt: 'BuildHR marketing hero mockup — a product dashboard on a tablet staged at a construction site',
+            caption: 'BuildHR — Web Hero Mockup',
+            href: BUILDHR_URL,
+          },
+        ],
+      },
+      {
         heading: 'Water Filtration Infographic',
         media: [
           {
@@ -723,6 +767,18 @@ export const projects = [
     // WebGamesShowcase, styled the same as WebApplicationsShowcase). Interactive
     // Digital Storybook already has its live link + a real cover screenshot.
     sections: [
+      {
+        heading: 'Mini Games',
+        media: [
+          {
+            type: 'image',
+            src: miniGamesScreenshot,
+            alt: 'Harbor Pilotage, a 3D sailboat placement puzzle from Mini Games, showing a lighthouse, colored harbor regions, and moored boats',
+            caption: 'Harbor Pilotage — 3D Puzzle Board',
+            href: MINI_GAMES_URL,
+          },
+        ],
+      },
       {
         heading: 'Interactive Digital Storybook',
         media: [
