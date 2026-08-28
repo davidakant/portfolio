@@ -10,6 +10,7 @@ import mobileLensScreenshot from '../assets/projects/web-applications/mobile-len
 import waterFiltrationScreenshot from '../assets/projects/web-applications/water-filtration-infographic/water-hero-new.webp'
 import pipelineAutomationScreenshot from '../assets/projects/web-applications/pipeline-automation/mech-pipeline.webp'
 import residentialArchitectureBrochureScreenshot from '../assets/projects/web-applications/residential-architecture-brochure/aha-hero2.webp'
+import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-library.webp'
 import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
 import b2bScreenshot from '../assets/projects/b2b-campaign/homepage/b2b-hero-crop.webp'
 import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
@@ -524,6 +525,7 @@ export const BUILDHR_URL = 'https://dak-b2bcampaign.netlify.app/'
 export const PIPELINE_AUTOMATION_URL = 'https://coordinator-console2.netlify.app/#/pipeline'
 export const RESIDENTIAL_ARCHITECTURE_BROCHURE_URL = 'https://dak-ahatest.netlify.app/'
 export const WATER_FILTRATION_URL = 'https://dak-waterfiltration.netlify.app/'
+export const RETRIEVER_URL = 'https://dak-retriever.netlify.app/'
 export const CREATIVE_OPS_URL = 'https://dak-creativeops.netlify.app/'
 export const MINI_GAMES_URL = 'https://dak-minigames.netlify.app/'
 
@@ -634,6 +636,18 @@ export const projects = [
     externalUrl: '',
     externalLabel: 'View live app',
     sections: [
+      {
+        heading: 'Retriever — Digital Asset Management',
+        media: [
+          {
+            type: 'image',
+            src: retrieverScreenshot,
+            alt: 'Retriever asset library showing a faceted search grid of clay-render 3D asset thumbnails with category filters',
+            caption: 'Retriever — Library View',
+            href: RETRIEVER_URL,
+          },
+        ],
+      },
       {
         heading: 'Creative Ops',
         media: [

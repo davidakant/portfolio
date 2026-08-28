@@ -304,6 +304,40 @@ const BUILDHR_HIGHLIGHT = {
     ', carrying one consistent visual system across an eBook, a LinkedIn carousel, a :20 film, a web hero, and a tradeshow booth.',
 }
 
+const RETRIEVER_NOTE =
+  'NOTE: This is a fictional demonstration built for portfolio purposes, drawing on experience running asset libraries in architectural visualization. Studio Ferris and everything in its library, including every client, person, and asset, is invented.'
+
+const RETRIEVER_INTRO =
+  'A working digital asset management system built for Studio Ferris, a fictional 22-artist architectural visualization studio, covering the full loop from intake to reuse.'
+
+const RETRIEVER_BULLETS = [
+  {
+    label: 'Faceted Library Search:',
+    text: ' Every asset (models, materials, HDRIs, scenes, CAD files, and renders) is searchable by category, and each detail view shows its full dependency manifest, version history, license, and every project it has been used on.',
+  },
+  {
+    label: 'Validated Intake:',
+    text: ' A live file-naming validator and dependency check run against every incoming asset before it is registered, catching naming and reference errors before they ever reach the shared library.',
+  },
+  {
+    label: 'License & NDA Governance:',
+    text: ' Tracks marketplace licenses and flags NDA-restricted client assets, logging any attempt to reuse them outside their original project.',
+  },
+  {
+    label: 'ROI Dashboard:',
+    text: ' Measures the modeling hours saved through reuse and tracks how heavily each project draws on the shared library.',
+  },
+]
+
+// Split around the phrase called out in pink — same pattern as the other
+// highlighted phrases on this page.
+const RETRIEVER_HIGHLIGHT = {
+  before:
+    "This application is a working digital asset management system built for Studio Ferris, a fictional 22-artist architectural visualization studio. It follows one asset's entire life in the library: a validated intake process checks file naming and dependencies before anything is registered, faceted search makes every asset findable by category, and a detail view surfaces its full dependency manifest, license, and usage history. Underneath it all, ",
+  text: 'an ROI dashboard turns every reused asset into a measurable number of modeling hours saved',
+  after: ', making the case for a shared library in terms a studio actually tracks.',
+}
+
 const CREATIVE_OPS_NOTE =
   'NOTE: This is a fictional concept prototype built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in it, including every person, campaign, vendor, and metric, is invented. There is no backend and nothing here is connected to a real system.'
 
@@ -342,6 +376,14 @@ const CREATIVE_OPS_HIGHLIGHT = {
 // `sections` in projects.js can't silently mismatch a section with the
 // wrong write-up — same pattern as WebGamesShowcase's SECTION_DESCRIPTIONS.
 const SECTION_DESCRIPTIONS = {
+  'Retriever — Digital Asset Management': {
+    note: RETRIEVER_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: RETRIEVER_INTRO,
+    bullets: RETRIEVER_BULLETS,
+    highlight: RETRIEVER_HIGHLIGHT,
+  },
   'Creative Ops': {
     note: CREATIVE_OPS_NOTE,
     noteColor: 'red',

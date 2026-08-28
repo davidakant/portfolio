@@ -4,7 +4,9 @@ import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
+import FeaturedCarousel from '../components/FeaturedCarousel'
 import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/comfort-canines-poster.webp'
+import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-library.webp'
 import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
 import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 import styles from './Home.module.css'
@@ -15,9 +17,22 @@ import styles from './Home.module.css'
 // bundled into this repo — embedding actual video files would bloat the
 // standalone single-file build considerably for no benefit, since it's the
 // same file either way. `filmUrl`/`filmPoster`/`filmDuration` are optional —
-// omit them (as both entries below do — neither has a video) and the
-// "Watch the Film" button just doesn't render.
+// omit them (as every entry below does — none has a video) and the
+// "Watch the Film" button just doesn't render. Order is carousel order —
+// Retriever is first (leftmost) per request.
 const FEATURED_PROJECTS = [
+  {
+    id: 'retriever',
+    url: 'https://dak-retriever.netlify.app/',
+    image: retrieverScreenshot,
+    imageAlt:
+      'Retriever asset library showing a faceted search grid of clay-render 3D asset thumbnails with category filters',
+    tag: 'Digital Asset Management',
+    title: 'Retriever',
+    tagline: '"Every curated asset in the studio, render-ready with its dependencies collected."',
+    text: "A digital asset management system that gives an architectural visualization studio one shared library for every 3D asset it owns, instead of files scattered across old projects and hard drives. Artists stop rebuilding things that already exist and start reusing the studio's best work instead.",
+    note: 'Fictional demonstration built for portfolio purposes, drawing on experience running asset libraries in architectural visualization. Studio Ferris and everything in its library, including every client, person, and asset, is invented. The name comes from my dog, Ferris, who is half Labrador and half German Shepherd: half retriever, half guardian of the flock. Same job description as this app.',
+  },
   {
     id: 'creativeops',
     url: 'https://dak-creativeops.netlify.app/',
@@ -152,86 +167,7 @@ export default function Home() {
           <span className={styles.featuredProjectEyebrow}>
             FEATURED_PROJECTS // {String(FEATURED_PROJECTS.length).padStart(2, '0')} ENTRIES
           </span>
-          <div className={styles.featuredProjectGrid}>
-            {FEATURED_PROJECTS.map((project) =>
-              project.isPlaceholder ? (
-                <motion.div
-                  key={project.id}
-                  className={styles.featuredProjectPlaceholder}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className={styles.featuredProjectPlaceholderLabel}>COMING SOON</span>
-                  <p className={styles.featuredProjectPlaceholderText}>A new featured project is on the way.</p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key={project.id}
-                  className={styles.featuredProjectCard}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.featuredProjectMedia}
-                    data-cursor-hover
-                    aria-label={`View ${project.title} live site`}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className={styles.featuredProjectImage}
-                      loading="lazy"
-                    />
-                    <div className={styles.featuredProjectSheen} aria-hidden="true" />
-                  </a>
-                  <div className={styles.featuredProjectBody}>
-                    <span className={styles.featuredProjectTag}>{project.tag}</span>
-                    <h2 className={styles.featuredProjectTitle}>{project.title}</h2>
-                    <p className={styles.featuredProjectTagline}>{project.tagline}</p>
-                    <p className={styles.featuredProjectText}>{project.text}</p>
-                    <p className={styles.featuredProjectNote}>{project.note}</p>
-                    <div className={styles.featuredProjectCtaRow}>
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.featuredProjectCta}
-                        data-cursor-hover
-                      >
-                        View Live Site ↗
-                      </a>
-                      {project.filmUrl && (
-                        <>
-                          <span className={styles.featuredProjectCtaDivider} aria-hidden="true">
-                            |
-                          </span>
-                          <button
-                            type="button"
-                            className={styles.featuredProjectFilmBtn}
-                            onClick={() => setOpenFilmId(project.id)}
-                            data-cursor-hover
-                          >
-                            <svg className={styles.featuredProjectPlayIcon} viewBox="0 0 24 24" aria-hidden="true">
-                              <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
-                            </svg>
-                            Watch the Film{' '}
-                            <span className={styles.featuredProjectFilmDuration}>{project.filmDuration}</span>
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ),
-            )}
-          </div>
+          <FeaturedCarousel projects={FEATURED_PROJECTS} onWatchFilm={setOpenFilmId} />
         </section>
 
         <section className={styles.featured}>

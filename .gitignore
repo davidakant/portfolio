@@ -26,6 +26,10 @@ originals/
 B2BCampaign/
 CaletaResidences/
 CreativeOpsCommandHub/
+# DigitalAssetManagement/ additionally holds private interview-prep notes
+# (INTERVIEW-NOTES.md etc.) naming real former employers, which must never
+# appear in anything public — this entry is load-bearing, not just tidiness.
+DigitalAssetManagement/
 HomeBuilder/
 MobileLensVisualFundamentals/
 ProjectCoordination-Construction/

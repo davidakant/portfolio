@@ -1,0 +1,395 @@
+/* Two full cards plus a sliver of the next one visible at a time on
+   desktop (see the flex-basis math below), advanced by the arrow buttons,
+   the dots, or a native swipe/trackpad scroll — needed once there were
+   enough featured projects (3+) that a side-by-side grid stopped fitting
+   comfortably, and the sliver is what tells the user there's more to see. */
+/* Side padding reserves dedicated space for the arrow buttons outside the
+   card row, so they sit in their own gutter instead of floating on top of
+   card content — the cards shrink slightly (their width is a % of
+   .viewport, which shrinks along with .carousel's padding) to make room. */
+.carousel {
+  position: relative;
+  padding: 0 52px;
+}
+
+/* The actual scroll container. Native overflow-x + scroll-snap does the
+   sliding, momentum, and swipe/trackpad support for free — the arrows and
+   dots below just call scrollTo/scrollBy on this element rather than
+   driving a transform themselves. Scrollbar is hidden since the arrows/dots
+   are the intended controls; the element is still natively scrollable. */
+.viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* Same pronounced liquid-glass bezel as the HudDisplay panel and the
+   Selected_Work cards (thick border, layered box-shadow, backdrop
+   blur/saturate). `overflow: hidden` on this frame is what clips the media
+   flush to the frame's rounded corners — no inset padding around the image
+   itself, matching the rest of the site's glass-media treatment. Stacks
+   internally (image on top, body below) rather than a horizontal split,
+   since a horizontal split feels cramped at a single card's width.
+   flex-shrink: 0 keeps each card at its flex-basis width instead of the
+   flex row squeezing them to fit — the whole point is that the last one
+   overflows the viewport as a sliver. */
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -16px 22px -14px rgba(0, 0, 0, 0.45),
+    0 32px 70px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--cyan);
+}
+
+/* Empty slot for a featured project not yet in place — same footprint as a
+   real .card so the section doesn't visually collapse while waiting for new
+   content, but visually distinct (dashed border, centered label, no
+   media/CTA) so it reads as intentionally empty rather than a broken card. */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 480px;
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  border-radius: 28px;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+/* Above 800px there's room to show more than one card at once. Each card's
+   share of the viewport is 1 / (2 + 1/6) so exactly 2 full cards plus a
+   1/6-width sliver of the next one fit — the gap is subtracted first since
+   flex-basis is a content width, not counting the gaps the row also spends
+   space on. */
+@media (min-width: 800px) {
+  .card,
+  .placeholder {
+    flex-basis: calc((100% - 2 * var(--space-md)) / 2.1667);
+  }
+}
+
+.placeholderLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.placeholderText {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.media {
+  position: relative;
+  display: block;
+  min-height: 260px;
+  overflow: hidden;
+  color: inherit;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Without this the browser's own native image-drag (a ghost thumbnail)
+     fights the viewport's native swipe-to-scroll. */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* Same continuous diagonal shimmer as the HudDisplay panel's .glassSheen —
+   the persistent "light catching glass" cue, independent of hover. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.14) 45%, rgba(255, 255, 255, 0.04) 50%, transparent 65%);
+  background-size: 250% 250%;
+  animation: featured-sheen-sweep 9s ease-in-out infinite;
+}
+
+@keyframes featured-sheen-sweep {
+  0% { background-position: 130% 130%; }
+  50% { background-position: -30% -30%; }
+  100% { background-position: 130% 130%; }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: 32px 36px;
+}
+
+.tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+}
+
+.title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  color: #eefdff;
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--cyan);
+  margin: 0 0 var(--space-xs);
+}
+
+.text {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.note {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: var(--space-xs) 0 0;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.cta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  text-decoration: none;
+}
+
+.cta:hover {
+  text-decoration: underline;
+}
+
+.ctaDivider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.85rem;
+}
+
+/* Same visual weight as .cta, in magenta to read as a distinct second
+   action rather than a continuation of the first link. */
+.filmBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--magenta);
+  text-shadow: 0 0 6px rgba(255, 95, 224, 0.5);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.filmBtn:hover {
+  text-decoration: underline;
+}
+
+.playIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.filmDuration {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  text-shadow: none;
+}
+
+/* Same liquid-glass round button as HudShowcase's .navBtn (layered gradient
+   body, inset rim highlight, radial specular highlight via ::before) for a
+   consistent "glass control" language across the site. Positioned relative
+   to .carousel and centered on its full height (not tied to any one card's
+   media height) so it sits vertically centered on the whole card row, at
+   either outer edge of it. */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  overflow: hidden;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--cyan);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 50%;
+  border: 1px solid rgba(127, 252, 255, 0.4);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -6px 10px -6px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  text-shadow:
+    0 0 4px rgba(127, 252, 255, 0.9),
+    0 0 10px rgba(127, 252, 255, 0.6),
+    0 0 18px rgba(127, 252, 255, 0.4);
+  transition: all var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.navBtn::before {
+  content: '';
+  position: absolute;
+  top: -45%;
+  left: 10%;
+  width: 55%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.navBtn:hover {
+  background: linear-gradient(180deg, rgba(127, 252, 255, 0.35) 0%, rgba(127, 252, 255, 0.1) 45%, rgba(127, 252, 255, 0.2) 100%);
+  border-color: var(--cyan);
+}
+
+.navBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: none;
+}
+
+.navBtn:disabled:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  border-color: rgba(127, 252, 255, 0.4);
+}
+
+.navPrev {
+  left: 4px;
+}
+
+.navNext {
+  right: 4px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(127, 252, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dot:hover {
+  border-color: var(--cyan);
+}
+
+.dotActive {
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(127, 252, 255, 0.8);
+}
+
+@media (max-width: 800px) {
+  .media {
+    min-height: 220px;
+  }
+
+  .body {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .placeholder {
+    min-height: 280px;
+    padding: var(--space-md);
+  }
+
+  .navBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  .carousel {
+    padding: 0 44px;
+  }
+}
