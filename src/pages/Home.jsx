@@ -42,7 +42,7 @@ const FEATURED_PROJECTS = [
     tag: 'Creative Operations Dashboard',
     title: 'CreativeOps Command Portal',
     tagline: '"Nothing enters the queue without passing pre-flight."',
-    text: 'A concept prototype of a creative operations dashboard for a fictional brand studio: intake with a rules based pre-flight check, designer workload in plain hours, an asset registry, and a four language localization pipeline. Fully interactive with two guided tours, it follows one request through its full lifecycle, with every number computed live.',
+    text: 'A concept prototype of a creative operations dashboard for a fictional brand studio: intake with a rules-based pre-flight check, designer workload in plain hours, an asset registry, and a four-language localization pipeline. It is fully interactive, with two guided tours, and follows one request through its whole lifecycle with every number computed live.',
     note: 'Fictional concept prototype, built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in the dashboard are invented, and nothing is connected to a real system.',
   },
   {
@@ -53,8 +53,8 @@ const FEATURED_PROJECTS = [
       'Harbor Pilotage, a 3D sailboat placement puzzle from Mini Games, showing a lighthouse, colored harbor regions, and moored boats',
     tag: 'Puzzle Game Collection',
     title: 'Mini Games',
-    tagline: '"Every board is built fresh — you never see the same one twice."',
-    text: 'A growing collection of browser puzzle games built for iPad first, desktop second, including Sudoku, word and number puzzles, memory games, and several fully modeled 3D scenes rendered in WebGL. Boards are generated fresh every time, and the logic puzzles are checked for a single solution before they are ever shown to a player.',
+    tagline: '"Every board is built fresh. You never see the same one twice."',
+    text: 'A growing collection of browser puzzle games built for iPad first and desktop second: Sudoku, word and number puzzles, memory games, and several fully modeled 3D scenes rendered in WebGL. Boards are generated fresh every time, and the logic puzzles are checked for a single solution before a player ever sees them.',
     note: 'Personal project, still growing: over a dozen games are playable today, with more logic puzzles in progress.',
   },
 ]

@@ -35,24 +35,24 @@ const SECTION_LINKS = {
 // description format as the Applications page, via the shared
 // AppDescription component) — see SECTION_DESCRIPTIONS below.
 const STORYBOOK_INTRO =
-  'Designed primarily for iPad, this is an interactive digital storybook application that combines modern frontend web development with advanced multimedia integration.'
+  'An interactive digital storybook built for the iPad, pairing AI-generated illustration with a hand-built reading interface.'
 
 const STORYBOOK_BULLETS = [
   {
-    label: 'Interactive User Experience:',
-    text: ' Delivers a seamless, engaging reading experience with intuitive page navigation and responsive design optimized for tablets and varied screen sizes.',
+    label: 'Reading Experience:',
+    text: ' Page navigation that works by touch, with a layout that adapts to tablets and other screen sizes.',
   },
   {
     label: 'Multimedia Integration:',
-    text: ' Showcases the ability to manage, optimize, and integrate rich visual assets into a cohesive, interactive digital narrative.',
+    text: ' Rich visual assets managed, optimized, and assembled into one continuous story.',
   },
   {
-    label: 'Asset Pipeline & Continuity:',
-    text: ' Demonstrates the use of modern, AI-driven generative workflows to maintain consistent character designs and art direction across multiple distinct scenes.',
+    label: 'Character Continuity:',
+    text: ' AI-driven generative workflows kept the characters and the art direction consistent from one scene to the next.',
   },
   {
-    label: 'Frontend Architecture:',
-    text: ' Built using clean web technologies and accessible markup to ensure smooth performance and a polished, user-friendly interface.',
+    label: 'Front-End Build:',
+    text: ' Plain web technologies and accessible markup, so it runs smoothly and stays easy to use.',
   },
 ]
 
@@ -60,30 +60,30 @@ const STORYBOOK_BULLETS = [
 // Applications page's highlighted phrases.
 const STORYBOOK_HIGHLIGHT = {
   before:
-    'This application is an interactive, multimedia digital storybook that merges creative storytelling with modern front-end development. Designed as an engaging and accessible experience for young readers, the application features seamless page navigation, responsive design, and richly integrated visual assets. Behind the scenes, ',
-  text: 'the project demonstrates advanced workflows in AI-driven content generation—ensuring strict character continuity and cohesive art direction throughout the narrative',
+    'This is an interactive, multimedia digital storybook for young readers. It has page navigation built for touch, a responsive layout, and illustrations that carry from scene to scene. Behind the scenes, ',
+  text: 'the real work was the AI-driven image pipeline, and keeping the characters and the art direction consistent across every page of the story',
   after: '.',
 }
 
 const SPOT_THE_DIFFERENCE_INTRO =
-  'A browser-based spot-the-difference game built around illustrated puzzle collections, each hiding ten differences between two nearly identical images.'
+  'A browser spot-the-difference game built around illustrated puzzle collections. Each puzzle hides ten differences between two nearly identical images.'
 
 const SPOT_THE_DIFFERENCE_BULLETS = [
   {
     label: 'Multiple Collections:',
-    text: ' Organizes dozens of AI-generated puzzle images into themed, unlockable collections, with more added over time.',
+    text: ' Dozens of AI-generated puzzle images organized into themed, unlockable collections, with more added over time.',
   },
   {
     label: 'Touch-Friendly Precision:',
-    text: ' Supports pinch-to-zoom, drag-to-pan, and double-tap-to-reset, so spotting a small difference works as well on a phone as a desktop.',
+    text: ' Pinch to zoom, drag to pan, and double-tap to reset, so spotting a small difference works as well on a phone as on a desktop.',
   },
   {
     label: 'Persistent Progress:',
-    text: " Tracks stars found per collection using the browser's built-in storage, so progress carries over between visits.",
+    text: " Stars found per collection are saved in the browser's own storage, so progress carries over between visits.",
   },
   {
     label: 'Anti-Spam Safeguard:',
-    text: ' Enforces a short cooldown after every tap—longer after a wrong guess—so players can\'t rapid-fire their way through a puzzle.',
+    text: " A short cooldown after every tap, and a longer one after a wrong guess, so players can't rapid-fire their way through a puzzle.",
   },
 ]
 
@@ -91,30 +91,30 @@ const SPOT_THE_DIFFERENCE_BULLETS = [
 // highlighted phrases on this page.
 const SPOT_THE_DIFFERENCE_HIGHLIGHT = {
   before:
-    'This application is a browser-based spot-the-difference game built around dozens of AI-generated puzzle images, organized into unlockable collections. Each puzzle presents two nearly identical illustrations side by side, and the player taps to flag each of ten hidden differences, with a star lighting up per find and progress saved automatically between sessions. Pinch-to-zoom and drag-to-pan support make it just as playable on a phone as a desktop. To keep the game fair, ',
-  text: 'a short cooldown after every tap—longer after a wrong guess—stops players from rapid-fire guessing their way through a puzzle',
-  after: ', so finding a difference actually requires looking for it.',
+    'This is a browser spot-the-difference game built around dozens of AI-generated puzzle images, organized into unlockable collections. Each puzzle shows two nearly identical illustrations side by side. The player taps to flag each of ten hidden differences, a star lights up per find, and progress saves automatically between sessions. Pinch-to-zoom and drag-to-pan make it as playable on a phone as on a desktop. To keep it fair, ',
+  text: 'a short cooldown after every tap, and a longer one after a wrong guess, stops players from rapid-fire guessing their way through a puzzle',
+  after: ', so finding a difference requires looking for it.',
 }
 
 const UPPERCASE_INTRO =
-  'An original, custom-built browser game designed from scratch to deliver a seamless and highly interactive user experience.'
+  'An original word game on a letter grid, designed and built from scratch to run in the browser.'
 
 const UPPERCASE_BULLETS = [
   {
     label: 'Full-Lifecycle Development:',
-    text: ' Conceptualized, engineered, and deployed a unique standalone game, demonstrating strong product ownership and creative problem-solving.',
+    text: ' I took it from the first idea to a deployed game, on my own.',
   },
   {
-    label: 'Dynamic State Management:',
-    text: ' Built the underlying logic to flawlessly track real-time user inputs, game progression, and win/loss conditions without any performance drops.',
+    label: 'Game State:',
+    text: ' The logic tracks every input, the progression of the round, and the win and loss conditions as you play.',
   },
   {
-    label: 'Responsive & Intuitive UI:',
-    text: ' Designed a clean, accessible interface that immediately guides the player and adapts seamlessly across different screen sizes and devices.',
+    label: 'Responsive UI:',
+    text: ' A clean interface that shows the player what to do without instructions, and fits phone, tablet, and desktop.',
   },
   {
-    label: 'Frictionless Accessibility:',
-    text: ' Engineered as a lightweight application that runs instantly in the browser, allowing users to play immediately without the need for external software or app downloads.',
+    label: 'Nothing to Install:',
+    text: ' It loads and plays in the browser. No download, no app store.',
   },
 ]
 
@@ -122,31 +122,31 @@ const UPPERCASE_BULLETS = [
 // highlighted phrases on this page and on Applications.
 const UPPERCASE_HIGHLIGHT = {
   before:
-    'This application is an original browser-based game, conceptualized and built entirely from scratch. Developing a custom game goes beyond standard website design; it requires engineering complex logic to handle instant user interactions, dynamic scoring, and real-time data management. ',
-  text: 'Drawing directly from my background in pipeline development, I applied a systematic problem-solving, structuring data and anticipating technical hurdles to keep the application running',
+    'This is an original browser game, built from scratch. A game is a different problem from a website. It has to react to every tap the instant it happens, keep score, and hold its state through a whole round without a stumble. ',
+  text: 'I applied the same approach I use in pipeline development: structure the data first, and anticipate the technical hurdles before they show up',
   after:
-    '. I designed the interface to be highly responsive and intuitive, ensuring an engaging experience whether the user is on a desktop or a tablet. By taking this project from the initial creative concept to a fully deployed application, it demonstrates my ability to build interactive digital products that balance user experience with efficient code.',
+    '. The interface is built to feel the same on a desktop and a tablet. Taking it from the initial concept to a deployed game is the part I wanted to show.',
 }
 
 const CODE_BREAKER_INTRO =
-  'A fully functional digital adaptation of a classic code-breaking game, demonstrating the ability to translate strict logic and rules into a polished application.'
+  'A digital version of a classic code-breaking game. The rules already existed, and the job was to get them exactly right in software.'
 
 const CODE_BREAKER_BULLETS = [
   {
     label: 'Precise Rule Execution:',
-    text: ' Successfully translated the rigid, pre-existing mechanics of a known game into a custom-engineered digital experience, mimicking a real-world product specification.',
+    text: ' The fixed mechanics of a known game, carried into a custom build. It worked like building to a product spec.',
   },
   {
-    label: 'Algorithmic Logic:',
-    text: ' Built the core feedback loop to instantly and accurately evaluate user inputs against a hidden dataset, calculating complex win/loss conditions on the fly.',
+    label: 'Feedback Logic:',
+    text: ' Every guess is scored against the hidden sequence on the spot, and the win and loss conditions are worked out as you go.',
   },
   {
-    label: 'Robust State Management:',
-    text: ' Engineered the underlying architecture to track and store multiple user attempts, dynamically updating the interface without lag or page reloads.',
+    label: 'State Management:',
+    text: ' Every attempt is tracked and stored, and the interface updates without lag or a page reload.',
   },
   {
     label: 'Responsive UI Design:',
-    text: ' Created a clean, intuitive layout that allows users to easily focus on the puzzle, ensuring a frictionless experience across different screen sizes.',
+    text: ' A clean layout that keeps the focus on the puzzle, at any screen size.',
   },
 ]
 
@@ -154,30 +154,30 @@ const CODE_BREAKER_BULLETS = [
 // highlighted phrases on this page and on Applications.
 const CODE_BREAKER_HIGHLIGHT = {
   before:
-    'This application is a custom digital adaptation of a classic code-breaking puzzle game. While the original game concept is a familiar classic, the technical execution required translating its strict, pre-defined rules into a seamless browser experience. Developing this required writing precise algorithmic logic to evaluate user guesses against a hidden sequence, instantly returning accurate feedback, and managing the state of the game across multiple attempts. Ultimately, recreating this game was an exercise in ',
+    'This is a digital adaptation of a classic code-breaking puzzle game. The concept is familiar, and the technical work was in translating its strict, pre-defined rules into a browser game. That meant precise logic to evaluate each guess against a hidden sequence, return accurate feedback right away, and keep the state of the game across every attempt. In the end, recreating this game was an exercise in ',
   text: 'taking a strict set of predefined rules and translating them',
   after: ' into a reliable, straightforward interface.',
 }
 
 const VIDEO_JIGSAW_INTRO =
-  'A custom-built interactive jigsaw puzzle where the individual pieces are generated from a live, continuously playing video stream. This was designed specifically for the iPad.'
+  'A jigsaw puzzle where the pieces are cut from a video that never stops playing. Built for the iPad.'
 
 const VIDEO_JIGSAW_BULLETS = [
   {
     label: 'Multimedia Integration:',
-    text: ' Engineered a custom solution using browser canvas tools to slice a live video feed into interlocking, draggable puzzle pieces.',
+    text: ' Browser canvas tools slice a live video feed into interlocking, draggable puzzle pieces.',
   },
   {
-    label: 'Performance Optimization:',
-    text: ' Structured the drawing logic to update the video frames continuously, ensuring smooth playback without lagging or crashing the browser.',
+    label: 'Performance:',
+    text: ' The drawing logic redraws the video frames continuously, and playback has to stay smooth without lagging or crashing the browser.',
   },
   {
     label: 'Dynamic Interaction:',
-    text: ' Built the interface to handle complex drag-and-drop interactions while maintaining the state and position of moving video elements.',
+    text: ' The interface handles drag-and-drop while keeping track of the state and position of pieces that are themselves moving pictures.',
   },
   {
-    label: 'Engaging UX:',
-    text: ' Transformed a standard programming exercise into a highly interactive, media-rich experience that runs seamlessly on the client side.',
+    label: 'Playable UX:',
+    text: ' What starts as a programming exercise ends up as a media-rich puzzle that runs entirely on the client.',
   },
 ]
 
@@ -185,10 +185,9 @@ const VIDEO_JIGSAW_BULLETS = [
 // highlighted phrases on this page.
 const VIDEO_JIGSAW_HIGHLIGHT = {
   before:
-    'This application is an interactive jigsaw puzzle, but with a twist: instead of a static image, the puzzle pieces are sliced from a continuously playing video. Recreating a puzzle with a live video feed is a unique technical challenge. It requires taking the video stream, cutting it into complex interlocking shapes, and constantly updating those pieces so the video keeps playing smoothly, even as you drag them around the screen. Ultimately, ',
+    'This is a jigsaw puzzle with a twist. Instead of a static image, the pieces are sliced from a video that keeps playing. That is a specific technical problem: take the video stream, cut it into interlocking shapes, and keep updating every piece so the video plays smoothly even while you drag them around the screen. In the end, ',
   text: 'building this was an exercise in performance optimization',
-  after:
-    '—managing heavy multimedia processes behind the scenes to ensure the interface remains fast, responsive, and fun to use.',
+  after: ', keeping the heavy media work out of sight so the puzzle stays fast and fun to play.',
 }
 
 const MINI_GAMES_INTRO =
@@ -197,19 +196,19 @@ const MINI_GAMES_INTRO =
 const MINI_GAMES_BULLETS = [
   {
     label: 'Provably Fair Puzzles:',
-    text: ' Generates every board fresh with a seeded random number generator, and the logic puzzles are checked by a solver for exactly one solution before they are ever shown to a player.',
+    text: ' Every board is generated fresh from a seeded random number generator, and a solver checks each logic puzzle for exactly one solution before a player ever sees it.',
   },
   {
     label: '3D Scenes Built From Scratch:',
-    text: ' Several games render in full WebGL, with orbiting cameras, baked lighting, and no textures anywhere, since every surface detail is built as real geometry.',
+    text: ' Several games render in WebGL, with orbiting cameras and baked lighting. There are no textures anywhere. Every surface detail is real geometry.',
   },
   {
     label: 'Taught, Not Just Explained:',
-    text: ' Every game ships a Rule Book, and several also play themselves through a scripted tutorial that narrates each move against the live board.',
+    text: ' Every game ships with a Rule Book, and several also play themselves through a scripted tutorial that narrates each move on the live board.',
   },
   {
     label: 'No Framework, No Backend:',
-    text: ' Built as plain ES modules with zero runtime dependencies, installable to the iPad home screen, and playable fully offline.',
+    text: ' Plain ES modules with zero runtime dependencies. It installs to the iPad home screen and plays fully offline.',
   },
 ]
 
@@ -217,8 +216,8 @@ const MINI_GAMES_BULLETS = [
 // highlighted phrases on this page.
 const MINI_GAMES_HIGHLIGHT = {
   before:
-    'This application is a growing collection of browser puzzle games, from familiar logic puzzles like Sudoku and Kakuro to several fully modeled 3D scenes rendered in WebGL, with orbiting cameras and baked lighting. Built for iPad first, ',
-  text: 'every board is generated fresh with a seeded random number generator, and the logic puzzles are checked by a solver for exactly one solution before a player ever sees them',
+    'This is a growing collection of browser puzzle games, from familiar logic puzzles like Sudoku and Kakuro to several fully modeled 3D scenes rendered in WebGL, with orbiting cameras and baked lighting. I built it for iPad first. ',
+  text: 'Every board is generated fresh from a seeded random number generator, and a solver checks each logic puzzle for exactly one solution before a player sees it',
   after: ', so no puzzle here can be unsolvable or ambiguous.',
 }
 

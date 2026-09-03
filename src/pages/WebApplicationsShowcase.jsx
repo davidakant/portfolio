@@ -19,38 +19,38 @@ const slugify = (heading) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').r
 // via <strong>), then a final labeled "Description" paragraph set apart by
 // extra space below the bullet list.
 const WATER_FILTRATION_INTRO =
-  'A proposed Amazon A+ Content page for a gravity-fed water filtration system, built from the five standard Amazon product-detail module templates.'
+  'A proposed Amazon A+ Content page for a gravity-fed water filter, built from the five standard Amazon product-detail modules.'
 
 const WATER_FILTRATION_BULLETS = [
   {
     label: 'Amazon-Native Modules:',
-    text: " Assembled entirely from Amazon's fixed Seller Central templates—image header, sidebar, three-image feature grid, comparison chart, and text overlay—rather than free-form HTML.",
+    text: " Assembled from Amazon's fixed Seller Central templates: image header, sidebar, three-image feature grid, comparison chart, and text overlay. No free-form HTML.",
   },
   {
     label: 'Product Storytelling:',
-    text: " Walks a shopper through the filter's ceramic and carbon filtration stages, tool-free assembly, and environmental impact.",
+    text: " Walks a shopper through the filter's ceramic and carbon stages, tool-free assembly, and environmental impact.",
   },
 ]
 
 const REALTOR_INTRO =
-  'This location intelligence application aggregates real-world data from nearly a dozen public and government sources to provide instant, comprehensive property and demographic insights.'
+  'A location lookup tool that pulls real data from nearly a dozen public and government sources and puts a property and its neighborhood on one screen.'
 
 const REALTOR_BULLETS = [
   {
     label: 'Instant Property Profiles:',
-    text: ' Users can search any Pennsylvania address to instantly view ownership, zoning, tax assessments, utility providers, and broadband availability.',
+    text: ' Search any Pennsylvania address and get ownership, zoning, tax assessments, utility providers, and broadband availability.',
   },
   {
     label: 'Integrated Visuals:',
-    text: ' Data is contextualized with interactive parcel boundaries, 3D satellite imagery, and street-level photography.',
+    text: ' The data sits next to interactive parcel boundaries, 3D satellite imagery, and street-level photos.',
   },
   {
     label: 'Demographic Tools:',
-    text: ' A dedicated module surfaces vital Census data—including population and income metrics—for any state, county, or neighborhood.',
+    text: ' A separate module pulls Census data, including population and income, for any state, county, or neighborhood.',
   },
   {
     label: 'The Technical Challenge:',
-    text: ' The core achievement of the application is data normalization—successfully standardizing disparate, inconsistently formatted data from nine different county systems into a single, seamless user interface.',
+    text: ' The real work was data normalization. Nine county systems each format their records differently, and the app has to make them read as one.',
   },
 ]
 
@@ -59,33 +59,33 @@ const REALTOR_BULLETS = [
 // highlighted <span>.
 const REALTOR_HIGHLIGHT = {
   before:
-    'This application is a comprehensive location intelligence tool that instantly aggregates real-world data from nearly a dozen public and government sources. Users can search any city for live weather updates, or enter a Pennsylvania address to unlock detailed property insights—including ownership, zoning, tax assessments, utility providers, and broadband access. These insights are paired with interactive parcel maps, 3D satellite imagery, and street-level photos to provide a complete picture of the location. Additionally, a built-in demographic tool offers quick access to Census data, such as population and income, for any state, county, or neighborhood. Behind the scenes, ',
-  text: 'the application solves a complex data-engineering challenge: seamlessly standardizing and unifying fragmented information from multiple incompatible databases',
-  after: '—including nine distinct county systems—into a single, user-friendly interface.',
+    'I built this as a location intelligence tool that pulls real data from nearly a dozen public and government sources. You can search any city for live weather, or enter a Pennsylvania address and get ownership, zoning, tax assessments, utility providers, and broadband access, alongside interactive parcel maps, 3D satellite imagery, and street-level photos. A built-in demographic tool pulls Census data, such as population and income, for any state, county, or neighborhood. Behind the scenes, ',
+  text: 'the hard part was standardizing fragmented information from multiple incompatible databases',
+  after: ', nine distinct county systems among them, into a single interface that reads as one.',
 }
 
 const PROJECT_MANAGEMENT_NOTE =
-  'NOTE: This app is designed to operate on a local network with local cache. This is for demonstration only, and most operational functionailty will not work. It has been populated with simulated data.'
+  'NOTE: This app is designed to operate on a local network with local cache. This is for demonstration only, and most operational functionality will not work. It has been populated with simulated data.'
 
 const PROJECT_MANAGEMENT_INTRO =
-  'A self-contained project management dashboard built to centralize construction workflows from initial charter to final closeout.'
+  'A self-contained project management dashboard that keeps a construction project in one place, from the initial charter to final closeout.'
 
 const PROJECT_MANAGEMENT_BULLETS = [
   {
     label: 'Centralized Workflow:',
-    text: ' Consolidates scheduling, budget tracking, document storage (photos/drawings), team contacts, and a final walkthrough checklist into a single interface.',
+    text: ' Scheduling, budget tracking, document storage for photos and drawings, team contacts, and a final walkthrough checklist, all in one interface.',
   },
   {
     label: 'At-a-Glance Reporting:',
-    text: ' Provides an instant, top-level summary of project health, including budget utilization and task completion.',
+    text: ' A top-level summary of project health, including budget used and tasks completed.',
   },
   {
     label: 'Lightweight Architecture:',
-    text: ' Engineered to run entirely client-side without external servers or SaaS dependencies.',
+    text: ' Runs entirely in the browser. No external servers, no SaaS dependencies.',
   },
   {
     label: 'Persistent Data:',
-    text: " Leverages the browser's built-in storage architecture to securely save, manage, and reload all project data across sessions.",
+    text: " Saves and reloads all project data with the browser's built-in storage, so nothing is lost between sessions.",
   },
 ]
 
@@ -93,34 +93,33 @@ const PROJECT_MANAGEMENT_BULLETS = [
 // in pink.
 const PROJECT_MANAGEMENT_HIGHLIGHT = {
   before:
-    'This interactive dashboard is a comprehensive, all-in-one tool designed to manage a construction project through its entire lifecycle. It centralizes essential project workflows—including scheduling, budget tracking, team directories, document management for photos and drawings, and a final closeout punch list—into a single, at-a-glance interface. To ensure the application remains lightweight and highly accessible, ',
-  text: 'it was engineered to run entirely within the web browser. Without relying on external servers or costly software subscriptions',
-  after:
-    ", the dashboard successfully saves and retrieves all project data using the browser's built-in storage architecture, ensuring progress is never lost.",
+    'This dashboard manages a construction project through its whole lifecycle. Scheduling, budget tracking, team directories, document management for photos and drawings, and a closeout punch list all live on one screen. To keep it light, ',
+  text: 'I built it to run entirely within the web browser, with no external servers and no software subscriptions',
+  after: ". It saves and retrieves everything through the browser's own storage, so progress is never lost.",
 }
 
 const PROJECT_COORDINATION_NOTE =
   'NOTE: This front-end app is designed to operate with local cache. This is for demonstration only. There is no database, no login, and no email actually sent. Refreshing the page resets every module back to its starting data. Client names, product lines, batch numbers, meeting notes, and message copy are all realistic placeholder content.'
 
 const PROJECT_COORDINATION_INTRO =
-  'A custom-built project coordination dashboard designed to streamline the daily workflows and administrative tasks of a Project Coordinator for Account Management, Production Scheduling, and Administrative Support.'
+  'A project coordination dashboard I built around the daily work of a Project Coordinator: account management, production scheduling, and administrative support.'
 
 const PROJECT_COORDINATION_BULLETS = [
   {
     label: 'Centralized Operations:',
-    text: ' Consolidates task tracking, timeline management, and stakeholder organization into a single, easy-to-read interface.',
+    text: ' Task tracking, timeline management, and stakeholder organization in one easy-to-read interface.',
   },
   {
     label: 'Workflow Optimization:',
-    text: ' Applies pipeline development principles to organize complex, overlapping project data into clear, actionable steps.',
+    text: ' Applies what I learned in pipeline development to turn overlapping project data into clear, actionable steps.',
   },
   {
     label: 'Practical Utility:',
-    text: ' Engineered specifically to handle the real-world operational challenges of managing cross-functional projects.',
+    text: ' Built for the real operational problems of managing cross-functional projects.',
   },
   {
     label: 'Intuitive UI/UX:',
-    text: ' Features a clean, accessible layout that allows users to quickly assess project health and prioritize daily tasks without unnecessary friction.',
+    text: " A clean layout that lets a coordinator read project health and set the day's priorities without friction.",
   },
 ]
 
@@ -128,31 +127,31 @@ const PROJECT_COORDINATION_BULLETS = [
 // highlighted phrases on this page.
 const PROJECT_COORDINATION_HIGHLIGHT = {
   before:
-    'This application is a custom dashboard I built to simulate and streamline the daily tasks of a solo project coordinator. It serves as a centralized hub for managing timelines, tracking tasks, and organizing stakeholder communication. Using my experience in pipeline development, I designed the interface to take ',
+    'I built this dashboard to simulate and streamline the daily tasks of a solo project coordinator. It is a central hub for managing timelines, tracking tasks, and organizing stakeholder communication. Using my experience in pipeline development, I designed the interface to take ',
   text: 'complex, overlapping project data and turn it into a clear, actionable workflow',
   after:
-    '. Building this tool was a practical exercise in applying technical problem-solving to real-world administrative challenges, resulting in a straightforward interface that keeps projects organized and moving forward.',
+    '. Building it was a practical exercise in applying technical problem-solving to real administrative work, and the result is a straightforward interface that keeps projects organized and moving.',
 }
 
 const MOBILE_LENS_INTRO =
-  'An interactive instructional module that teaches the three core decisions behind every smartphone photograph: composition, lighting, and depth of field.'
+  'An interactive lesson on the three decisions behind every smartphone photograph: composition, lighting, and depth of field.'
 
 const MOBILE_LENS_BULLETS = [
   {
     label: 'Composition:',
-    text: ' Overlays live Rule of Thirds and Golden Spiral grids directly on the frame so users can see compositional guides against a real photograph.',
+    text: ' Overlays live Rule of Thirds and Golden Spiral grids on a real photograph, so you see the guides against an actual frame.',
   },
   {
     label: 'Lighting:',
-    text: ' Lets users drag a divider between two exposures of the same scene to compare midday sun against golden hour light.',
+    text: ' Drag a divider between two exposures of the same scene to compare midday sun with golden hour.',
   },
   {
     label: 'Depth of Field:',
-    text: ' Allows users to tap any subject to lock focus and blur the background, demonstrating shallow depth of field in real time.',
+    text: ' Tap any subject to lock focus and blur the background. Shallow depth of field, shown in real time.',
   },
   {
     label: 'Accessible by Design:',
-    text: ' Built with no framework or runtime dependencies, with full keyboard support and all animation gated behind prefers-reduced-motion.',
+    text: ' No framework and no runtime dependencies, with full keyboard support, and every animation gated behind prefers-reduced-motion.',
   },
 ]
 
@@ -160,34 +159,34 @@ const MOBILE_LENS_BULLETS = [
 // highlighted phrases on this page.
 const MOBILE_LENS_HIGHLIGHT = {
   before:
-    'This application is a hands-on instructional tool that breaks smartphone photography down into three interactive exercises: composition, lighting, and depth of field. Rather than simply describing these concepts, each module lets the user manipulate the photograph directly—toggling grid overlays, dragging between two exposures, or tapping to rack focus—so the effect is felt immediately rather than just read about. Built with ',
+    'This is a hands-on lesson that breaks smartphone photography into three exercises: composition, lighting, and depth of field. Rather than describe each concept, every module lets you work the photograph directly. You toggle the grid overlays, drag between two exposures, or tap to rack focus, and the effect is felt right away instead of read about. Built with ',
   text: 'no framework and no runtime dependencies',
   after:
-    ', the entire lesson runs from a single page, with full keyboard support and reduced-motion handling built in from the start.',
+    ', the whole lesson runs from a single page, with full keyboard support and reduced-motion handling from the start.',
 }
 
 const PIPELINE_AUTOMATION_NOTE =
   'NOTE: This is a demonstration dashboard populated with hardcoded mock data. There is no live backend or automation engine behind it. The Simulate Intake, Run Compliance Scan, and Print / Export PDF actions are intentionally inert in this build.'
 
 const PIPELINE_AUTOMATION_INTRO =
-  'A custom-built pipeline automation dashboard designed to track commercial mechanical and HVAC construction projects from initial intake through live execution.'
+  'A pipeline automation dashboard that tracks commercial mechanical and HVAC construction projects from intake through live execution.'
 
 const PIPELINE_AUTOMATION_BULLETS = [
   {
     label: 'Stage-Gated Pipeline:',
-    text: ' Visualizes every project as a Kanban board moving through Intake, Engineering Review, Subcontractor Assignment, and Live Execution.',
+    text: ' Every project is a card on a Kanban board, moving through Intake, Engineering Review, Subcontractor Assignment, and Live Execution.',
   },
   {
     label: 'Schedule & Compliance Tracking:',
-    text: ' Pairs a Gantt-style milestone timeline with a subcontractor compliance grid covering insurance, purchase orders, and change orders.',
+    text: ' A Gantt-style milestone timeline sits beside a subcontractor compliance grid covering insurance, purchase orders, and change orders.',
   },
   {
     label: 'Financial Oversight:',
-    text: ' Visualizes budgeted-vs-actual hours and purchase order drawdown to surface cost risk at a glance.',
+    text: ' Budgeted-vs-actual hours and purchase order drawdown, charted so cost risk shows up at a glance.',
   },
   {
     label: 'Guided Onboarding:',
-    text: ' Includes a built-in guided tour that walks a new user through every module.',
+    text: ' A built-in tour walks a new user through every module.',
   },
 ]
 
@@ -195,34 +194,34 @@ const PIPELINE_AUTOMATION_BULLETS = [
 // highlighted phrases on this page.
 const PIPELINE_AUTOMATION_HIGHLIGHT = {
   before:
-    'This application is a pipeline automation dashboard built to manage commercial mechanical and HVAC construction projects from first contact through completion. It organizes active work into a stage-gated Kanban board—Intake, Engineering Review, Subcontractor Assignment, and Live Execution—alongside a Gantt-style schedule, a vendor compliance grid, and budget-vs-actual financial tracking. Ultimately, ',
-  text: 'modeling a multi-stage approval pipeline as a single, at-a-glance board',
+    'I built this dashboard to manage commercial mechanical and HVAC construction projects from first contact through completion. Active work sits on a stage-gated Kanban board (Intake, Engineering Review, Subcontractor Assignment, and Live Execution) next to a Gantt-style schedule, a vendor compliance grid, and budget-vs-actual tracking. In the end, ',
+  text: 'modeling a multi-stage approval pipeline as a single board',
   after:
-    ' let the whole team see exactly where a project stood and what was blocking it, without digging through separate spreadsheets for scheduling, compliance, and budget.',
+    ' let the whole team see where a project stood and what was blocking it, without digging through separate spreadsheets for scheduling, compliance, and budget.',
 }
 
 const RESIDENTIAL_ARCHITECTURE_BROCHURE_NOTE =
   'NOTE: This is a demonstration brochure page populated with placeholder pricing, community, and description text. The floor plan renders and the interactive configurator are real; the surrounding marketing copy is not tied to any actual property.'
 
 const RESIDENTIAL_ARCHITECTURE_BROCHURE_INTRO =
-  'A custom-built residential architecture brochure and floor plan configurator, pairing marketing-ready pricing and feature copy with an interactive, zoomable floor plan viewer.'
+  'A residential architecture brochure and floor plan configurator that pairs the pricing and feature copy a builder would publish with an interactive, zoomable floor plan.'
 
 const RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS = [
   {
     label: 'Elevation Configurator:',
-    text: ' Lets buyers compare four distinct exterior elevation styles, each swappable between a photorealistic render and a technical line drawing, with its own price delta.',
+    text: ' Buyers compare four exterior elevation styles, each with its own price difference, and switch any of them between a photorealistic render and a technical line drawing.',
   },
   {
     label: 'Interactive Floor Plan Viewer:',
-    text: ' Supports pan, zoom, and floor switching between the 1st and 2nd story, with an overlay toggle and one-click re-centering.',
+    text: ' Pan, zoom, and switch between the first and second story, with an overlay toggle and one-click re-centering.',
   },
   {
     label: 'Marketing-Ready Layout:',
-    text: ' Pairs pricing, square footage, and feature highlights in a brochure format built to match a production home builder website.',
+    text: ' Pricing, square footage, and feature highlights in a brochure format built to match a production home builder website.',
   },
   {
     label: 'Virtual Tour Integration:',
-    text: ' Surfaces a virtual tour entry point directly from the primary elevation render.',
+    text: ' A virtual tour entry point sits right on the primary elevation render.',
   },
 ]
 
@@ -230,33 +229,33 @@ const RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS = [
 // highlighted phrases on this page.
 const RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT = {
   before:
-    'This application is a residential architecture brochure and floor plan configurator built to match the look of a production home builder website. It presents a single floor plan—photorealistic exterior renders, pricing, square footage, and feature highlights—alongside four selectable elevation styles, each swappable between a photorealistic render and a technical line drawing. Underneath the marketing layer, ',
-  text: 'the floor plan itself is a fully interactive viewer supporting pan, zoom, and floor switching between the 1st and 2nd story',
-  after: ', turning a static brochure image into something a buyer can actually explore.',
+    'This is a residential architecture brochure and floor plan configurator built to look like a production home builder website. It presents one floor plan, with photorealistic exterior renders, pricing, square footage, and feature highlights, alongside four selectable elevation styles that each switch between a render and a line drawing. Underneath the marketing layer, ',
+  text: 'the floor plan itself is a fully interactive viewer with pan, zoom, and floor switching between the first and second story',
+  after: '. A static brochure image becomes something a buyer can actually explore.',
 }
 
 const CALETA_NOTE =
   'NOTE: This is a fictional development created for portfolio demonstration only. The architecture, renders, brand identity, and marketing site are AI-assisted concept work, not built for or affiliated with any real property.'
 
 const CALETA_INTRO =
-  'A ten-story, fifty-residence ultra-luxury condominium concept set on a 216-acre private island, designed and built end-to-end from architecture through the full marketing site.'
+  'A ten-story, fifty-residence luxury condominium concept on a 216-acre private island. I designed and built the whole thing, from the architecture through the marketing site.'
 
 const CALETA_BULLETS = [
   {
     label: 'Full-Concept Architecture:',
-    text: ' Designed the building massing, unit layouts, and site plan for a fifty-residence, ten-story tower set on a 216-acre private island.',
+    text: ' I designed the building massing, the unit layouts, and the site plan for a fifty-residence, ten-story tower on a 216-acre private island.',
   },
   {
     label: 'AI-Assisted Visualization:',
-    text: ' Produced photorealistic exterior and interior renders across every finish level, amenity space, and time of day.',
+    text: ' Photorealistic exterior and interior renders across every finish level, amenity space, and time of day.',
   },
   {
     label: 'Brand Identity:',
-    text: ' Developed the full brand system—logo, type, color, and voice—built around the "Low-rise living. Boundless island." positioning.',
+    text: ' The full brand system, logo, type, color, and voice, built around the "Low-rise living. Boundless island." positioning.',
   },
   {
     label: 'Marketing Site & Film:',
-    text: ' Designed and built the complete marketing website plus a 1:22 brand film, both sharing the same visual system as the renders.',
+    text: ' I designed and built the complete marketing website plus a 1:22 brand film, both sharing the same visual system as the renders.',
   },
 ]
 
@@ -264,33 +263,33 @@ const CALETA_BULLETS = [
 // highlighted phrases on this page.
 const CALETA_HIGHLIGHT = {
   before:
-    'This application is the marketing site for a fictional ultra-luxury condominium development—a ten-story, fifty-residence tower set on a 216-acre private island. Every piece, from the architecture and interior finishes to the brand identity and the site itself, was designed and produced end-to-end as a single connected system. Ultimately, ',
-  text: 'carrying one architectural vision through renders, brand, film, and the live site itself',
-  after: ' demonstrates the full pipeline from concept to a finished, presentable marketing property.',
+    'This is the marketing site for a fictional luxury condominium development: a ten-story, fifty-residence tower on a 216-acre private island. Every piece, from the architecture and interior finishes to the brand identity and the site itself, was designed and produced as one connected system. ',
+  text: 'Carrying one architectural vision through renders, brand, film, and the live site',
+  after: ' is the full pipeline from concept to a finished, presentable property, and that is what I wanted to show here.',
 }
 
 const BUILDHR_NOTE =
   'NOTE: This is a fictional marketing campaign created for portfolio demonstration only. The company, product, and case study are AI-assisted concept work, not produced for or affiliated with any real business.'
 
 const BUILDHR_INTRO =
-  'A conceptual integrated marketing campaign for a fictional construction-software company, built as a single scrollable case study covering six channels from concept through delivery.'
+  'A concept integrated marketing campaign for a fictional construction-software company, built as one scrollable case study across six channels, from concept through delivery.'
 
 const BUILDHR_BULLETS = [
   {
     label: 'Content Marketing:',
-    text: ' Designed an eBook spread using art-directed, AI-generated lifestyle imagery finished in Photoshop, plus data visualizations built on a shared grid.',
+    text: ' An eBook spread using art-directed, AI-generated lifestyle imagery finished in Photoshop, plus data visualizations on a shared grid.',
   },
   {
     label: 'Digital & Video:',
-    text: ' Produced a three-card LinkedIn ad carousel and a :20 brand film, both built around the same generated image and video library.',
+    text: ' A three-card LinkedIn ad carousel and a :20 brand film, both built from the same generated image and video library.',
   },
   {
     label: 'Web & Brand Stewardship:',
-    text: ' Extended the same visual system into a homepage hero and a consistent type scale across every channel.',
+    text: ' The same visual system carried into a homepage hero and one type scale across every channel.',
   },
   {
     label: 'Tradeshow & Print:',
-    text: ' Adapted the digital-first campaign for large-format booth graphics and CMYK print handoff.',
+    text: ' The digital-first campaign adapted for large-format booth graphics and CMYK print handoff.',
   },
 ]
 
@@ -298,34 +297,34 @@ const BUILDHR_BULLETS = [
 // highlighted phrases on this page.
 const BUILDHR_HIGHLIGHT = {
   before:
-    'This application is a conceptual marketing campaign for a fictional construction-software company, presented as a single scrollable case study across six channels—content marketing, digital advertising, video production, web and brand, tradeshow and print, and the underlying project workflow. Rather than relying on stock photography, every image was ',
-  text: 'art-directed and AI-generated from a written brief, then screened for the artifacts generative images tend to produce, before finishing in Photoshop',
+    'This is a concept marketing campaign for a fictional construction-software company, presented as a single scrollable case study across six channels: content marketing, digital advertising, video, web and brand, tradeshow and print, and the project workflow underneath it all. There is no stock photography. Every image was ',
+  text: 'art-directed and AI-generated from a written brief, screened for the artifacts generative images tend to produce, and finished in Photoshop',
   after:
-    ', carrying one consistent visual system across an eBook, a LinkedIn carousel, a :20 film, a web hero, and a tradeshow booth.',
+    ', so one visual system carries across an eBook, a LinkedIn carousel, a :20 film, a web hero, and a tradeshow booth.',
 }
 
 const RETRIEVER_NOTE =
   'NOTE: This is a fictional demonstration built for portfolio purposes, drawing on experience running asset libraries in architectural visualization. Studio Ferris and everything in its library, including every client, person, and asset, is invented.'
 
 const RETRIEVER_INTRO =
-  'A working digital asset management system built for Studio Ferris, a fictional 22-artist architectural visualization studio, covering the full loop from intake to reuse.'
+  'A working digital asset management system for Studio Ferris, a fictional 22-artist architectural visualization studio. It covers the full loop, from intake to reuse.'
 
 const RETRIEVER_BULLETS = [
   {
     label: 'Faceted Library Search:',
-    text: ' Every asset (models, materials, HDRIs, scenes, CAD files, and renders) is searchable by category, and each detail view shows its full dependency manifest, version history, license, and every project it has been used on.',
+    text: ' Every asset, whether a model, material, HDRI, scene, CAD file, or render, is searchable by category. The detail view shows its dependency manifest, version history, license, and every project it has been used on.',
   },
   {
     label: 'Validated Intake:',
-    text: ' A live file-naming validator and dependency check run against every incoming asset before it is registered, catching naming and reference errors before they ever reach the shared library.',
+    text: ' A live file-naming validator and a dependency check run on every incoming asset before it is registered. Naming and reference errors get caught before they reach the shared library.',
   },
   {
     label: 'License & NDA Governance:',
-    text: ' Tracks marketplace licenses and flags NDA-restricted client assets, logging any attempt to reuse them outside their original project.',
+    text: ' Marketplace licenses are tracked, NDA-restricted client assets are flagged, and any attempt to reuse one outside its original project is logged.',
   },
   {
     label: 'ROI Dashboard:',
-    text: ' Measures the modeling hours saved through reuse and tracks how heavily each project draws on the shared library.',
+    text: ' Counts the modeling hours saved through reuse and shows how heavily each project draws on the shared library.',
   },
 ]
 
@@ -333,33 +332,33 @@ const RETRIEVER_BULLETS = [
 // highlighted phrases on this page.
 const RETRIEVER_HIGHLIGHT = {
   before:
-    "This application is a working digital asset management system built for Studio Ferris, a fictional 22-artist architectural visualization studio. It follows one asset's entire life in the library: a validated intake process checks file naming and dependencies before anything is registered, faceted search makes every asset findable by category, and a detail view surfaces its full dependency manifest, license, and usage history. Underneath it all, ",
-  text: 'an ROI dashboard turns every reused asset into a measurable number of modeling hours saved',
-  after: ', making the case for a shared library in terms a studio actually tracks.',
+    'I built Retriever as a working digital asset management system for Studio Ferris, a fictional 22-artist architectural visualization studio. It follows an asset through its whole life in the library. Intake checks file naming and dependencies before anything is registered, faceted search makes every asset findable by category, and the detail view shows its dependency manifest, license, and usage history. Underneath it all, ',
+  text: 'an ROI dashboard turns every reused asset into a number of modeling hours saved',
+  after: ', which is the case for a shared library in terms a studio actually tracks.',
 }
 
 const CREATIVE_OPS_NOTE =
   'NOTE: This is a fictional concept prototype built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in it, including every person, campaign, vendor, and metric, is invented. There is no backend and nothing here is connected to a real system.'
 
 const CREATIVE_OPS_INTRO =
-  'A concept prototype of a creative operations dashboard for a fictional brand studio, covering the full path a marketing request travels: intake, a rules based pre-flight check, designer assignment, and a four language localization pipeline.'
+  'A concept prototype of a creative operations dashboard for a fictional brand studio. It covers the full path a marketing request travels: intake, a rules-based pre-flight check, designer assignment, and a four-language localization pipeline.'
 
 const CREATIVE_OPS_BULLETS = [
   {
-    label: 'Rules Based Pre-Flight:',
-    text: ' Checks every incoming brief against a fixed list of written rules and returns a health score out of 100, so a missing approver or an unspecified aspect ratio is caught before a designer ever sees the request.',
+    label: 'Rules-Based Pre-Flight:',
+    text: ' Every incoming brief is checked against a fixed list of written rules and gets a health score out of 100. A missing approver or an unspecified aspect ratio is caught before a designer ever sees the request.',
   },
   {
     label: 'Designer Bandwidth in Plain Hours:',
-    text: ' Tracks each designer against roughly 80 bookable hours per sprint, so capacity is a simple ratio of hours booked to hours available rather than a subjective read of how busy someone looks.',
+    text: ' Each designer is tracked against roughly 80 bookable hours per sprint, so capacity is hours booked over hours available, not a guess at how busy someone looks.',
   },
   {
     label: 'Connected Across Four Tabs:',
-    text: ' Approving a request creates a task, a registry row, and a translation lane at the same moment, and the header metrics recalculate live as work moves.',
+    text: ' Approving a request creates a task, a registry row, and a translation lane at the same moment, and the header metrics recalculate as work moves.',
   },
   {
     label: 'Guided From the First Click:',
-    text: ' Ships a 30 second Quick Tour and a 2 minute Full Tour, plus a full user manual explaining every rule and how each number is calculated.',
+    text: ' A 30-second Quick Tour, a 2-minute Full Tour, and a user manual that explains every rule and how each number is calculated.',
   },
 ]
 
@@ -367,9 +366,9 @@ const CREATIVE_OPS_BULLETS = [
 // highlighted phrases on this page.
 const CREATIVE_OPS_HIGHLIGHT = {
   before:
-    'This application is a concept prototype of a creative operations dashboard for a fictional brand studio, DAK Labs. It follows one marketing request across its full lifecycle: an intake form checked by a rules based pre-flight audit, a designer resourcing board tracking workload in plain hours, a campaign asset registry with an approval clock, and a four language localization pipeline. Underneath the interface, ',
-  text: "every number on screen, from the pre-flight score to the header's team bandwidth reading, is computed live from what happens on the page rather than typed in",
-  after: ', so the four screens behave like one connected system instead of four separate reports.',
+    'This is a concept prototype of a creative operations dashboard for a fictional brand studio, DAK Labs. It follows one marketing request across its whole lifecycle: an intake form checked by a rules-based pre-flight audit, a designer resourcing board that tracks workload in plain hours, a campaign asset registry with an approval clock, and a four-language localization pipeline. Underneath the interface, ',
+  text: 'every number on screen, from the pre-flight score to the team bandwidth reading in the header, is computed from what happens on the page rather than typed in',
+  after: ', so the four screens behave like one system instead of four separate reports.',
 }
 
 // Keyed by section heading (rather than array index) so reordering
