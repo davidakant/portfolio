@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import About from './About'
 import styles from './Nav.module.css'
 
 // One quick-link per home-page category card (see HOME_CATEGORIES in
@@ -24,27 +25,34 @@ export default function Nav() {
           David Kant
         </NavLink>
 
-        <nav className={styles.links}>
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+        {/* Links, hamburger and the About button share a right-hand group so
+            About always sits at the far end, whichever of the other two the
+            viewport is showing. */}
+        <div className={styles.right}>
+          <nav className={styles.links}>
+            {links.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
-        <button
-          className={styles.toggle}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={`${styles.bar} ${open ? styles.barOpen1 : ''}`} />
-          <span className={`${styles.bar} ${open ? styles.barOpen2 : ''}`} />
-        </button>
+          <button
+            className={styles.toggle}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={`${styles.bar} ${open ? styles.barOpen1 : ''}`} />
+            <span className={`${styles.bar} ${open ? styles.barOpen2 : ''}`} />
+          </button>
+
+          <About />
+        </div>
       </div>
 
       <AnimatePresence>

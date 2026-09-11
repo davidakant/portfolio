@@ -23,7 +23,7 @@
 }
 
 .captionLink:hover {
-  color: var(--cyan, var(--color-fg));
+  color: var(--green, var(--color-fg));
   text-decoration: underline;
 }
 

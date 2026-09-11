@@ -1,6 +1,4 @@
 .holo {
-  --cyan: #7ffcff;
-  --magenta: #ff5fe0;
   position: relative;
   min-height: 100vh;
   padding: calc(var(--space-lg) + 1rem) 0 var(--space-xl);
@@ -12,7 +10,7 @@
      .pageHeader below by hijacking its containing block away from the
      real page scroll on <body> (which already has its own overflow-x:
      hidden globally — see global.css). */
-  background: radial-gradient(ellipse 85% 65% at 32% 8%, #1a3f73 0%, #241b52 42%, #07050f 100%);
+  background: radial-gradient(ellipse 85% 65% at 32% 8%, #07281b 0%, #04120d 45%, #050807 100%);
 }
 
 .ambient {
@@ -21,8 +19,8 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 25%, rgba(127, 252, 255, 0.1), transparent 42%),
-    radial-gradient(circle at 85% 75%, rgba(255, 95, 224, 0.1), transparent 42%);
+    radial-gradient(circle at 15% 25%, rgba(47, 224, 138, 0.06), transparent 42%),
+    radial-gradient(circle at 85% 75%, rgba(140, 224, 90, 0.06), transparent 42%);
 }
 
 .chrome {
@@ -39,7 +37,7 @@
 }
 
 .back:hover {
-  color: var(--cyan);
+  color: var(--green);
 }
 
 /* Back-link, eyebrow, and the "On this page" list used to be three
@@ -56,7 +54,7 @@
   gap: var(--space-xs);
   padding-bottom: var(--space-sm);
   margin-bottom: var(--space-lg);
-  border-bottom: 1px solid rgba(127, 252, 255, 0.2);
+  border-bottom: 1px solid rgba(47, 224, 138, 0.2);
 }
 
 /* Same liquid-glass recipe as .panel below (layered gradient body, inset
@@ -70,12 +68,12 @@
     z-index: 5;
     overflow: hidden;
     padding: var(--space-sm) var(--space-md);
-    border: 1px solid rgba(127, 252, 255, 0.3);
+    border: 1px solid rgba(47, 224, 138, 0.3);
     border-radius: 20px;
     /* Darker/more opaque than .panel's own tint — .panel only ever sits
        against the static page background, but this bar has to stay legible
        over other panels' text and screenshots scrolling underneath it. */
-    background: linear-gradient(180deg, rgba(36, 27, 82, 0.92) 0%, rgba(7, 5, 15, 0.94) 100%);
+    background: linear-gradient(180deg, rgba(9, 20, 15, 0.92) 0%, rgba(5, 8, 7, 0.94) 100%);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     box-shadow:
@@ -103,8 +101,8 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.6);
 }
 
 /* Lets an in-page anchor jump (from .tocLink below) land with the section
@@ -145,9 +143,9 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: var(--size-small);
   letter-spacing: 0.04em;
-  color: var(--cyan);
+  color: var(--green);
   text-decoration: none;
-  border-bottom: 1px solid rgba(127, 252, 255, 0.3);
+  border-bottom: 1px solid rgba(47, 224, 138, 0.3);
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
@@ -161,8 +159,8 @@
    still reads as distinct from a transient hover state. */
 .tocLink[aria-current='true'] {
   color: #fff;
-  border-color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.6);
+  border-color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.6);
 }
 
 /* Liquid glass rectangle housing one project — same recipe used throughout
@@ -175,7 +173,7 @@
   overflow: hidden;
   padding: var(--space-md);
   border-radius: 20px;
-  border: 1px solid rgba(127, 252, 255, 0.3);
+  border: 1px solid rgba(47, 224, 138, 0.3);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.07) 100%);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -207,8 +205,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: var(--space-sm);
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.5);
 }
 
 /* Section headings sometimes double as external links (e.g. Web Games'
@@ -259,8 +257,8 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.5);
   text-decoration: none;
 }
 

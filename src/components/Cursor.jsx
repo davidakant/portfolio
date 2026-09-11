@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './Cursor.module.css'
 
+// More than one Cursor can be mounted at a time — About renders a second
+// one inside its dialog, which is the only way to paint above a top-layer
+// element. The body class is shared, so it is reference counted: the last
+// instance to unmount is the one that gives the native cursor back.
+let mountedCursors = 0
+
 export default function Cursor() {
   const dotRef = useRef(null)
   const [enabled, setEnabled] = useState(false)
@@ -11,6 +17,7 @@ export default function Cursor() {
     setEnabled(canHover)
     if (!canHover) return
 
+    mountedCursors += 1
     document.body.classList.add('no-native-cursor')
 
     const move = (e) => {
@@ -26,7 +33,8 @@ export default function Cursor() {
     window.addEventListener('mouseover', over)
 
     return () => {
-      document.body.classList.remove('no-native-cursor')
+      mountedCursors -= 1
+      if (mountedCursors === 0) document.body.classList.remove('no-native-cursor')
       window.removeEventListener('mousemove', move)
       window.removeEventListener('mouseover', over)
     }

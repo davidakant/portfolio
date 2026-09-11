@@ -66,7 +66,7 @@ export function getHudFrameClipPath(variant = 0) {
 // Backward-compatible constant (variant 0) for existing single-viewer usage.
 export const HUD_FRAME_CLIP_PATH = getHudFrameClipPath(0)
 
-export default function HudBorder({ color = '#7ffcff', className, floatingAccent = true, variant = 0, glass = false }) {
+export default function HudBorder({ color = '#2fe08a', className, floatingAccent = true, variant = 0, glass = false }) {
   const { points, accents } = getVariant(variant)
   const pointsAttr = points.map(([x, y]) => `${x},${y}`).join(' ')
   const gradId = useId()

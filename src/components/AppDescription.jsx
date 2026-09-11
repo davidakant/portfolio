@@ -3,7 +3,7 @@ import styles from './AppDescription.module.css'
 // Shared layout for project write-ups on the Applications / Web Games
 // pages: a bold intro sentence flush against a bullet list of labeled
 // callouts, then a "Description:"-labeled paragraph set apart by extra
-// space. Page-wide scheme is white + cyan; pink (via `highlight`) is
+// space. Page-wide scheme is white + green; pink (via `highlight`) is
 // reserved only for a single deliberate accent phrase, not used for
 // section-to-section differentiation. Optional `note` (e.g. a draft/WIP
 // disclaimer) renders above everything else by default (`notePosition="top"`,
@@ -11,14 +11,14 @@ import styles from './AppDescription.module.css'
 // via `notePosition="bottom"` (the Applications page's red disclaimers).
 export default function AppDescription({
   note,
-  noteColor = 'magenta',
+  noteColor = 'yellow-green',
   notePosition = 'top',
   intro,
   bullets,
   final,
   highlight,
 }) {
-  const noteEl = note && <p className={noteColor === 'red' ? styles.noteRed : styles.noteMagenta}>{note}</p>
+  const noteEl = note && <p className={noteColor === 'red' ? styles.noteRed : styles.noteAlt}>{note}</p>
 
   return (
     <div className={styles.appDescription}>
@@ -38,7 +38,7 @@ export default function AppDescription({
           {highlight ? (
             <>
               {highlight.before}
-              <span className={styles.highlightMagenta}>{highlight.text}</span>
+              <span className={styles.highlightAlt}>{highlight.text}</span>
               {highlight.after}
             </>
           ) : (

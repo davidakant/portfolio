@@ -53,12 +53,12 @@
   min-width: 0;
   scroll-snap-align: start;
   border-radius: 28px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.2) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.34);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
   backdrop-filter: blur(22px) saturate(190%);
   -webkit-backdrop-filter: blur(22px) saturate(190%);
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 2px 2px rgba(255, 255, 255, 0.6),
     inset 0 -16px 22px -14px rgba(0, 0, 0, 0.45),
     0 32px 70px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(0, 0, 0, 0.1);
@@ -68,7 +68,7 @@
 }
 
 .card:hover {
-  border-color: var(--cyan);
+  border-color: var(--green);
 }
 
 /* Empty slot for a featured project not yet in place — same footprint as a
@@ -173,22 +173,22 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.5);
 }
 
 .title {
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.4rem;
   letter-spacing: 0.02em;
-  color: #eefdff;
+  color: #f2f7f3;
 }
 
 .tagline {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.05rem;
-  color: var(--cyan);
+  color: var(--green);
   margin: 0 0 var(--space-xs);
 }
 
@@ -219,8 +219,8 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--cyan);
-  text-shadow: 0 0 6px rgba(127, 252, 255, 0.5);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(47, 224, 138, 0.5);
   text-decoration: none;
 }
 
@@ -233,7 +233,7 @@
   font-size: 0.85rem;
 }
 
-/* Same visual weight as .cta, in magenta to read as a distinct second
+/* Same visual weight as .cta, in yellow-green to read as a distinct second
    action rather than a continuation of the first link. */
 .filmBtn {
   display: inline-flex;
@@ -243,8 +243,8 @@
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--magenta);
-  text-shadow: 0 0 6px rgba(255, 95, 224, 0.5);
+  color: var(--green-2);
+  text-shadow: 0 0 6px rgba(140, 224, 90, 0.5);
   background: none;
   border: none;
   padding: 0;
@@ -285,21 +285,21 @@
   justify-content: center;
   font-size: 1.6rem;
   line-height: 1;
-  color: var(--cyan);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  color: var(--green);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-radius: 50%;
-  border: 1px solid rgba(127, 252, 255, 0.4);
+  border: 1px solid rgba(47, 224, 138, 0.4);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
     inset 0 -6px 10px -6px rgba(0, 0, 0, 0.3),
     0 8px 20px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(0, 0, 0, 0.06);
   text-shadow:
-    0 0 4px rgba(127, 252, 255, 0.9),
-    0 0 10px rgba(127, 252, 255, 0.6),
-    0 0 18px rgba(127, 252, 255, 0.4);
+    0 0 4px rgba(47, 224, 138, 0.9),
+    0 0 10px rgba(47, 224, 138, 0.6),
+    0 0 18px rgba(47, 224, 138, 0.4);
   transition: all var(--duration-fast) var(--ease-out);
   cursor: pointer;
 }
@@ -312,14 +312,14 @@
   width: 55%;
   height: 80%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
 
 .navBtn:hover {
-  background: linear-gradient(180deg, rgba(127, 252, 255, 0.35) 0%, rgba(127, 252, 255, 0.1) 45%, rgba(127, 252, 255, 0.2) 100%);
-  border-color: var(--cyan);
+  background: linear-gradient(180deg, rgba(47, 224, 138, 0.35) 0%, rgba(47, 224, 138, 0.1) 45%, rgba(47, 224, 138, 0.2) 100%);
+  border-color: var(--green);
 }
 
 .navBtn:disabled {
@@ -330,8 +330,8 @@
 }
 
 .navBtn:disabled:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
-  border-color: rgba(127, 252, 255, 0.4);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
+  border-color: rgba(47, 224, 138, 0.4);
 }
 
 .navPrev {
@@ -354,19 +354,19 @@
   height: 9px;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid rgba(127, 252, 255, 0.5);
+  border: 1px solid rgba(47, 224, 138, 0.5);
   background: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-out);
 }
 
 .dot:hover {
-  border-color: var(--cyan);
+  border-color: var(--green);
 }
 
 .dotActive {
-  background: var(--cyan);
-  box-shadow: 0 0 8px rgba(127, 252, 255, 0.8);
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(47, 224, 138, 0.8);
 }
 
 @media (max-width: 800px) {

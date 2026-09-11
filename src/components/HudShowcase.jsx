@@ -187,16 +187,16 @@ export default function HudShowcase({
             {modes.map((m, i) => {
               const isFerris = m.label === 'Ferris Videos' || m.label === 'Ferris Stills'
               const prevIsFerris = i > 0 && (modes[i - 1].label === 'Ferris Videos' || modes[i - 1].label === 'Ferris Stills')
-              // One-time divider where the "serious work" (magenta) modes give
+              // One-time divider where the "serious work" (yellow-green) modes give
               // way to the "just for fun" (green) ones — a gradient that
-              // itself fades from magenta to green, echoing the two groups it
+              // itself fades from yellow-green to green, echoing the two groups it
               // separates.
               const showDivider = isFerris && !prevIsFerris
               return (
                 <Fragment key={m.label}>
                   {showDivider && <span className={styles.modeTabsDivider} aria-hidden="true" />}
                   <button
-                    className={`${styles.modeTab} ${isFerris ? styles.modeTabGreen : ''} ${i === modeIndex ? styles.modeTabActive : ''}`}
+                    className={`${styles.modeTab} ${isFerris ? styles.modeTabAlt2 : ''} ${i === modeIndex ? styles.modeTabActive : ''}`}
                     style={{ '--tab-delay': `${(i % 4) * 0.6}s` }}
                     onClick={() => selectMode(i)}
                     data-cursor-hover
@@ -315,7 +315,7 @@ export default function HudShowcase({
               )}
             </div>
 
-            {bordered && <HudBorder color="#7ffcff" className={styles.hudBorder} />}
+            {bordered && <HudBorder color="#2fe08a" className={styles.hudBorder} />}
           </motion.div>
         </div>
 

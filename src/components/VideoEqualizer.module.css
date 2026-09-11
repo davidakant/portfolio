@@ -28,8 +28,8 @@
   border-radius: 4px;
   transform: scaleY(0.06);
   transform-origin: bottom;
-  /* Cyan at the bottom fading to magenta at the top, per the site's
+  /* Green at the bottom fading to yellow-green at the top, per the site's
      established two-tone accent scheme. */
-  background: linear-gradient(to top, var(--cyan, #7ffcff), var(--magenta, #ff5fe0));
+  background: linear-gradient(to top, var(--green, #2fe08a), var(--yellow-green, #8ce05a));
   will-change: transform;
 }

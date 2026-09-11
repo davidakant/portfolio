@@ -1,4 +1,5 @@
 import { useSpring, useTransform, motion } from 'framer-motion'
+import AmbientField from './AmbientField'
 import styles from './HudBackground.module.css'
 
 export default function HudBackground({ mx, my }) {
@@ -7,6 +8,7 @@ export default function HudBackground({ mx, my }) {
 
   return (
     <div className={styles.bg} aria-hidden="true">
+      <AmbientField />
       <motion.div className={styles.gridPlane} style={{ x: gridX, y: gridY }} />
     </div>
   )

@@ -1,0 +1,154 @@
+/* Set off behind its own hairline at the far right of the top bar, so it
+   reads as its own group rather than one more section link. */
+.group {
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-sm);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Same liquid-glass recipe as the site's other round controls (translucent
+   body, inset rim highlight, drop shadow), in the second green so it does
+   not read as part of the primary-green nav row. */
+.trigger {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(140, 224, 90, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    0 6px 16px rgba(0, 0, 0, 0.6);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--green-2);
+  text-shadow: 0 0 8px rgba(140, 224, 90, 0.5);
+  transition: border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.trigger:hover {
+  border-color: var(--green-2);
+  transform: translateY(-1px);
+}
+
+.dialog {
+  width: min(560px, 92vw);
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.34);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(18, 26, 21, 0.96) 0%, rgba(8, 13, 10, 0.97) 100%);
+  /* Deliberately no backdrop-filter here, unlike the site's other glass.
+     It would make this element a containing block for fixed-position
+     descendants, which would break the cursor this dialog renders inside
+     itself — and behind a panel that is 96% opaque it was invisible work
+     anyway. The blur that actually reads is on ::backdrop below. */
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.35),
+    0 40px 100px rgba(0, 0, 0, 0.85);
+  color: var(--color-fg);
+}
+
+.dialog::backdrop {
+  background: rgba(4, 7, 5, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: 30px 32px 28px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(47, 224, 138, 0.6);
+}
+
+.close {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-fg-muted);
+  font-size: 0.9rem;
+  transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.close:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.text {
+  color: var(--color-fg-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.byline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.name {
+  color: var(--color-fg);
+  letter-spacing: 0.06em;
+}
+
+.email {
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(47, 224, 138, 0.6);
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+}
+
+.email:hover {
+  border-bottom-color: var(--green);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.links a {
+  color: var(--green-2);
+  text-shadow: 0 0 8px rgba(140, 224, 90, 0.5);
+  border-bottom: 1px solid transparent;
+}
+
+.links a:hover {
+  border-bottom-color: var(--green-2);
+}

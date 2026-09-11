@@ -23,11 +23,11 @@
   overflow: hidden;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
     0 10px 30px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -43,7 +43,7 @@
   width: 55%;
   height: 80%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.65), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 70%);
   pointer-events: none;
   filter: blur(2px);
 }
@@ -78,7 +78,7 @@
   width: 42%;
   height: 42%;
   margin-left: 6%;
-  color: rgba(20, 22, 26, 0.85);
+  color: rgba(9, 14, 11, 0.85);
   filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3));
 }
 
@@ -112,16 +112,16 @@
   line-height: 1.1;
   padding: 4px 20px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.16) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(127, 252, 255, 0.3);
+  border: 1px solid rgba(47, 224, 138, 0.3);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
     0 10px 24px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(0, 0, 0, 0.06);
-  color: #33363b;
+  color: var(--color-fg);
 }
 
 .caption::before {
@@ -147,9 +147,9 @@
   text-overflow: ellipsis;
   vertical-align: bottom;
   text-shadow:
-    0 0 4px rgba(127, 252, 255, 0.9),
-    0 0 10px rgba(127, 252, 255, 0.6),
-    0 0 18px rgba(127, 252, 255, 0.4);
+    0 0 4px rgba(47, 224, 138, 0.9),
+    0 0 10px rgba(47, 224, 138, 0.6),
+    0 0 18px rgba(47, 224, 138, 0.4);
 }
 
 /* Placed after the base .playButton/.caption rules (same specificity, so

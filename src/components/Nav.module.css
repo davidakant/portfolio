@@ -5,7 +5,7 @@
   right: 0;
   z-index: 100;
   padding: var(--space-sm) 0;
-  background: linear-gradient(to bottom, rgba(10, 10, 11, 0.85), transparent);
+  background: linear-gradient(to bottom, rgba(5, 8, 7, 0.85), transparent);
   backdrop-filter: blur(6px);
 }
 
@@ -20,6 +20,12 @@
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: -0.01em;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  min-width: 0;
 }
 
 .links {
@@ -42,7 +48,8 @@
 
 .link:hover,
 .active {
-  color: var(--color-fg);
+  color: var(--green);
+  text-shadow: 0 0 8px rgba(47, 224, 138, 0.5);
 }
 
 .toggle {

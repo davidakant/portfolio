@@ -2,73 +2,11 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
 import { getProjectBySlug } from '../data/projects'
+import { FEATURED_PROJECTS, HOME_CATEGORIES } from '../data/home'
 import HudBackground from '../components/HudBackground'
 import ProjectGrid from '../components/ProjectGrid'
 import FeaturedCarousel from '../components/FeaturedCarousel'
-import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/comfort-canines-poster.webp'
-import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-library.webp'
-import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
-import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 import styles from './Home.module.css'
-
-// Standalone home-page features — not one of the /work/:slug categories
-// below, so their content/links live here rather than in data/projects.js.
-// Each film streams directly from its own live site rather than being
-// bundled into this repo — embedding actual video files would bloat the
-// standalone single-file build considerably for no benefit, since it's the
-// same file either way. `filmUrl`/`filmPoster`/`filmDuration` are optional —
-// omit them (as every entry below does — none has a video) and the
-// "Watch the Film" button just doesn't render. Order is carousel order —
-// Retriever is first (leftmost) per request.
-const FEATURED_PROJECTS = [
-  {
-    id: 'retriever',
-    url: 'https://dak-retriever.netlify.app/',
-    image: retrieverScreenshot,
-    imageAlt:
-      'Retriever asset library showing a faceted search grid of clay-render 3D asset thumbnails with category filters',
-    tag: 'Digital Asset Management',
-    title: 'Retriever',
-    tagline: '"Every curated asset in the studio, render-ready with its dependencies collected."',
-    text: "A digital asset management system that gives an architectural visualization studio one shared library for every 3D asset it owns, instead of files scattered across old projects and hard drives. Artists stop rebuilding things that already exist and start reusing the studio's best work instead.",
-    note: 'Fictional demonstration built for portfolio purposes, drawing on experience running asset libraries in architectural visualization. Studio Ferris and everything in its library, including every client, person, and asset, is invented. The name comes from my dog, Ferris, who is half Labrador and half German Shepherd: half retriever, half guardian of the flock. Same job description as this app.',
-  },
-  {
-    id: 'creativeops',
-    url: 'https://dak-creativeops.netlify.app/',
-    image: creativeOpsScreenshot,
-    imageAlt:
-      'CreativeOps Command Portal dashboard showing the Creative Request Intake form and a live AI Pre-Flight Audit with brief health score',
-    tag: 'Creative Operations Dashboard',
-    title: 'CreativeOps Command Portal',
-    tagline: '"Nothing enters the queue without passing pre-flight."',
-    text: 'A concept prototype of a creative operations dashboard for a fictional brand studio: intake with a rules-based pre-flight check, designer workload in plain hours, an asset registry, and a four-language localization pipeline. It is fully interactive, with two guided tours, and follows one request through its whole lifecycle with every number computed live.',
-    note: 'Fictional concept prototype, built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in the dashboard are invented, and nothing is connected to a real system.',
-  },
-  {
-    id: 'minigames',
-    url: 'https://dak-minigames.netlify.app/',
-    image: miniGamesScreenshot,
-    imageAlt:
-      'Harbor Pilotage, a 3D sailboat placement puzzle from Mini Games, showing a lighthouse, colored harbor regions, and moored boats',
-    tag: 'Puzzle Game Collection',
-    title: 'Mini Games',
-    tagline: '"Every board is built fresh. You never see the same one twice."',
-    text: 'A growing collection of browser puzzle games built for iPad first and desktop second: Sudoku, word and number puzzles, memory games, and several fully modeled 3D scenes rendered in WebGL. Boards are generated fresh every time, and the logic puzzles are checked for a single solution before a player ever sees them.',
-    note: 'Personal project, still growing: over a dozen games are playable today, with more logic puzzles in progress.',
-  },
-]
-
-// The 4 home category tiles are broader groupings than the underlying project
-// slugs — each links through to one representative project page. `web-games`
-// has no real project yet, so it's a placeholder (see src/data/projects.js).
-const HOME_CATEGORIES = [
-  { slug: 'web-applications', title: 'Applications' },
-  { slug: 'architecture', title: 'Architectural Visualization' },
-  { slug: 'ferris-video', title: 'AI Assisted Visuals', cover: comfortCaninesPoster },
-  { slug: 'web-games', title: 'Web Games' },
-  { slug: '3d-printing', title: '3D Printing' },
-]
 
 const homeCards = HOME_CATEGORIES.map(({ slug, title, cover }) => ({
   ...getProjectBySlug(slug),
@@ -116,7 +54,6 @@ export default function Home() {
 
       <div className={`${styles.chrome} container`}>
         <section className={styles.hero}>
-          <span className={styles.eyebrow}>DAVID KANT // PORTFOLIO_INDEX</span>
           <motion.h1
             className={styles.headline}
             initial={{ opacity: 0, y: 40 }}
@@ -138,7 +75,7 @@ export default function Home() {
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.contactBadge} ${styles.contactBadgeMagenta}`}
+              className={`${styles.contactBadge} ${styles.contactBadgeAlt}`}
               data-cursor-hover
             >
               <span className={styles.badgeLabel}>LinkedIn: {LINKEDIN_LABEL}</span>

@@ -1,3 +1,7 @@
+/* z-index only wins inside the normal stacking order. A <dialog> opened with
+   showModal() sits in the top layer, above every z-index there is, so the
+   copy of this cursor that About renders inside its dialog is what covers
+   that case (see About.jsx). */
 .cursor {
   position: fixed;
   top: 0;
@@ -26,12 +30,12 @@
 .holo {
   border-radius: 0;
   background: transparent;
-  border: 1.5px solid #7ffcff;
-  box-shadow: 0 0 6px #7ffcff, 0 0 14px rgba(127, 252, 255, 0.5);
+  border: 1.5px solid #2fe08a;
+  box-shadow: 0 0 6px #2fe08a, 0 0 14px rgba(47, 224, 138, 0.5);
   transform-origin: center;
 }
 
 .holo.hovering {
-  border-color: #7ffcff;
-  box-shadow: 0 0 10px #7ffcff, 0 0 22px rgba(127, 252, 255, 0.6);
+  border-color: #2fe08a;
+  box-shadow: 0 0 10px #2fe08a, 0 0 22px rgba(47, 224, 138, 0.6);
 }

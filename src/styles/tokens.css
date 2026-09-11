@@ -1,17 +1,31 @@
 :root {
-  --color-bg: #0a0a0b;
-  --color-bg-raised: #131315;
-  --color-fg: #f2f0ea;
-  --color-fg-muted: #a6a49d;
-  --color-accent: #ff4d1c;
-  --color-accent-soft: #ffb199;
-  --color-border: #2a2a2c;
+  /* Black ground, white and gray text, two greens. The grays are biased
+     green rather than neutral so they sit inside the palette instead of on
+     top of it. */
+  --color-bg: #050807;
+  --color-bg-raised: #0a100c;
+  --color-fg: #f2f7f3;
+  --color-fg-muted: #9caba2;
+  --color-border: #1c2620;
+
+  /* The two accents, split by role and used site-wide (they used to be a
+     cyan and a magenta declared per-page on .holo). --green is the primary:
+     labels, links, controls, active state, hover borders. --green-2 is the
+     second voice, kept for things that need to read as a distinct group
+     rather than a continuation of the first. */
+  --green: #2fe08a;
+  --green-2: #8ce05a;
+
+  /* --color-accent is what the cursor, ::selection and the project-page
+     links use; it tracks the primary. */
+  --color-accent: var(--green);
+  --color-accent-soft: var(--green-2);
 
   --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;
   --font-body: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
-  --size-display: clamp(3rem, 9vw, 8.5rem);
+  --size-display: clamp(2.5rem, 7vw, 6rem);
   --size-h1: clamp(2.25rem, 5vw, 4.5rem);
   --size-h2: clamp(1.5rem, 3vw, 2.5rem);
   --size-body: 1.05rem;

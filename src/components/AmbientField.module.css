@@ -1,0 +1,9 @@
+/* Fills the fixed .bg wrapper in HudBackground; sits under the grid plane,
+   which is the next sibling. */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

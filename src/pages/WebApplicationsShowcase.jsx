@@ -55,7 +55,7 @@ const REALTOR_BULLETS = [
 ]
 
 // Split around the phrase called out in pink — the page's one deliberate
-// accent use, everything else is white/cyan — so it renders as a
+// accent use, everything else is white/green — so it renders as a
 // highlighted <span>.
 const REALTOR_HIGHLIGHT = {
   before:
