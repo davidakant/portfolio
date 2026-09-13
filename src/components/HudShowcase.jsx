@@ -187,9 +187,9 @@ export default function HudShowcase({
             {modes.map((m, i) => {
               const isFerris = m.label === 'Ferris Videos' || m.label === 'Ferris Stills'
               const prevIsFerris = i > 0 && (modes[i - 1].label === 'Ferris Videos' || modes[i - 1].label === 'Ferris Stills')
-              // One-time divider where the "serious work" (yellow-green) modes give
-              // way to the "just for fun" (green) ones — a gradient that
-              // itself fades from yellow-green to green, echoing the two groups it
+              // One-time divider where the "serious work" (peach) modes give
+              // way to the "just for fun" (aqua) ones — a gradient that
+              // itself fades from peach to aqua, echoing the two groups it
               // separates.
               const showDivider = isFerris && !prevIsFerris
               return (
@@ -315,7 +315,7 @@ export default function HudShowcase({
               )}
             </div>
 
-            {bordered && <HudBorder color="#2fe08a" className={styles.hudBorder} />}
+            {bordered && <HudBorder color="#9adbe0" className={styles.hudBorder} />}
           </motion.div>
         </div>
 

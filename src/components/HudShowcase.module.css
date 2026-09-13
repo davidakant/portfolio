@@ -3,7 +3,7 @@
   min-height: 100vh;
   padding: calc(var(--space-lg) + 1rem) 0 var(--space-xl);
   overflow: hidden;
-  background: radial-gradient(ellipse 85% 65% at 32% 8%, #07281b 0%, #04120d 45%, #050807 100%);
+  background: var(--shoreline);
 }
 
 .ambient {
@@ -12,8 +12,8 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 25%, rgba(47, 224, 138, 0.06), transparent 42%),
-    radial-gradient(circle at 85% 75%, rgba(140, 224, 90, 0.06), transparent 42%);
+    radial-gradient(circle at 15% 25%, rgba(var(--aqua-rgb), 0.06), transparent 42%),
+    radial-gradient(circle at 85% 75%, rgba(var(--peach-rgb), 0.05), transparent 42%);
 }
 
 .chrome {
@@ -21,6 +21,8 @@
   z-index: 2;
 }
 
+/* The back link, mode tabs and head row all sit at the top of the page,
+   which is always deep water, so they keep light text and glows. */
 .back {
   display: inline-block;
   font-family: 'Share Tech Mono', monospace;
@@ -31,7 +33,7 @@
 }
 
 .back:hover {
-  color: var(--green);
+  color: var(--aqua);
 }
 
 .modeTabs {
@@ -42,19 +44,19 @@
   margin-bottom: var(--space-sm);
 }
 
-/* Marks the boundary between "serious work" (yellow-green) and "just for fun"
-   (green) modes — same glowing-line device as the thumbnail rail's own
-   divider, but its gradient itself transitions yellow-green-to-green instead of
+/* Marks the boundary between "serious work" (peach) and "just for fun"
+   (aqua) modes — same glowing-line device as the thumbnail rail's own
+   divider, but its gradient itself transitions peach-to-aqua instead of
    being a single color. */
 .modeTabsDivider {
   align-self: stretch;
   width: 2px;
   flex: 0 0 auto;
   border-radius: 2px;
-  background: linear-gradient(to bottom, transparent, var(--green-2) 20%, var(--green) 80%, transparent);
+  background: linear-gradient(to bottom, transparent, var(--peach) 20%, var(--aqua) 80%, transparent);
   box-shadow:
-    0 0 10px 1px rgba(140, 224, 90, 0.5),
-    0 0 10px 1px rgba(47, 224, 138, 0.5);
+    0 0 10px 1px rgba(var(--peach-rgb), 0.45),
+    0 0 10px 1px rgba(var(--aqua-rgb), 0.45);
 }
 
 /* Shared "liquid glass" recipe (also used by .tab, .readoutTL/.readoutTR and
@@ -72,15 +74,14 @@
   letter-spacing: 0.12em;
   padding: 5px 22px;
   border-radius: 999px;
-  border: 1px solid rgba(140, 224, 90, 0.35);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(var(--peach-rgb), 0.38);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 10px 24px rgba(10, 30, 45, 0.35);
   color: var(--color-fg-muted);
   transition: all var(--duration-fast) var(--ease-out);
 }
@@ -93,7 +94,7 @@
   width: 55%;
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.35), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
@@ -103,7 +104,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
   background-size: 240% 240%;
   pointer-events: none;
   animation: sheen-sweep 4.5s ease-in-out infinite;
@@ -115,49 +116,51 @@
 }
 
 .modeTab:hover {
-  color: var(--green-2);
-  border-color: var(--green-2);
+  color: var(--peach);
+  border-color: var(--peach);
 }
 
+/* The selected tab turns into the light frosted material with dark text,
+   the same light-surface/dark-text pairing the reading panels use. */
 .modeTabActive {
-  color: #111f08;
-  background: linear-gradient(180deg, rgba(140, 224, 90, 0.5) 0%, rgba(140, 224, 90, 0.14) 45%, rgba(140, 224, 90, 0.28) 100%);
-  border-color: rgba(140, 224, 90, 0.65);
+  color: #4a2a1c;
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.96) 0%, rgba(var(--peach-rgb), 0.9) 100%);
+  border-color: rgba(var(--peach-rgb), 0.9);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    inset 0 -8px 12px -8px rgba(28, 45, 0, 0.35),
-    0 0 24px rgba(140, 224, 90, 0.65),
-    0 10px 24px rgba(0, 0, 0, 0.45);
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(90, 60, 40, 0.18),
+    0 0 20px rgba(var(--peach-rgb), 0.45),
+    0 10px 24px rgba(10, 30, 45, 0.35);
 }
 
 .modeTabActive:hover {
-  color: #111f08;
+  color: #4a2a1c;
 }
 
-/* Green variant for the Ferris Videos / Ferris Stills mode tabs — same glass
-   chrome, just a different accent color from the rest (yellow-green). */
+/* Aqua variant for the Ferris Videos / Ferris Stills mode tabs — same glass
+   chrome, just a different accent color from the rest (peach). */
 .modeTabAlt2 {
-  border-color: rgba(47, 224, 138, 0.35);
+  border-color: rgba(var(--aqua-rgb), 0.38);
 }
 
 .modeTabAlt2:hover {
-  color: var(--green);
-  border-color: var(--green);
+  color: var(--aqua);
+  border-color: var(--aqua);
 }
 
 .modeTabAlt2.modeTabActive {
-  color: #052b17;
-  background: linear-gradient(180deg, rgba(47, 224, 138, 0.5) 0%, rgba(47, 224, 138, 0.14) 45%, rgba(47, 224, 138, 0.28) 100%);
-  border-color: rgba(47, 224, 138, 0.65);
+  color: var(--abyss);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.96) 0%, rgba(var(--aqua-rgb), 0.88) 100%);
+  border-color: rgba(var(--aqua-rgb), 0.9);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    inset 0 -8px 12px -8px rgba(0, 45, 20, 0.35),
-    0 0 24px rgba(47, 224, 138, 0.65),
-    0 10px 24px rgba(0, 0, 0, 0.45);
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(var(--abyss-rgb), 0.18),
+    0 0 20px rgba(var(--aqua-rgb), 0.45),
+    0 10px 24px rgba(10, 30, 45, 0.35);
 }
 
 .modeTabAlt2.modeTabActive:hover {
-  color: #052b17;
+  color: var(--abyss);
 }
 
 .headRow {
@@ -167,7 +170,7 @@
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-bottom: var(--space-md);
-  border-bottom: 1px solid rgba(47, 224, 138, 0.2);
+  border-bottom: 1px solid rgba(var(--aqua-rgb), 0.2);
   padding-bottom: var(--space-sm);
 }
 
@@ -175,8 +178,8 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--green);
-  text-shadow: 0 0 6px rgba(47, 224, 138, 0.6);
+  color: var(--aqua);
+  text-shadow: 0 0 6px rgba(var(--aqua-rgb), 0.5);
 }
 
 .tabs {
@@ -195,15 +198,14 @@
   letter-spacing: 0.1em;
   padding: 7px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(47, 224, 138, 0.3);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(var(--aqua-rgb), 0.32);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 10px 24px rgba(10, 30, 45, 0.35);
   color: var(--color-fg-muted);
   transition: all var(--duration-fast) var(--ease-out);
 }
@@ -216,7 +218,7 @@
   width: 55%;
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.35), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
@@ -226,7 +228,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
   background-size: 240% 240%;
   pointer-events: none;
   animation: sheen-sweep 4.5s ease-in-out infinite;
@@ -238,23 +240,23 @@
 }
 
 .tab:hover {
-  color: var(--green);
-  border-color: var(--green);
+  color: var(--aqua);
+  border-color: var(--aqua);
 }
 
 .tabActive {
-  color: #04170e;
-  background: linear-gradient(180deg, rgba(47, 224, 138, 0.5) 0%, rgba(47, 224, 138, 0.14) 45%, rgba(47, 224, 138, 0.28) 100%);
-  border-color: rgba(47, 224, 138, 0.65);
+  color: var(--abyss);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.96) 0%, rgba(var(--aqua-rgb), 0.88) 100%);
+  border-color: rgba(var(--aqua-rgb), 0.9);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    inset 0 -8px 12px -8px rgba(0, 45, 25, 0.35),
-    0 0 24px rgba(47, 224, 138, 0.65),
-    0 10px 24px rgba(0, 0, 0, 0.45);
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -8px 12px -8px rgba(var(--abyss-rgb), 0.18),
+    0 0 20px rgba(var(--aqua-rgb), 0.45),
+    0 10px 24px rgba(10, 30, 45, 0.35);
 }
 
 .tabActive:hover {
-  color: #04170e;
+  color: var(--abyss);
 }
 
 .stage {
@@ -268,20 +270,22 @@
   transform-style: preserve-3d;
 }
 
+/* The viewer holds a photo, not reading text, so it keeps the clear glass
+   bezel wherever it lands on the page. */
 .panelInner {
   position: relative;
   height: 58vh;
   border-radius: 26px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.34);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(22px) saturate(190%);
-  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border: 2px solid rgba(255, 252, 246, 0.45);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.6),
-    inset 0 -16px 22px -14px rgba(0, 0, 0, 0.45),
-    0 32px 70px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(0, 0, 0, 0.1);
+    inset 0 2px 2px rgba(255, 250, 242, 0.6),
+    inset 0 -16px 22px -14px rgba(0, 0, 0, 0.4),
+    0 32px 70px rgba(10, 30, 45, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 /* Specular highlight for the HudDisplay panel itself — no explicit z-index
@@ -296,7 +300,7 @@
   width: 45%;
   height: 60%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.5), transparent 70%);
   pointer-events: none;
   filter: blur(6px);
 }
@@ -307,7 +311,7 @@
   z-index: 4;
   pointer-events: none;
   mix-blend-mode: screen;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0.03) 50%, transparent 65%);
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 250, 242, 0.12) 45%, rgba(255, 250, 242, 0.03) 50%, transparent 65%);
   background-size: 250% 250%;
   animation: sheen-sweep 8s ease-in-out infinite;
 }
@@ -349,6 +353,8 @@
   overflow: hidden;
 }
 
+/* Everything from here down to .dataStream is an overlay on the photo, so
+   it stays dark glass with light text regardless of the page ground. */
 .navBtn {
   position: absolute;
   top: 50%;
@@ -362,21 +368,19 @@
   justify-content: center;
   font-size: 1.6rem;
   line-height: 1;
-  color: var(--green);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  color: var(--aqua);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
   border-radius: 50%;
-  border: 1px solid rgba(47, 224, 138, 0.4);
+  border: 1px solid rgba(var(--aqua-rgb), 0.42);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
     inset 0 -6px 10px -6px rgba(0, 0, 0, 0.3),
-    0 8px 20px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 8px 20px rgba(0, 0, 0, 0.4);
   text-shadow:
-    0 0 4px rgba(47, 224, 138, 0.9),
-    0 0 10px rgba(47, 224, 138, 0.6),
-    0 0 18px rgba(47, 224, 138, 0.4);
+    0 0 4px rgba(var(--aqua-rgb), 0.85),
+    0 0 12px rgba(var(--aqua-rgb), 0.45);
   transition: all var(--duration-fast) var(--ease-out);
 }
 
@@ -388,14 +392,14 @@
   width: 55%;
   height: 80%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.4), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
 
 .navBtn:hover {
-  background: linear-gradient(180deg, rgba(47, 224, 138, 0.35) 0%, rgba(47, 224, 138, 0.1) 45%, rgba(47, 224, 138, 0.2) 100%);
-  border-color: var(--green);
+  background: linear-gradient(180deg, rgba(var(--aqua-rgb), 0.35) 0%, rgba(var(--aqua-rgb), 0.1) 45%, rgba(var(--aqua-rgb), 0.2) 100%);
+  border-color: var(--aqua);
 }
 
 .navPrev {
@@ -421,20 +425,18 @@
   letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(47, 224, 138, 0.3);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(var(--aqua-rgb), 0.32);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 10px 24px rgba(0, 0, 0, 0.4);
   color: var(--color-fg);
   text-shadow:
-    0 0 4px rgba(47, 224, 138, 0.9),
-    0 0 10px rgba(47, 224, 138, 0.6),
-    0 0 18px rgba(47, 224, 138, 0.4);
+    0 0 4px rgba(var(--aqua-rgb), 0.85),
+    0 0 12px rgba(var(--aqua-rgb), 0.45);
   z-index: 5;
 }
 
@@ -447,7 +449,7 @@
   width: 45%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.5), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
@@ -461,11 +463,10 @@
 
 .readoutTR {
   color: var(--color-fg);
-  border-color: rgba(140, 224, 90, 0.35);
+  border-color: rgba(var(--peach-rgb), 0.38);
   text-shadow:
-    0 0 4px rgba(140, 224, 90, 0.9),
-    0 0 10px rgba(140, 224, 90, 0.6),
-    0 0 18px rgba(140, 224, 90, 0.4);
+    0 0 4px rgba(var(--peach-rgb), 0.8),
+    0 0 12px rgba(var(--peach-rgb), 0.4);
 }
 
 /* Wraps the category readout and (for videos) the VideoEqualizer below it —
@@ -487,8 +488,8 @@
   margin-top: var(--space-sm);
   overflow: hidden;
   white-space: nowrap;
-  border-top: 1px solid rgba(47, 224, 138, 0.15);
-  border-bottom: 1px solid rgba(47, 224, 138, 0.15);
+  border-top: 1px solid rgba(var(--aqua-rgb), 0.15);
+  border-bottom: 1px solid rgba(var(--aqua-rgb), 0.15);
   padding: 6px 0;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
@@ -522,14 +523,24 @@
   flex-direction: column;
 }
 
+/* The rails fall wherever the page height puts them, which can be the
+   mid-blue stretch where neither light nor dark text holds contrast, so the
+   label rides on its own small frosted chip with dark text. */
 .railLabel {
-  display: block;
+  display: inline-block;
+  align-self: flex-start;
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--green);
-  text-shadow: 0 0 6px rgba(47, 224, 138, 0.5);
+  color: var(--teal-ink);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-light-rim);
+  background: rgba(255, 250, 242, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 14px -6px rgba(var(--driftwood-rgb), 0.3);
   margin-bottom: var(--space-xs);
 }
 
@@ -561,15 +572,14 @@
   padding: 10px 24px;
   border-radius: 999px;
   color: var(--color-fg);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--glass-dark-body);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 252, 246, 0.4);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 10px 24px rgba(0, 0, 0, 0.4);
   transition: all var(--duration-fast) var(--ease-out);
 }
 
@@ -581,7 +591,7 @@
   width: 55%;
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.4), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
@@ -593,7 +603,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.45) 48%, transparent 60%);
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
   background-size: 240% 240%;
   pointer-events: none;
   animation: sheen-sweep 4.5s ease-in-out infinite;
@@ -611,13 +621,12 @@
 
 /* Self-illuminating glow — layered blur radii so the text reads as lit from
    within rather than just outlined, tinted to match each badge family's own
-   accent color (green: category tabs + spatial toggle; yellow-green: mode tabs). */
+   accent color (aqua: category tabs + spatial toggle; peach: mode tabs). */
 .tab .badgeLabel,
 .spatialToggle .badgeLabel {
   text-shadow:
-    0 0 4px rgba(47, 224, 138, 0.9),
-    0 0 10px rgba(47, 224, 138, 0.6),
-    0 0 18px rgba(47, 224, 138, 0.4);
+    0 0 4px rgba(var(--aqua-rgb), 0.85),
+    0 0 12px rgba(var(--aqua-rgb), 0.45);
 }
 
 .modeTab .badgeLabel {
@@ -625,17 +634,24 @@
   gap: 0;
   line-height: 1.1;
   text-shadow:
-    0 0 4px rgba(140, 224, 90, 0.9),
-    0 0 10px rgba(140, 224, 90, 0.6),
-    0 0 18px rgba(140, 224, 90, 0.4);
+    0 0 4px rgba(var(--peach-rgb), 0.8),
+    0 0 12px rgba(var(--peach-rgb), 0.4);
 }
 
 /* Must come after .modeTab .badgeLabel (same specificity) to win. */
 .modeTabAlt2 .badgeLabel {
   text-shadow:
-    0 0 4px rgba(47, 224, 138, 0.9),
-    0 0 10px rgba(47, 224, 138, 0.6),
-    0 0 18px rgba(47, 224, 138, 0.4);
+    0 0 4px rgba(var(--aqua-rgb), 0.85),
+    0 0 12px rgba(var(--aqua-rgb), 0.45);
+}
+
+/* A selected tab is dark text on a light fill, where a glow only smudges
+   the letters. Placed after the glow rules above so it wins at equal or
+   higher specificity. */
+.tabActive .badgeLabel,
+.modeTabActive .badgeLabel,
+.modeTabAlt2.modeTabActive .badgeLabel {
+  text-shadow: none;
 }
 
 .badgeSubLabel {
@@ -645,13 +661,12 @@
 }
 
 .spatialToggle:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 252, 246, 0.65);
   transform: translateX(-50%) translateY(-1px);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 1px 1px rgba(255, 250, 242, 0.9),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 12px 28px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
 .spatialToggle:hover::after {
@@ -660,13 +675,13 @@
 
 .spatialToggleActive {
   color: var(--color-fg);
-  background: linear-gradient(180deg, rgba(47, 224, 138, 0.38) 0%, rgba(47, 224, 138, 0.1) 45%, rgba(47, 224, 138, 0.2) 100%);
-  border-color: rgba(47, 224, 138, 0.65);
+  background: linear-gradient(180deg, rgba(var(--aqua-rgb), 0.4) 0%, rgba(var(--aqua-rgb), 0.12) 45%, rgba(var(--aqua-rgb), 0.22) 100%);
+  border-color: rgba(var(--aqua-rgb), 0.7);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    inset 0 -8px 12px -8px rgba(0, 45, 25, 0.35),
-    0 0 24px rgba(47, 224, 138, 0.65),
-    0 10px 24px rgba(0, 0, 0, 0.45);
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
+    inset 0 -8px 12px -8px rgba(10, 40, 60, 0.3),
+    0 0 24px rgba(var(--aqua-rgb), 0.55),
+    0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 .spatialToggleActive:hover {
@@ -684,7 +699,7 @@
 /* Reduced-chrome variant (`minimal` prop): the corner readouts and nav
    arrows are demoted from "glass button" to "quiet watermark" so they
    compete less with the photo/video underneath. Text-only readouts keep
-   their color-coded glow (green for the frame counter, yellow-green for the
+   their color-coded glow (aqua for the frame counter, peach for the
    category) at lower intensity, backed by a soft scrim instead of a full
    glass box, for legibility over any image. Nav arrows sit at a dim-but-
    still-visible idle opacity — deliberately not near-zero, since fading to
@@ -692,7 +707,7 @@
    hover state to reveal them. */
 .minimal .readoutTL,
 .minimal .readoutTR {
-  background: rgba(0, 0, 0, 0.32);
+  background: rgba(8, 26, 40, 0.38);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: none;
@@ -706,11 +721,11 @@
 }
 
 .minimal .readoutTL {
-  text-shadow: 0 0 6px rgba(47, 224, 138, 0.45);
+  text-shadow: 0 0 6px rgba(var(--aqua-rgb), 0.45);
 }
 
 .minimal .readoutTR {
-  text-shadow: 0 0 6px rgba(140, 224, 90, 0.45);
+  text-shadow: 0 0 6px rgba(var(--peach-rgb), 0.45);
 }
 
 .minimal .navBtn {

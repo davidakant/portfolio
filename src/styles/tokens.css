@@ -1,25 +1,81 @@
 :root {
-  /* Black ground, white and gray text, two greens. The grays are biased
-     green rather than neutral so they sit inside the palette instead of on
-     top of it. */
-  --color-bg: #050807;
-  --color-bg-raised: #0a100c;
-  --color-fg: #f2f7f3;
-  --color-fg-muted: #9caba2;
-  --color-border: #1c2620;
+  /* A shoreline, read top to bottom: the full gamut of blues from deep
+     ocean to pale aqua, a line of foam, then warm light sand. The dark
+     driftwood tone is reserved for grounding (the footer, shadows, text on
+     the sand) and never fills a large field. */
 
-  /* The two accents, split by role and used site-wide (they used to be a
-     cyan and a magenta declared per-page on .holo). --green is the primary:
-     labels, links, controls, active state, hover borders. --green-2 is the
-     second voice, kept for things that need to read as a distinct group
-     rather than a continuation of the first. */
-  --green: #2fe08a;
-  --green-2: #8ce05a;
+  /* Blues, dark to light. */
+  --abyss: #0f3550;
+  --deep: #174a68;
+  --cerulean: #1f6b8a;
+  --turquoise: #3f9bb0;
+  --shallows: #8ccdd3;
+  --mist: #cfe8e6;
 
-  /* --color-accent is what the cursor, ::selection and the project-page
-     links use; it tracks the primary. */
-  --color-accent: var(--green);
-  --color-accent-soft: var(--green-2);
+  /* Sands, light and warm. */
+  --foam: #f7efe4;
+  --cream: #f1dfcb;
+  --sand: #ebd2bc;
+
+  /* Grounding tones. */
+  --driftwood: #3f342e;
+  --bark: #5a4a40;
+  --bark-soft: #65554b;
+
+  /* Two accents for text sitting on dark water: --aqua is the primary
+     (links, controls, active state, hover borders), --peach is the second
+     voice for things that should read as a distinct group. */
+  --aqua: #9adbe0;
+  --peach: #e7c9b3;
+
+  /* Their counterparts for text sitting on light surfaces (the frosted
+     cards, the sand, the About dialog). Darkened until they pass contrast
+     anywhere from pale aqua down to the sand. */
+  --teal-ink: #11505a;
+  --clay: #6a3a26;
+
+  /* RGB channels, so a glow or tint can be written rgba(var(--aqua-rgb), 0.5)
+     and still follow the palette. */
+  --aqua-rgb: 154, 219, 224;
+  --peach-rgb: 231, 201, 179;
+  --abyss-rgb: 15, 53, 80;
+  --driftwood-rgb: 63, 52, 46;
+
+  --color-bg: var(--abyss);
+  --color-bg-raised: var(--deep);
+  --color-fg: #f7efe6;
+  --color-fg-muted: #bcd0d6;
+  --color-border: #2a5a73;
+
+  /* --color-accent is what the cursor and the project-page links use. */
+  --color-accent: var(--aqua);
+  --color-accent-soft: var(--peach);
+
+  /* The ground every full page shares, sized to the page rather than the
+     window so that scrolling walks down the shore: a lit patch of water at
+     the top, the blues lightening through the middle, a foam line at about
+     two-thirds, and sand below it. Text that sits directly on this ground
+     only lives near the top, where it is always dark; anything with real
+     reading text carries its own frosted panel. */
+  --shoreline:
+    radial-gradient(ellipse 70% 22% at 25% 0%, rgba(74, 163, 204, 0.3), transparent 70%),
+    radial-gradient(ellipse 140% 2.2% at 50% 65.5%, rgba(255, 255, 255, 0.85), transparent 100%),
+    linear-gradient(to bottom, #0f3550 0%, #174a68 20%, #1f6b8a 30%, #3f9bb0 44%, #8ccdd3 56%, #cfe8e6 62.5%, #f7efe4 66%, #f1dfcb 76%, #ebd2bc 100%);
+
+  /* Frosted panel that holds dark reading text over any stretch of the
+     ground, and the short warm shadow it casts. The shadow's negative spread
+     keeps it from reaching past a scroll container's edge, where a clipped
+     shadow shows as a hard line on a light ground. */
+  --glass-light-body: linear-gradient(180deg, rgba(255, 250, 242, 0.84) 0%, rgba(255, 250, 242, 0.7) 45%, rgba(255, 250, 242, 0.8) 100%);
+  --glass-light-rim: rgba(255, 252, 246, 0.9);
+  --glass-light-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -16px 22px -14px rgba(90, 70, 55, 0.12),
+    0 20px 26px -12px rgba(var(--driftwood-rgb), 0.3),
+    0 0 0 1px rgba(var(--driftwood-rgb), 0.08);
+
+  /* Clear glass for controls over dark water or over a photo. */
+  --glass-dark-body: linear-gradient(180deg, rgba(255, 250, 242, 0.17) 0%, rgba(255, 250, 242, 0.04) 45%, rgba(255, 250, 242, 0.09) 100%);
 
   --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;

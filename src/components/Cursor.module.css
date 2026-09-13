@@ -27,15 +27,26 @@
   border: 1.5px solid var(--color-accent);
 }
 
+/* An aqua ring alone disappears once the page scrolls onto the pale sand,
+   so it carries a thin deep-blue hairline inside and out; the aqua glow
+   does the work over the dark water. */
 .holo {
   border-radius: 0;
   background: transparent;
-  border: 1.5px solid #2fe08a;
-  box-shadow: 0 0 6px #2fe08a, 0 0 14px rgba(47, 224, 138, 0.5);
+  border: 1.5px solid var(--aqua);
+  box-shadow:
+    0 0 0 1px rgba(var(--abyss-rgb), 0.55),
+    inset 0 0 0 1px rgba(var(--abyss-rgb), 0.55),
+    0 0 6px rgba(var(--aqua-rgb), 0.9),
+    0 0 14px rgba(var(--aqua-rgb), 0.45);
   transform-origin: center;
 }
 
 .holo.hovering {
-  border-color: #2fe08a;
-  box-shadow: 0 0 10px #2fe08a, 0 0 22px rgba(47, 224, 138, 0.6);
+  border-color: var(--aqua);
+  box-shadow:
+    0 0 0 1px rgba(var(--abyss-rgb), 0.55),
+    inset 0 0 0 1px rgba(var(--abyss-rgb), 0.55),
+    0 0 10px rgba(var(--aqua-rgb), 0.95),
+    0 0 22px rgba(var(--aqua-rgb), 0.55);
 }

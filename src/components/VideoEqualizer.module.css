@@ -1,7 +1,8 @@
 /* "Liquid glass" pill housing the equalizer bars — same recipe used
    throughout the HUD viewer (layered top-lit/bottom-shaded gradient body,
    inset rim highlight + bottom shadow for depth, outer drop shadow). Sized
-   at 2x the original compact scale. */
+   at 2x the original compact scale. It overlays the video, so it stays
+   clear glass. */
 .eqBox {
   display: flex;
   align-items: flex-end;
@@ -10,15 +11,14 @@
   padding: 10px 16px;
   border-radius: 20px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.14) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.26) 0%, rgba(255, 250, 242, 0.05) 45%, rgba(255, 250, 242, 0.14) 100%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 252, 246, 0.3);
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.7),
+    inset 0 2px 2px rgba(255, 250, 242, 0.65),
     inset 0 -12px 20px -12px rgba(0, 0, 0, 0.3),
-    0 12px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .eqBar {
@@ -28,8 +28,7 @@
   border-radius: 4px;
   transform: scaleY(0.06);
   transform-origin: bottom;
-  /* Green at the bottom fading to yellow-green at the top, per the site's
-     established two-tone accent scheme. */
-  background: linear-gradient(to top, var(--green, #2fe08a), var(--yellow-green, #8ce05a));
+  /* Aqua at the bottom fading to peach at the top, the site's two accents. */
+  background: linear-gradient(to top, var(--aqua), var(--peach));
   will-change: transform;
 }

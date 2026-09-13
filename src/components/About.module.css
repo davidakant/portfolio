@@ -4,12 +4,11 @@
   display: flex;
   align-items: center;
   padding-left: var(--space-sm);
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid rgba(247, 239, 230, 0.16);
 }
 
-/* Same liquid-glass recipe as the site's other round controls (translucent
-   body, inset rim highlight, drop shadow), in the second green so it does
-   not read as part of the primary-green nav row. */
+/* Same clear-glass recipe as the site's other round controls, in peach so it
+   does not read as part of the aqua nav row. */
 .trigger {
   width: 30px;
   height: 30px;
@@ -17,45 +16,48 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(140, 224, 90, 0.35);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
+  border: 1px solid rgba(var(--peach-rgb), 0.45);
+  background: var(--glass-dark-body);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    0 6px 16px rgba(0, 0, 0, 0.6);
+    inset 0 1px 1px rgba(255, 250, 242, 0.5),
+    0 6px 16px rgba(10, 30, 45, 0.35);
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.95rem;
   line-height: 1;
-  color: var(--green-2);
-  text-shadow: 0 0 8px rgba(140, 224, 90, 0.5);
+  color: var(--peach);
+  text-shadow: 0 0 8px rgba(var(--peach-rgb), 0.45);
   transition: border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
 }
 
 .trigger:hover {
-  border-color: var(--green-2);
+  border-color: var(--peach);
   transform: translateY(-1px);
 }
 
+/* A deep-water header band over a sand-white body, so the blues and the
+   sand meet in here the way they meet on the page. */
 .dialog {
   width: min(560px, 92vw);
   padding: 0;
-  border: 2px solid rgba(255, 255, 255, 0.34);
+  overflow: hidden;
+  border: 2px solid var(--glass-light-rim);
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(18, 26, 21, 0.96) 0%, rgba(8, 13, 10, 0.97) 100%);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.98) 0%, rgba(241, 223, 203, 0.98) 100%);
   /* Deliberately no backdrop-filter here, unlike the site's other glass.
      It would make this element a containing block for fixed-position
      descendants, which would break the cursor this dialog renders inside
-     itself — and behind a panel that is 96% opaque it was invisible work
-     anyway. The blur that actually reads is on ::backdrop below. */
-  box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.35),
-    0 40px 100px rgba(0, 0, 0, 0.85);
-  color: var(--color-fg);
+     itself, and behind a panel this opaque it would be invisible work
+     anyway. The blur that actually reads is on ::backdrop below. The
+     overflow clip above is safe for the same reason: the fixed cursor's
+     containing block is the viewport, not this element. */
+  box-shadow: 0 40px 100px rgba(15, 35, 50, 0.45);
+  color: var(--driftwood);
 }
 
 .dialog::backdrop {
-  background: rgba(4, 7, 5, 0.8);
+  background: rgba(var(--abyss-rgb), 0.55);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -64,14 +66,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  padding: 30px 32px 28px;
+  padding: 0 32px 28px;
 }
 
+/* Bleeds out to the dialog's edges through .inner's side padding. */
 .head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
+  margin: 0 -32px 8px;
+  padding: 18px 24px 18px 32px;
+  background: linear-gradient(90deg, var(--deep) 0%, var(--cerulean) 60%, var(--turquoise) 100%);
 }
 
 .title {
@@ -79,8 +85,7 @@
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green);
-  text-shadow: 0 0 8px rgba(47, 224, 138, 0.6);
+  color: var(--color-fg);
 }
 
 .close {
@@ -91,19 +96,19 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-fg-muted);
+  border: 1px solid rgba(247, 239, 230, 0.45);
+  color: var(--color-fg);
   font-size: 0.9rem;
-  transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
 }
 
 .close:hover {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--color-fg);
+  background: rgba(247, 239, 230, 0.12);
 }
 
 .text {
-  color: var(--color-fg-muted);
+  color: var(--bark);
   font-size: 0.95rem;
   line-height: 1.65;
   margin: 0;
@@ -114,25 +119,24 @@
   flex-direction: column;
   gap: 0.15rem;
   padding-top: var(--space-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(var(--driftwood-rgb), 0.2);
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.85rem;
 }
 
 .name {
-  color: var(--color-fg);
+  color: var(--driftwood);
   letter-spacing: 0.06em;
 }
 
 .email {
-  color: var(--green);
-  text-shadow: 0 0 8px rgba(47, 224, 138, 0.6);
+  color: var(--teal-ink);
   align-self: flex-start;
   border-bottom: 1px solid transparent;
 }
 
 .email:hover {
-  border-bottom-color: var(--green);
+  border-bottom-color: var(--teal-ink);
 }
 
 .links {
@@ -144,11 +148,10 @@
 }
 
 .links a {
-  color: var(--green-2);
-  text-shadow: 0 0 8px rgba(140, 224, 90, 0.5);
+  color: var(--clay);
   border-bottom: 1px solid transparent;
 }
 
 .links a:hover {
-  border-bottom-color: var(--green-2);
+  border-bottom-color: var(--clay);
 }

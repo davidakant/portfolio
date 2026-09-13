@@ -1,0 +1,42 @@
+/* Positioned above the fixed page background layers (z-index 0), like each
+   page's own .chrome. */
+.footer {
+  position: relative;
+  z-index: 2;
+  background: var(--driftwood);
+  box-shadow: inset 0 1px 0 rgba(var(--peach-rgb), 0.18);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block: 1.4rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.name {
+  color: rgba(247, 239, 230, 0.72);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.email {
+  color: var(--aqua);
+}
+
+.linkedin {
+  color: var(--peach);
+}
+
+.email:hover,
+.linkedin:hover {
+  text-decoration: underline;
+}

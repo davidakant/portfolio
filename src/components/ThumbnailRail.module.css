@@ -1,3 +1,6 @@
+/* The rail can land on the water or on the sand depending on page height,
+   so the glass is a neutral warm white with a driftwood-tinted shadow that
+   reads on both. */
 .railOuter {
   position: relative;
   margin-top: var(--space-sm);
@@ -5,15 +8,15 @@
   border-radius: 20px;
   overflow: hidden;
   cursor: grab;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.1) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 252, 246, 0.5);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.24) 0%, rgba(255, 250, 242, 0.08) 45%, rgba(255, 250, 242, 0.16) 100%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.7),
-    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    inset 0 -8px 12px -8px rgba(var(--abyss-rgb), 0.2),
+    0 10px 24px rgba(var(--driftwood-rgb), 0.28),
+    0 0 0 1px rgba(var(--driftwood-rgb), 0.06);
 }
 
 /* No explicit z-index — stays "auto" so it paints behind the rail's own
@@ -55,7 +58,7 @@
   height: 110px;
   padding: 0;
   border-radius: 8px;
-  border: 1px solid rgba(47, 224, 138, 0.2);
+  border: 1px solid rgba(255, 252, 246, 0.4);
   overflow: hidden;
   filter: grayscale(1);
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease, border-color 0.2s ease;
@@ -79,12 +82,16 @@
 .thumb:hover {
   width: 110px;
   filter: grayscale(0);
-  border-color: rgba(47, 224, 138, 0.5);
+  border-color: rgba(var(--aqua-rgb), 0.8);
 }
 
+/* Aqua ring with a deep-blue hairline outside it, so the selected thumbnail
+   is marked whether the rail sits on the water or the sand. */
 .thumbActive {
-  border-color: var(--green, #2fe08a);
-  box-shadow: 0 0 12px rgba(47, 224, 138, 0.5);
+  border-color: var(--aqua);
+  box-shadow:
+    0 0 0 1px rgba(var(--abyss-rgb), 0.5),
+    0 0 12px rgba(var(--aqua-rgb), 0.6);
 }
 
 .divider {
@@ -102,7 +109,7 @@
   bottom: 0;
   width: 3px;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, transparent, #8ce05a 15%, #8ce05a 85%, transparent);
+  background: linear-gradient(to bottom, transparent, #d4a283 15%, #d4a283 85%, transparent);
   border-radius: 2px;
-  box-shadow: 0 0 10px 2px rgba(140, 224, 90, 0.75), 0 0 22px 4px rgba(140, 224, 90, 0.4);
+  box-shadow: 0 0 10px 2px rgba(var(--peach-rgb), 0.7), 0 0 22px 4px rgba(var(--peach-rgb), 0.35);
 }

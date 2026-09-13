@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background: radial-gradient(ellipse 85% 65% at 32% 8%, #07281b 0%, #04120d 45%, #050807 100%);
+  background: var(--shoreline);
 }
 
 .ambient {
@@ -11,8 +11,8 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 25%, rgba(47, 224, 138, 0.06), transparent 42%),
-    radial-gradient(circle at 85% 75%, rgba(140, 224, 90, 0.06), transparent 42%);
+    radial-gradient(circle at 15% 25%, rgba(var(--aqua-rgb), 0.06), transparent 42%),
+    radial-gradient(circle at 85% 75%, rgba(var(--peach-rgb), 0.05), transparent 42%);
 }
 
 .chrome {
@@ -30,13 +30,14 @@
   gap: var(--space-xs);
 }
 
+/* The hero sits on the deepest water, so it keeps light text and glows. */
 .headline {
   font-family: 'Orbitron', var(--font-display);
   font-weight: 700;
   font-size: var(--size-display);
   line-height: 0.95;
-  color: #f2f7f3;
-  text-shadow: 0 0 20px rgba(47, 224, 138, 0.4), 0 0 40px rgba(140, 224, 90, 0.25);
+  color: var(--color-fg);
+  text-shadow: 0 0 22px rgba(var(--aqua-rgb), 0.4), 0 0 48px rgba(var(--peach-rgb), 0.22);
 }
 
 .skillLines {
@@ -46,8 +47,7 @@
   margin-top: var(--space-sm);
 }
 
-/* Same mono/green treatment as the section eyebrows below. The glitch is
-   two RGB-split clones of the same text (::before/::after, via
+/* The glitch is two RGB-split clones of the same text (::before/::after, via
    data-text) that stay fully clipped/invisible almost the whole cycle and
    only flash a brief offset "tear" — a HUD scanline artifact, not a
    constant effect. */
@@ -57,8 +57,8 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: 1rem;
   letter-spacing: 0.1em;
-  color: var(--green);
-  text-shadow: 0 0 8px rgba(47, 224, 138, 0.6);
+  color: var(--aqua);
+  text-shadow: 0 0 8px rgba(var(--aqua-rgb), 0.5);
 }
 
 .skillLine::before,
@@ -73,7 +73,7 @@
 }
 
 .skillLine::before {
-  color: var(--green-2);
+  color: var(--peach);
   transform: translate(-2px, 0);
 }
 
@@ -113,11 +113,10 @@
   margin-top: var(--space-xs);
 }
 
-/* Same "liquid glass" recipe used throughout HudShowcase (layered top-lit/
-   bottom-shaded gradient body, inset rim highlight + bottom shadow for
-   physical depth, outer drop shadow, radial specular highlight via
-   ::before) — no shimmer, since these are one-off contact links rather than
-   a control the layout wants to keep drawing attention back to. */
+/* Same clear "liquid glass" recipe used throughout HudShowcase (layered
+   top-lit/bottom-shaded gradient body, inset rim highlight + bottom shadow,
+   outer drop shadow, radial specular highlight via ::before), with no
+   shimmer, since these are one-off contact links. */
 .contactBadge {
   position: relative;
   overflow: hidden;
@@ -128,15 +127,14 @@
   letter-spacing: 0.05em;
   padding: 9px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(47, 224, 138, 0.35);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.09) 100%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(var(--aqua-rgb), 0.42);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.2) 0%, rgba(255, 250, 242, 0.06) 45%, rgba(255, 250, 242, 0.12) 100%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 1px 1px rgba(255, 250, 242, 0.55),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
-    0 10px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 10px 24px rgba(10, 30, 45, 0.35);
   color: var(--color-fg);
   transition: all var(--duration-fast) var(--ease-out);
 }
@@ -149,60 +147,59 @@
   width: 55%;
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.35), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
 }
 
 .contactBadge:hover {
-  border-color: var(--green);
+  border-color: var(--aqua);
   transform: translateY(-1px);
 }
 
 .contactBadgeAlt {
-  border-color: rgba(140, 224, 90, 0.35);
+  border-color: rgba(var(--peach-rgb), 0.45);
 }
 
 .contactBadgeAlt:hover {
-  border-color: var(--green-2);
+  border-color: var(--peach);
 }
 
 .badgeLabel {
   position: relative;
   z-index: 1;
   text-shadow:
-    0 0 4px rgba(47, 224, 138, 0.9),
-    0 0 10px rgba(47, 224, 138, 0.6),
-    0 0 18px rgba(47, 224, 138, 0.4);
+    0 0 4px rgba(var(--aqua-rgb), 0.85),
+    0 0 12px rgba(var(--aqua-rgb), 0.45);
 }
 
 .contactBadgeAlt .badgeLabel {
   text-shadow:
-    0 0 4px rgba(140, 224, 90, 0.9),
-    0 0 10px rgba(140, 224, 90, 0.6),
-    0 0 18px rgba(140, 224, 90, 0.4);
+    0 0 4px rgba(var(--peach-rgb), 0.8),
+    0 0 12px rgba(var(--peach-rgb), 0.4);
 }
 
 .featuredProjectSection {
   padding: 0 0 var(--space-lg);
 }
 
+/* Sits on the water, just below the hero. */
 .featuredProjectEyebrow {
   display: block;
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--green-2);
-  text-shadow: 0 0 6px rgba(140, 224, 90, 0.6);
+  color: var(--peach);
+  text-shadow: 0 0 6px rgba(var(--peach-rgb), 0.4);
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-xs);
-  border-bottom: 1px solid rgba(140, 224, 90, 0.2);
+  border-bottom: 1px solid rgba(var(--peach-rgb), 0.3);
 }
 
-/* Lightweight lightbox for the film — the only modal on the site, so its
-   chrome is intentionally plain (dark scrim + a simple glass panel) rather
-   than borrowing the HUD viewer's full badge/readout treatment, which is
-   built around a persistent multi-item viewer, not a one-shot video. */
+/* Lightweight lightbox for the film — the only modal on the site besides
+   About, so its chrome is intentionally plain (dark scrim + a simple glass
+   panel) rather than borrowing the HUD viewer's full badge/readout
+   treatment, which is built around a persistent multi-item viewer. */
 .filmModalBackdrop {
   position: fixed;
   inset: 0;
@@ -211,7 +208,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-md);
-  background: rgba(4, 7, 5, 0.85);
+  background: rgba(8, 26, 40, 0.85);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -221,8 +218,8 @@
   width: min(960px, 100%);
   border-radius: 20px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 252, 246, 0.4);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
   background: #000;
 }
 
@@ -244,8 +241,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(6, 10, 8, 0.6);
+  border: 1px solid rgba(255, 252, 246, 0.4);
+  background: rgba(var(--abyss-rgb), 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #fff;
@@ -255,22 +252,23 @@
 }
 
 .filmModalClose:hover {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--aqua);
+  color: var(--aqua);
 }
 
 .featured {
   padding: 0 0 var(--space-lg);
 }
 
+/* Sits on the sand (or the pale aqua just above it at some widths), so it
+   uses the dark teal meant for light grounds rather than a glow. */
 .featuredEyebrow {
   display: block;
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
-  color: var(--green);
-  text-shadow: 0 0 6px rgba(47, 224, 138, 0.6);
+  color: var(--teal-ink);
   margin-bottom: var(--space-sm);
   padding-bottom: var(--space-xs);
-  border-bottom: 1px solid rgba(47, 224, 138, 0.2);
+  border-bottom: 1px solid rgba(var(--driftwood-rgb), 0.2);
 }

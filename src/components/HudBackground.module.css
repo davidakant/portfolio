@@ -6,6 +6,9 @@
   pointer-events: none;
 }
 
+/* Fades out as the page scrolls onto the sand, where the grid lines read as
+   clutter rather than light on water. --shore runs 0 (top of the page) to 1
+   (on the sand) and is set on .bg by AmbientField. */
 .gridPlane {
   position: absolute;
   left: 50%;
@@ -14,10 +17,10 @@
   height: 220vh;
   transform: translate(-50%, -50%) perspective(700px) rotateX(62deg) rotateZ(-6deg);
   background-image:
-    linear-gradient(rgba(47, 224, 138, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(47, 224, 138, 0.14) 1px, transparent 1px);
+    linear-gradient(rgba(var(--aqua-rgb), 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--aqua-rgb), 0.2) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 55% 45% at 50% 35%, black 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 55% 45% at 50% 35%, black 0%, transparent 70%);
-  opacity: 0.55;
+  opacity: calc(0.5 * (1 - var(--shore, 0)));
 }

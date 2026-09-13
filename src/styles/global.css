@@ -65,9 +65,10 @@ button {
   cursor: pointer;
 }
 
+/* Dark teal with white text reads the same over the water and the sand. */
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--teal-ink);
+  color: #ffffff;
 }
 
 .container {

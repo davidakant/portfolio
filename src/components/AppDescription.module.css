@@ -1,6 +1,7 @@
 /* Sits in the same grid row as the screenshot (MediaGallery's own 3-column
    grid — the image occupies column 1, this spans the remaining two) rather
-   than a separate layout, so the image keeps its original small grid size. */
+   than a separate layout, so the image keeps its original small grid size.
+   Always rendered inside a frosted light panel, so the text is dark. */
 .appDescription {
   grid-column: span 2;
   align-self: start;
@@ -8,11 +9,15 @@
   font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--bark);
 }
 
+/* global.css gives every <p> the light muted color meant for dark grounds,
+   and an element rule beats inheritance, so paragraphs here have to take
+   the panel's dark text back explicitly. */
 .appDescription p {
   margin: 0 0 var(--space-sm);
+  color: inherit;
 }
 
 .appDescription p:last-child {
@@ -24,7 +29,7 @@
 .appDescription .introText {
   margin: 0;
   font-weight: 700;
-  color: #fff;
+  color: var(--abyss);
 }
 
 .bulletList {
@@ -47,12 +52,12 @@
 }
 
 .descLabel {
-  color: var(--green);
+  color: var(--teal-ink);
   font-weight: 700;
 }
 
 .highlightAlt {
-  color: var(--green-2);
+  color: var(--clay);
 }
 
 .noteAlt,
@@ -63,12 +68,13 @@
 }
 
 .noteAlt {
-  color: var(--green-2);
+  color: var(--clay);
   font-size: 0.85rem;
 }
 
+/* A red dark enough to hold contrast on the light panel. */
 .noteRed {
-  color: #ff3b3b;
+  color: #9b2226;
   font-size: calc(0.85rem - 1px);
 }
 

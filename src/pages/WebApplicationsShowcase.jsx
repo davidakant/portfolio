@@ -54,8 +54,8 @@ const REALTOR_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — the page's one deliberate
-// accent use, everything else is white/green — so it renders as a
+// Split around the phrase called out in the accent color — the page's one deliberate
+// accent use, everything else is the panel's base text colors — so it renders as a
 // highlighted <span>.
 const REALTOR_HIGHLIGHT = {
   before:
@@ -90,7 +90,7 @@ const PROJECT_MANAGEMENT_BULLETS = [
 ]
 
 // Same pattern as REALTOR_HIGHLIGHT — split around the one phrase called out
-// in pink.
+// in the accent color.
 const PROJECT_MANAGEMENT_HIGHLIGHT = {
   before:
     'This dashboard manages a construction project through its whole lifecycle. Scheduling, budget tracking, team directories, document management for photos and drawings, and a closeout punch list all live on one screen. To keep it light, ',
@@ -123,7 +123,7 @@ const PROJECT_COORDINATION_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const PROJECT_COORDINATION_HIGHLIGHT = {
   before:
@@ -155,7 +155,7 @@ const MOBILE_LENS_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const MOBILE_LENS_HIGHLIGHT = {
   before:
@@ -190,7 +190,7 @@ const PIPELINE_AUTOMATION_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const PIPELINE_AUTOMATION_HIGHLIGHT = {
   before:
@@ -225,7 +225,7 @@ const RESIDENTIAL_ARCHITECTURE_BROCHURE_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const RESIDENTIAL_ARCHITECTURE_BROCHURE_HIGHLIGHT = {
   before:
@@ -259,7 +259,7 @@ const CALETA_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const CALETA_HIGHLIGHT = {
   before:
@@ -293,7 +293,7 @@ const BUILDHR_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const BUILDHR_HIGHLIGHT = {
   before:
@@ -328,7 +328,7 @@ const RETRIEVER_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const RETRIEVER_HIGHLIGHT = {
   before:
@@ -362,7 +362,7 @@ const CREATIVE_OPS_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink — same pattern as the other
+// Split around the phrase called out in the accent color — same pattern as the other
 // highlighted phrases on this page.
 const CREATIVE_OPS_HIGHLIGHT = {
   before:

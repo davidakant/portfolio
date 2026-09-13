@@ -56,7 +56,7 @@ const STORYBOOK_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the Web
+// Split around the phrase called out in the accent color, same pattern as the Web
 // Applications page's highlighted phrases.
 const STORYBOOK_HIGHLIGHT = {
   before:
@@ -87,7 +87,7 @@ const SPOT_THE_DIFFERENCE_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the other
+// Split around the phrase called out in the accent color, same pattern as the other
 // highlighted phrases on this page.
 const SPOT_THE_DIFFERENCE_HIGHLIGHT = {
   before:
@@ -118,7 +118,7 @@ const UPPERCASE_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the other
+// Split around the phrase called out in the accent color, same pattern as the other
 // highlighted phrases on this page and on Applications.
 const UPPERCASE_HIGHLIGHT = {
   before:
@@ -150,7 +150,7 @@ const CODE_BREAKER_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the other
+// Split around the phrase called out in the accent color, same pattern as the other
 // highlighted phrases on this page and on Applications.
 const CODE_BREAKER_HIGHLIGHT = {
   before:
@@ -181,7 +181,7 @@ const VIDEO_JIGSAW_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the other
+// Split around the phrase called out in the accent color, same pattern as the other
 // highlighted phrases on this page.
 const VIDEO_JIGSAW_HIGHLIGHT = {
   before:
@@ -212,7 +212,7 @@ const MINI_GAMES_BULLETS = [
   },
 ]
 
-// Split around the phrase called out in pink, same pattern as the other
+// Split around the phrase called out in the accent color, same pattern as the other
 // highlighted phrases on this page.
 const MINI_GAMES_HIGHLIGHT = {
   before:
