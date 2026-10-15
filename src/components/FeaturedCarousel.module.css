@@ -52,6 +52,10 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
+  /* Cards stretch to the tallest in the row; packing the rows to the top
+     keeps that spare height at the bottom instead of pushing a shorter
+     card's text down, so every tag line starts at the same height. */
+  align-content: start;
   overflow: hidden;
   flex: 0 0 100%;
   min-width: 0;
@@ -118,15 +122,20 @@
   margin: 0;
 }
 
+/* One fixed frame for every card, so the image bottoms line up across the
+   row whatever shape each screenshot is. 16:10 is the common screenshot
+   shape; anything else is cropped to fill rather than letterboxed. */
 .media {
   position: relative;
   display: block;
-  min-height: 260px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   color: inherit;
 }
 
 .image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

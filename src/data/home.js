@@ -28,7 +28,7 @@ export const FEATURED_PROJECTS = [
     processUrl: 'https://dak-cameralot.netlify.app/process/',
     image: cameralotScreenshot,
     imageAlt:
-      'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing a people tag list, a month-by-month photo grid, and a detail panel for one picture',
+      'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing the January 1961 inauguration photographs and a detail panel for John F. Kennedy at the 1961 Inaugural Ball',
     tag: 'Photo & Video Archive',
     title: 'Cameralot',
     tagline: '"Find any photo by who is in it, when it was taken, and what was happening."',

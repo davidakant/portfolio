@@ -648,7 +648,7 @@ export const projects = [
           {
             type: 'image',
             src: cameralotScreenshot,
-            alt: 'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing a people tag list, a month-by-month photo grid of field-trip photos, and a detail panel for one picture',
+            alt: 'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing the January 1961 inauguration photographs and a detail panel for John F. Kennedy at the 1961 Inaugural Ball',
             caption: 'A searchable Kennedy family photo archive: people, events, dates, scenes and a family tree',
             href: CAMERALOT_URL,
           },
