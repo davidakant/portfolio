@@ -22,6 +22,7 @@ const SKILL_LINES = [
   'Pipeline Development · Scripting · Workflow Optimization · Asset Management',
   'Project Management · Process Improvement · Stakeholder Communication · Quality Assurance',
   'Design & Visualization · Architecture · 2D & 3D Graphics · AI-Assisted Visualization',
+  'Requirements & Documentation · Vendor Coordination · Metadata Taxonomy',
 ]
 
 export default function Home() {
