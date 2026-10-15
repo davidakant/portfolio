@@ -2,6 +2,7 @@ import comfortCaninesPoster from '../assets/projects/ferris-video/ads-videos/com
 import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-library.webp'
 import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
 import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
+import cameralotScreenshot from '../assets/projects/cameralot/homepage/cameralot-archive.webp'
 
 // Home-page content that is not one of the /work/:slug categories in
 // projects.js. It lives in its own module rather than in pages/Home.jsx
@@ -16,10 +17,24 @@ import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbo
 // same file either way. `filmUrl`/`filmPoster`/`filmDuration` are optional —
 // omit them (as every entry below does — none has a video) and the
 // "Watch the Film" button just doesn't render. Order is carousel order —
-// Retriever is first (leftmost) per request.
+// Cameralot is first (leftmost) per request.
 // Exported so the About dialog can count them rather than quoting a number
 // that goes stale the next time this list changes.
 export const FEATURED_PROJECTS = [
+  {
+    id: 'cameralot',
+    url: 'https://dak-cameralot.netlify.app/',
+    // Optional: a case study page, shown as a second link beside the live site.
+    processUrl: 'https://dak-cameralot.netlify.app/process/',
+    image: cameralotScreenshot,
+    imageAlt:
+      'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing a people tag list, a month-by-month photo grid, and a detail panel for one picture',
+    tag: 'Photo & Video Archive',
+    title: 'Cameralot',
+    tagline: '"Find any photo by who is in it, when it was taken, and what was happening."',
+    text: 'A searchable archive of over a thousand archival Kennedy family photographs, with a register of the whole family, guided tours, and a family tree. I was the product manager and ran quality assurance. AI agents were my engineers.',
+    note: 'Demo scenario: the client, an amateur historian, is fictional, and so is the commission. The archive is real, and every picture in it is credited on the How It Was Built page.',
+  },
   {
     id: 'retriever',
     url: 'https://dak-retriever.netlify.app/',

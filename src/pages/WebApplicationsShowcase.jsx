@@ -337,6 +337,40 @@ const RETRIEVER_HIGHLIGHT = {
   after: ', which is the case for a shared library in terms a studio actually tracks.',
 }
 
+const CAMERALOT_NOTE =
+  'NOTE: Demo scenario. The client, an amateur historian, is fictional, and so is the commission. The archive is real: archival photographs of the Kennedy family, each one traced to the archive that holds it and its rights statement.'
+
+const CAMERALOT_INTRO =
+  'A searchable photo and video archive of the Kennedy family, built for a fictional amateur historian. I was the product manager and ran quality assurance, and AI agents were the engineering team.'
+
+const CAMERALOT_BULLETS = [
+  {
+    label: 'Find Anyone:',
+    text: ' People tags with Match All and Match Any, and a search across descriptions, names, and folders.',
+  },
+  {
+    label: 'Dates a Person Confirms:',
+    text: " Every date comes from the archive's own record. A camera's or a folder's guess stays marked as a guess until someone confirms it.",
+  },
+  {
+    label: 'Family Tree:',
+    text: " Worked out from each person's parents alone. It opens on Joseph and Rose Kennedy's nine children, and each family opens with a click.",
+  },
+  {
+    label: 'Rights Before Features:',
+    text: " Every archival picture is public domain or openly licensed, and the case study page credits each one. The historian's field-trip photos are AI-generated images of real places, and the credits say so.",
+  },
+]
+
+// Split around the phrase called out in the accent color — same pattern as the other
+// highlighted phrases on this page.
+const CAMERALOT_HIGHLIGHT = {
+  before:
+    'Cameralot is a product case study as much as an app. I wrote the requirements, made the judgment calls, and accepted or rejected the work, while AI agents wrote the code, researched the archives, and cataloged the photographs. The How It Was Built page walks through all of it, including the one rule I held the build to: ',
+  text: 'trust nothing until it has been seen to fail',
+  after: '.',
+}
+
 const CREATIVE_OPS_NOTE =
   'NOTE: This is a fictional concept prototype built as a portfolio piece for a Creative Operations Manager application. DAK Labs and everything in it, including every person, campaign, vendor, and metric, is invented. There is no backend and nothing here is connected to a real system.'
 
@@ -390,6 +424,14 @@ const SECTION_DESCRIPTIONS = {
     intro: CREATIVE_OPS_INTRO,
     bullets: CREATIVE_OPS_BULLETS,
     highlight: CREATIVE_OPS_HIGHLIGHT,
+  },
+  'Cameralot: Photo & Video Archive': {
+    note: CAMERALOT_NOTE,
+    noteColor: 'red',
+    notePosition: 'bottom',
+    intro: CAMERALOT_INTRO,
+    bullets: CAMERALOT_BULLETS,
+    highlight: CAMERALOT_HIGHLIGHT,
   },
   'Water Filtration Infographic': {
     intro: WATER_FILTRATION_INTRO,
@@ -591,6 +633,17 @@ export default function WebApplicationsShowcase() {
                     >
                       View Live Site ↗
                     </a>
+                    {section.process && (
+                      <a
+                        href={section.process.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.sectionCta}
+                        data-cursor-hover
+                      >
+                        {section.process.label} ↗
+                      </a>
+                    )}
                   </div>
                 )}
               </div>

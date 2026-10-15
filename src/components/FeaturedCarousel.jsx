@@ -149,6 +149,22 @@ export default function FeaturedCarousel({ projects, onWatchFilm }) {
                       >
                         View Live Site ↗
                       </a>
+                      {project.processUrl && (
+                        <>
+                          <span className={styles.ctaDivider} aria-hidden="true">
+                            |
+                          </span>
+                          <a
+                            href={project.processUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.cta}
+                            data-cursor-hover
+                          >
+                            How It Was Built ↗
+                          </a>
+                        </>
+                      )}
                       {project.filmUrl && (
                         <>
                           <span className={styles.ctaDivider} aria-hidden="true">

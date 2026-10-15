@@ -14,6 +14,7 @@ import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-libra
 import caletaScreenshot from '../assets/projects/caleta-residences/homepage/caleta-screenshot.webp'
 import b2bScreenshot from '../assets/projects/b2b-campaign/homepage/b2b-hero-crop.webp'
 import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
+import cameralotScreenshot from '../assets/projects/cameralot/homepage/cameralot-archive.webp'
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'
 import spotTheDifferenceScreenshot from '../assets/projects/web-games/spot-the-difference/spotdiff-puzzle.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
@@ -527,6 +528,8 @@ export const RESIDENTIAL_ARCHITECTURE_BROCHURE_URL = 'https://dak-ahatest.netlif
 export const WATER_FILTRATION_URL = 'https://dak-waterfiltration.netlify.app/'
 export const RETRIEVER_URL = 'https://dak-retriever.netlify.app/'
 export const CREATIVE_OPS_URL = 'https://dak-creativeops.netlify.app/'
+export const CAMERALOT_URL = 'https://dak-cameralot.netlify.app/'
+export const CAMERALOT_PROCESS_URL = 'https://dak-cameralot.netlify.app/process/'
 export const MINI_GAMES_URL = 'https://dak-minigames.netlify.app/'
 
 export const projects = [
@@ -636,6 +639,21 @@ export const projects = [
     externalUrl: '',
     externalLabel: 'View live app',
     sections: [
+      {
+        heading: 'Cameralot: Photo & Video Archive',
+        // Optional second call to action beside "View Live Site", for an app
+        // that has its own case study page.
+        process: { label: 'How It Was Built', href: CAMERALOT_PROCESS_URL },
+        media: [
+          {
+            type: 'image',
+            src: cameralotScreenshot,
+            alt: 'Cameralot archive filtered to John F. Kennedy and Jacqueline Kennedy, showing a people tag list, a month-by-month photo grid of field-trip photos, and a detail panel for one picture',
+            caption: 'A searchable Kennedy family photo archive: people, events, dates, scenes and a family tree',
+            href: CAMERALOT_URL,
+          },
+        ],
+      },
       {
         heading: 'Retriever — Digital Asset Management',
         media: [
