@@ -17,6 +17,10 @@ dist-standalone
 # see README "Adding real project media")
 originals/
 
+# Working renders and screenshots (design comparisons and the like): local
+# reference only, never shipped.
+renders/
+
 # Demos/ holds the portfolio pieces. Each is its own standalone project with
 # its own git repo and Netlify site — nested inside this working tree so they
 # live beside the site, but never meant to be tracked/committed here. Ignored

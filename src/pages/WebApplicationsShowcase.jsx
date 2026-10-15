@@ -557,7 +557,7 @@ export default function WebApplicationsShowcase() {
 
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <HudBackground mx={mx} my={my} />
+      <HudBackground />
       <div className={styles.ambient} aria-hidden="true" />
 
       <div className={`${styles.chrome} container`}>
@@ -566,7 +566,7 @@ export default function WebApplicationsShowcase() {
             ← HOME
           </Link>
 
-          <span className={styles.eyebrow}>APPLICATIONS // PRODUCTIVITY ARCHIVE</span>
+          <span className={styles.eyebrow}>APPLICATIONS</span>
 
           <nav className={styles.toc} aria-label="Applications on this page">
             <span className={styles.tocLabel}>On this page:</span>

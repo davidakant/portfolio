@@ -317,7 +317,7 @@ export default function WebGamesShowcase() {
 
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <HudBackground mx={mx} my={my} />
+      <HudBackground />
       <div className={styles.ambient} aria-hidden="true" />
 
       <div className={`${styles.chrome} container`}>
@@ -326,7 +326,7 @@ export default function WebGamesShowcase() {
             ← HOME
           </Link>
 
-          <span className={styles.eyebrow}>WEB GAMES // INTERACTIVE ARCHIVE</span>
+          <span className={styles.eyebrow}>WEB GAMES</span>
 
           <nav className={styles.toc} aria-label="Games on this page">
             <span className={styles.tocLabel}>On this page:</span>

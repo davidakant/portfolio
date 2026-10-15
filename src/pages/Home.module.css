@@ -32,8 +32,8 @@
 
 /* The hero sits on the deepest water, so it keeps light text and glows. */
 .headline {
-  font-family: 'Orbitron', var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 600;
   font-size: var(--size-display);
   line-height: 0.95;
   color: var(--color-fg);
@@ -54,7 +54,7 @@
 .skillLine {
   position: relative;
   display: inline-block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 1rem;
   letter-spacing: 0.1em;
   color: var(--aqua);
@@ -115,13 +115,12 @@
 
 /* Same clear "liquid glass" recipe used throughout HudShowcase (layered
    top-lit/bottom-shaded gradient body, inset rim highlight + bottom shadow,
-   outer drop shadow, radial specular highlight via ::before), with no
-   shimmer, since these are one-off contact links. */
+   outer drop shadow, radial specular highlight via ::before). */
 .contactBadge {
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -186,7 +185,7 @@
 /* Sits on the water, just below the hero. */
 .featuredProjectEyebrow {
   display: block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--peach);
@@ -264,7 +263,7 @@
    uses the dark teal meant for light grounds rather than a glow. */
 .featuredEyebrow {
   display: block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--teal-ink);

@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useSpring, useTransform } from 'framer-motion'
 import styles from './HudFeaturedCard.module.css'
@@ -14,16 +13,6 @@ export default function HudFeaturedCard({ project, index = 0, mx, my }) {
   // every card in the grid tilts in sync rather than reacting individually.
   const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [7, -7]), { stiffness: 150, damping: 20 })
   const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), { stiffness: 150, damping: 20 })
-
-  // Randomized per card (picked once on mount) so the shimmer sweeps don't
-  // all stay in lockstep across the grid.
-  const shimmer = useMemo(
-    () => ({
-      '--shimmer-delay': `${(Math.random() * 6).toFixed(2)}s`,
-      '--shimmer-duration': `${(5 + Math.random() * 4).toFixed(2)}s`,
-    }),
-    [],
-  )
 
   return (
     <motion.div
@@ -41,7 +30,6 @@ export default function HudFeaturedCard({ project, index = 0, mx, my }) {
             ) : (
               <div className={styles.placeholder} />
             )}
-            <div className={styles.sheen} style={shimmer} aria-hidden="true" />
           </div>
         </motion.div>
         <div className={styles.meta}>

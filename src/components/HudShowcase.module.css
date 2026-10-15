@@ -25,7 +25,7 @@
    which is always deep water, so they keep light text and glows. */
 .back {
   display: inline-block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: var(--size-small);
   letter-spacing: 0.08em;
   color: var(--color-fg-muted);
@@ -63,12 +63,12 @@
    .spatialToggle): layered top-lit/bottom-shaded gradient body, inset rim
    highlight + bottom shadow for physical depth, an outer drop shadow, and a
    radial specular highlight (::before) simulating light catching curved
-   glass. Text is wrapped in .badgeLabel (own stacking context) so the
-   ::after shimmer sweep never washes it out. */
+   glass. Text is wrapped in .badgeLabel (own stacking context) so it sits
+   above the highlight. */
 .modeTab {
   position: relative;
   overflow: hidden;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
@@ -97,22 +97,6 @@
   background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.35), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
-}
-
-.modeTab::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
-  background-size: 240% 240%;
-  pointer-events: none;
-  animation: sheen-sweep 4.5s ease-in-out infinite;
-  animation-delay: var(--tab-delay, 0s);
-}
-
-.modeTab:hover::after {
-  animation-duration: 1.4s;
 }
 
 .modeTab:hover {
@@ -175,7 +159,7 @@
 }
 
 .eyebrow {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--aqua);
@@ -193,7 +177,7 @@
 .tab {
   position: relative;
   overflow: hidden;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   padding: 7px 16px;
@@ -221,22 +205,6 @@
   background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.35), transparent 70%);
   pointer-events: none;
   filter: blur(1px);
-}
-
-.tab::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
-  background-size: 240% 240%;
-  pointer-events: none;
-  animation: sheen-sweep 4.5s ease-in-out infinite;
-  animation-delay: var(--tab-delay, 0s);
-}
-
-.tab:hover::after {
-  animation-duration: 1.4s;
 }
 
 .tab:hover {
@@ -303,23 +271,6 @@
   background: radial-gradient(ellipse at center, rgba(255, 250, 242, 0.5), transparent 70%);
   pointer-events: none;
   filter: blur(6px);
-}
-
-.glassSheen {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 250, 242, 0.12) 45%, rgba(255, 250, 242, 0.03) 50%, transparent 65%);
-  background-size: 250% 250%;
-  animation: sheen-sweep 8s ease-in-out infinite;
-}
-
-@keyframes sheen-sweep {
-  0% { background-position: 130% 130%; }
-  50% { background-position: -30% -30%; }
-  100% { background-position: 130% 130%; }
 }
 
 .hudBorder {
@@ -412,14 +363,12 @@
 
 /* Same "liquid glass" chrome as .spatialToggle (layered gradient body, inset
    rim highlight + drop shadow for physical depth, radial specular highlight
-   via ::before) but deliberately without its ::after shimmer sweep — these
-   are passive readouts, not an interactive control worth drawing extra
-   attention to. */
+   via ::before). */
 .readoutTL,
 .readoutTR {
   position: relative;
   overflow: hidden;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -496,7 +445,7 @@
 
 .dataStreamTrack {
   display: inline-block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.8);
@@ -529,7 +478,7 @@
 .railLabel {
   display: inline-block;
   align-self: flex-start;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -555,9 +504,7 @@
 /* iOS-style "liquid glass" pill: a layered gradient body (top-lit, bottom-
    shaded like a curved surface), an inset rim highlight + drop shadow for
    physical depth, a radial specular highlight (::before) simulating a light
-   catching the top of the glass, and a continuous diagonal shimmer (::after,
-   same sheen-sweep mechanism as the category tabs) so it reads as glass
-   rather than a flat pill even before the user interacts with it. */
+   catching the top of the glass. */
 .spatialToggle {
   position: absolute;
   bottom: 20px;
@@ -565,7 +512,7 @@
   transform: translateX(-50%);
   z-index: 5;
   overflow: hidden;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -596,21 +543,8 @@
   filter: blur(1px);
 }
 
-/* Sits behind .badgeLabel (z-index below it) so the shimmer sweeps across
-   the glass without ever washing out the text on top of it. */
-.spatialToggle::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.4) 48%, transparent 60%);
-  background-size: 240% 240%;
-  pointer-events: none;
-  animation: sheen-sweep 4.5s ease-in-out infinite;
-}
-
 /* Shared by every glass badge (mode tabs, category tabs, spatial toggle) —
-   keeps the label text stacked above each one's ::after shimmer sweep. */
+   keeps the label text stacked above each one's specular highlight. */
 .badgeLabel {
   position: relative;
   z-index: 1;
@@ -667,10 +601,6 @@
     inset 0 1px 1px rgba(255, 250, 242, 0.9),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
     0 12px 28px rgba(0, 0, 0, 0.45);
-}
-
-.spatialToggle:hover::after {
-  animation-duration: 1.4s;
 }
 
 .spatialToggleActive {

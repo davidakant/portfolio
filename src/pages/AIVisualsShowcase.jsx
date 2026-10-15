@@ -5,7 +5,7 @@ export default function AIVisualsShowcase() {
   return (
     <HudShowcase
       slug="ferris-video"
-      eyebrow="AI ASSISTED VISUALS // NEURAL RENDER ARCHIVE"
+      eyebrow="AI ASSISTED VISUALS"
       modes={getProjectBySlug('ferris-video').modes}
       bordered={false}
       showTicker={false}

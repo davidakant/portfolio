@@ -77,9 +77,9 @@
   /* Clear glass for controls over dark water or over a photo. */
   --glass-dark-body: linear-gradient(180deg, rgba(255, 250, 242, 0.17) 0%, rgba(255, 250, 242, 0.04) 45%, rgba(255, 250, 242, 0.09) 100%);
 
-  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;
-  --font-body: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
 
   --size-display: clamp(2.5rem, 7vw, 6rem);
   --size-h1: clamp(2.25rem, 5vw, 4.5rem);

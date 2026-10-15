@@ -19,9 +19,9 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/davidakant'
 const LINKEDIN_LABEL = 'www.linkedin.com/in/davidakant'
 
 const SKILL_LINES = [
-  'Pipeline Development // Scripting | Workflow Optimization | Asset Management',
-  'Project Management // Process Improvement | Stakeholder Communication | Quality Assurance',
-  'Design & Visualization // Architecture | 2D & 3D Graphics | AI-Assisted Visualization',
+  'Pipeline Development · Scripting · Workflow Optimization · Asset Management',
+  'Project Management · Process Improvement · Stakeholder Communication · Quality Assurance',
+  'Design & Visualization · Architecture · 2D & 3D Graphics · AI-Assisted Visualization',
 ]
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <div className={styles.holo} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <HudBackground mx={mx} my={my} />
+      <HudBackground />
       <div className={styles.ambient} aria-hidden="true" />
 
       <div className={`${styles.chrome} container`}>
@@ -102,14 +102,14 @@ export default function Home() {
 
         <section className={styles.featuredProjectSection}>
           <span className={styles.featuredProjectEyebrow}>
-            FEATURED_PROJECTS // {String(FEATURED_PROJECTS.length).padStart(2, '0')} ENTRIES
+            FEATURED PROJECTS
           </span>
           <FeaturedCarousel projects={FEATURED_PROJECTS} onWatchFilm={setOpenFilmId} />
         </section>
 
         <section className={styles.featured}>
           <span className={styles.featuredEyebrow}>
-            SELECTED_WORK // {String(homeCards.length).padStart(2, '0')} ENTRIES
+            SELECTED WORK
           </span>
           <ProjectGrid projects={homeCards} mx={mx} my={my} />
         </section>

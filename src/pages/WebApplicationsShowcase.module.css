@@ -30,7 +30,7 @@
 
 .back {
   display: inline-block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: var(--size-small);
   letter-spacing: 0.08em;
   color: var(--color-fg-muted);
@@ -96,7 +96,7 @@
 }
 
 .eyebrow {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--aqua);
@@ -122,7 +122,7 @@
 }
 
 .tocLabel {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: var(--size-small);
   letter-spacing: 0.08em;
   color: var(--color-fg-muted);
@@ -138,7 +138,7 @@
 }
 
 .tocLink {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: var(--size-small);
   letter-spacing: 0.04em;
   color: var(--aqua);
@@ -196,7 +196,7 @@
 
 .sectionHeading {
   position: relative;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -251,7 +251,7 @@
 }
 
 .sectionCta {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;

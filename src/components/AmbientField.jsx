@@ -11,8 +11,6 @@ import styles from './AmbientField.module.css'
 // water and warm over the sand. Blended in RGB, because blending hue would
 // pass through a muddy green on the way from blue to sand. Fields are painted
 // normally at low opacity; additive blending would bleach the sand to white.
-// The same progress value is published as --shore on the parent element so
-// HudBackground's grid plane can fade out on the sand.
 //
 // Deliberately cheap, because this runs on every page and iPad is the
 // primary target: device pixel ratio is capped at 1.5, the loop is throttled
@@ -50,18 +48,11 @@ export default function AmbientField() {
     if (!canvas) return undefined
     const ctx = canvas.getContext('2d')
     if (!ctx) return undefined
-    const host = canvas.parentElement
 
-    let lastShore = -1
     const draw = (t) => {
       const { width: w, height: h } = canvas
       const min = Math.min(w, h)
       const s = shoreProgress()
-      const rounded = Math.round(s * 100) / 100
-      if (host && rounded !== lastShore) {
-        host.style.setProperty('--shore', String(rounded))
-        lastShore = rounded
-      }
       ctx.clearRect(0, 0, w, h)
       FIELDS.forEach((f, i) => {
         const rgb = [0, 1, 2].map((c) => Math.round(mix(f.water[c], f.sand[c], s))).join(', ')

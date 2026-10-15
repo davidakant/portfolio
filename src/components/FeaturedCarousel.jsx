@@ -131,7 +131,6 @@ export default function FeaturedCarousel({ projects, onWatchFilm }) {
                     aria-label={`View ${project.title} live site`}
                   >
                     <img src={project.image} alt={project.imageAlt} className={styles.image} loading="lazy" />
-                    <div className={styles.sheen} aria-hidden="true" />
                   </a>
                   <div className={styles.body}>
                     <span className={styles.tag}>{project.tag}</span>

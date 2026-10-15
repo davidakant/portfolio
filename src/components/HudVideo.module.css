@@ -7,7 +7,7 @@
 
 /* Same "liquid glass" recipe as the badges (layered gradient body, inset rim
    highlight + bottom shadow for depth, outer drop shadow, radial specular
-   highlight, continuous shimmer) — just circular and much larger, since this
+   highlight) — just circular and much larger, since this
    is a one-shot centerpiece control rather than a small label pill. */
 .playButton {
   position: absolute;
@@ -47,27 +47,12 @@
   filter: blur(2px);
 }
 
-.playButton::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 250, 242, 0.45) 48%, transparent 60%);
-  background-size: 240% 240%;
-  pointer-events: none;
-  animation: sheen-sweep 4.5s ease-in-out infinite;
-}
-
 .playButton:hover {
   transform: translate(-50%, -50%) scale(1.06);
   box-shadow:
     inset 0 1px 1px rgba(255, 250, 242, 0.9),
     inset 0 -8px 12px -8px rgba(0, 0, 0, 0.3),
     0 14px 36px rgba(0, 0, 0, 0.5);
-}
-
-.playButton:hover::after {
-  animation-duration: 1.4s;
 }
 
 .playIcon {
@@ -80,20 +65,7 @@
   filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3));
 }
 
-@keyframes sheen-sweep {
-  0% {
-    background-position: 130% 130%;
-  }
-  50% {
-    background-position: -30% -30%;
-  }
-  100% {
-    background-position: 130% 130%;
-  }
-}
-
-/* Same glass recipe as the readout badges (no shimmer — this is a passive
-   label, not an interactive control) — left-aligned directly under the
+/* Same glass recipe as the readout badges, left-aligned directly under the
    video-number badge (top-left, itself at left: 14px), since videos don't
    have the spatial-toggle badge occupying the bottom of the frame. */
 .caption {
@@ -103,7 +75,7 @@
   z-index: 5;
   max-width: 60%;
   overflow: hidden;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-body);
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.08em;

@@ -26,10 +26,7 @@ import styles from './HudShowcase.module.css'
 // `bordered`/`showTicker`/`dynamicAspect` let a page opt out of the angular
 // HUD frame + mask, the data-stream ticker/equalizer, and the fixed-height
 // viewer respectively (Architecture uses a plainer, image-shaped viewer;
-// AI Assisted Visuals keeps the original full HUD treatment). The liquid-
-// glass sheen overlay is independent of `bordered` — it's the panel's own
-// glass material, not part of the angular frame decoration, so it always
-// renders (just without the frame's clip-path shape when unbordered).
+// AI Assisted Visuals keeps the original full HUD treatment).
 //
 // `stackedRails` (e.g. 3D Printing's "Condominium 3D Floorplan" +
 // "Miscellaneous") swaps the usual category-tab-chips + single shared rail
@@ -127,9 +124,7 @@ export default function HudShowcase({
     setVideoPlaying(false)
   }, [active.src])
 
-  // Mouse-driven motion for the whole display: tilts the glass panel and,
-  // via HudBackground, parallaxes the background grid/glyphs at a different
-  // rate — one shared motion source instead of two independent trackers.
+  // Mouse-driven motion for the whole display: tilts the glass panel.
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
   const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [9, -9]), { stiffness: 150, damping: 20 })
@@ -174,7 +169,7 @@ export default function HudShowcase({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <HudBackground mx={mx} my={my} />
+      <HudBackground />
       <div className={styles.ambient} aria-hidden="true" />
 
       <div className={`${styles.chrome} container`}>
@@ -197,7 +192,6 @@ export default function HudShowcase({
                   {showDivider && <span className={styles.modeTabsDivider} aria-hidden="true" />}
                   <button
                     className={`${styles.modeTab} ${isFerris ? styles.modeTabAlt2 : ''} ${i === modeIndex ? styles.modeTabActive : ''}`}
-                    style={{ '--tab-delay': `${(i % 4) * 0.6}s` }}
                     onClick={() => selectMode(i)}
                     data-cursor-hover
                   >
@@ -220,7 +214,6 @@ export default function HudShowcase({
                 <button
                   key={c.label}
                   className={`${styles.tab} ${i === catIndex ? styles.tabActive : ''}`}
-                  style={{ '--tab-delay': `${(i % 4) * 0.6}s` }}
                   onClick={() => selectCategory(i)}
                   data-cursor-hover
                 >
@@ -287,15 +280,8 @@ export default function HudShowcase({
                 </motion.div>
               </AnimatePresence>
 
-              <div
-                className={styles.glassSheen}
-                style={{ clipPath: bordered ? HUD_FRAME_CLIP_PATH : 'none' }}
-                aria-hidden="true"
-              />
-
               <div className={styles.readoutTL}>
-                {active.type === 'video' ? 'VID_' : 'IMG_'}
-                {String(index + 1).padStart(3, '0')} / {String(media.length).padStart(3, '0')}
+                {index + 1} of {media.length}
               </div>
               <div className={styles.topRightStack}>
                 <div className={styles.readoutTR}>{categories[catIndex].label}</div>

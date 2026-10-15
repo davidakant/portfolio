@@ -4,7 +4,7 @@ export default function PrintingShowcase() {
   return (
     <HudShowcase
       slug="3d-printing"
-      eyebrow="3D PRINTING // DESIGN & FABRICATION ARCHIVE"
+      eyebrow="3D PRINTING: DESIGN & FABRICATION"
       bordered={false}
       showTicker={false}
       dynamicAspect
