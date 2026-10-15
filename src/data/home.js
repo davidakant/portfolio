@@ -3,6 +3,7 @@ import retrieverScreenshot from '../assets/projects/retriever/homepage/ret-libra
 import creativeOpsScreenshot from '../assets/projects/creativeops-portal/homepage/co-tab1.webp'
 import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 import cameralotScreenshot from '../assets/projects/cameralot/homepage/cameralot-archive.webp'
+import ferrisPhoto from '../assets/ferris/ferris.webp'
 
 // Home-page content that is not one of the /work/:slug categories in
 // projects.js. It lives in its own module rather than in pages/Home.jsx
@@ -45,6 +46,8 @@ export const FEATURED_PROJECTS = [
     title: 'Retriever',
     tagline: '"Every curated asset in the studio, render-ready with its dependencies collected."',
     text: "A digital asset management system that gives an architectural visualization studio one shared library for every 3D asset it owns, instead of files scattered across old projects and hard drives. Artists stop rebuilding things that already exist and start reusing the studio's best work instead.",
+    // Optional: a small round photo that leads into the note.
+    notePhoto: { src: ferrisPhoto, title: 'Ferris, the real one' },
     note: 'Fictional demonstration built for portfolio purposes, drawing on experience running asset libraries in architectural visualization. Studio Ferris and everything in its library, including every client, person, and asset, is invented. The name comes from my dog, Ferris, who is half Labrador and half German Shepherd: half retriever, half guardian of the flock. Same job description as this app.',
   },
   {

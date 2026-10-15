@@ -137,7 +137,17 @@ export default function FeaturedCarousel({ projects, onWatchFilm }) {
                     <h2 className={styles.title}>{project.title}</h2>
                     <p className={styles.tagline}>{project.tagline}</p>
                     <p className={styles.text}>{project.text}</p>
-                    <p className={styles.note}>{project.note}</p>
+                    <p className={styles.note}>
+                      {project.notePhoto && (
+                        <img
+                          src={project.notePhoto.src}
+                          alt=""
+                          title={project.notePhoto.title}
+                          className={styles.notePhoto}
+                        />
+                      )}
+                      {project.note}
+                    </p>
                     <div className={styles.ctaRow}>
                       <a
                         href={project.url}

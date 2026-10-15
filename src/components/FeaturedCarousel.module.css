@@ -196,6 +196,32 @@
   margin: var(--space-xs) 0 0;
 }
 
+/* A small round photo the note's text wraps around, with one head tilt
+   shortly after the page loads. */
+.notePhoto {
+  float: left;
+  width: 44px;
+  height: 44px;
+  margin: 2px 12px 4px 0;
+  border-radius: 50%;
+  border: 2px solid var(--glass-light-rim);
+  box-shadow: 0 3px 8px rgba(var(--driftwood-rgb), 0.25);
+  object-fit: cover;
+  animation: note-photo-tilt 1.3s ease-in-out 1.2s both;
+}
+
+@keyframes note-photo-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-14deg); }
+  60% { transform: rotate(7deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notePhoto {
+    animation: none;
+  }
+}
+
 .ctaRow {
   display: flex;
   align-items: center;

@@ -10,6 +10,7 @@ import VideoEqualizer from './VideoEqualizer'
 import HudBorder, { HUD_FRAME_CLIP_PATH } from './HudBorder'
 import HudBackground from './HudBackground'
 import AudioEqualizer from './AudioEqualizer'
+import ferrisPhoto from '../assets/ferris/ferris.webp'
 import styles from './HudShowcase.module.css'
 
 // Sci-fi FUI/HUD viewer shared by any project page that wants the same
@@ -195,10 +196,20 @@ export default function HudShowcase({
                     onClick={() => selectMode(i)}
                     data-cursor-hover
                   >
-                    <span className={styles.badgeLabel}>
-                      {m.label}
-                      {isFerris && <span className={styles.badgeSubLabel}>(my dog)</span>}
-                    </span>
+                    {isFerris ? (
+                      <span className={`${styles.badgeLabel} ${styles.ferrisLabel}`}>
+                        <img
+                          src={ferrisPhoto}
+                          alt=""
+                          title="Ferris, the real one"
+                          className={styles.ferrisPhoto}
+                          style={{ animationDelay: prevIsFerris ? '1.1s' : '0.8s' }}
+                        />
+                        {m.label}
+                      </span>
+                    ) : (
+                      <span className={styles.badgeLabel}>{m.label}</span>
+                    )}
                   </button>
                 </Fragment>
               )
