@@ -32,38 +32,6 @@ const WATER_FILTRATION_BULLETS = [
   },
 ]
 
-const REALTOR_INTRO =
-  'A location lookup tool that pulls real data from nearly a dozen public and government sources and puts a property and its neighborhood on one screen.'
-
-const REALTOR_BULLETS = [
-  {
-    label: 'Instant Property Profiles:',
-    text: ' Search any Pennsylvania address and get ownership, zoning, tax assessments, utility providers, and broadband availability.',
-  },
-  {
-    label: 'Integrated Visuals:',
-    text: ' The data sits next to interactive parcel boundaries, 3D satellite imagery, and street-level photos.',
-  },
-  {
-    label: 'Demographic Tools:',
-    text: ' A separate module pulls Census data, including population and income, for any state, county, or neighborhood.',
-  },
-  {
-    label: 'The Technical Challenge:',
-    text: ' The real work was data normalization. Nine county systems each format their records differently, and the app has to make them read as one.',
-  },
-]
-
-// Split around the phrase called out in the accent color — the page's one deliberate
-// accent use, everything else is the panel's base text colors — so it renders as a
-// highlighted <span>.
-const REALTOR_HIGHLIGHT = {
-  before:
-    'I built this as a location intelligence tool that pulls real data from nearly a dozen public and government sources. You can search any city for live weather, or enter a Pennsylvania address and get ownership, zoning, tax assessments, utility providers, and broadband access, alongside interactive parcel maps, 3D satellite imagery, and street-level photos. A built-in demographic tool pulls Census data, such as population and income, for any state, county, or neighborhood. Behind the scenes, ',
-  text: 'the hard part was standardizing fragmented information from multiple incompatible databases',
-  after: ', nine distinct county systems among them, into a single interface that reads as one.',
-}
-
 const PROJECT_MANAGEMENT_NOTE =
   'NOTE: This app is designed to operate on a local network with local cache. This is for demonstration only, and most operational functionality will not work. It has been populated with simulated data.'
 
@@ -89,8 +57,8 @@ const PROJECT_MANAGEMENT_BULLETS = [
   },
 ]
 
-// Same pattern as REALTOR_HIGHLIGHT — split around the one phrase called out
-// in the accent color.
+// Split around the one phrase called out in the accent color, so it renders
+// as a highlighted <span>; everything else is the panel's base text colors.
 const PROJECT_MANAGEMENT_HIGHLIGHT = {
   before:
     'This dashboard manages a construction project through its whole lifecycle. Scheduling, budget tracking, team directories, document management for photos and drawings, and a closeout punch list all live on one screen. To keep it light, ',
@@ -452,11 +420,6 @@ const SECTION_DESCRIPTIONS = {
     intro: PROJECT_MANAGEMENT_INTRO,
     bullets: PROJECT_MANAGEMENT_BULLETS,
     highlight: PROJECT_MANAGEMENT_HIGHLIGHT,
-  },
-  'Realtor Dashboard': {
-    intro: REALTOR_INTRO,
-    bullets: REALTOR_BULLETS,
-    highlight: REALTOR_HIGHLIGHT,
   },
   'The Mobile Lens': {
     intro: MOBILE_LENS_INTRO,

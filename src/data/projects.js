@@ -3,7 +3,6 @@ import interiorsOrderRaw from '../../image-order-interiors.txt?raw'
 import exteriorsOrderRaw from '../../image-order-exteriors.txt?raw'
 import printsOrderRaw from '../../image-order-3d-printing.txt?raw'
 import printsAssemblyVideo from '../assets/projects/3d-printing/prints/video-oct-07-4-24-41-pm.mp4'
-import realtorDashboardScreenshot from '../assets/projects/realtor-dashboard/screenshots/dashboard-overview.webp'
 import projectManagementScreenshot from '../assets/projects/project-management/screenshots/dashboard-overview.webp'
 import projectCoordinationScreenshot from '../assets/projects/project-coordination/screenshots/project-coordination-screenshot.webp'
 import mobileLensScreenshot from '../assets/projects/web-applications/mobile-lens/mobilelens-screenshot.webp'
@@ -515,7 +514,6 @@ export const INTERACTIVE_STORYBOOK_URL = 'https://storybook-norascolorfulworld.n
 export const SPOT_THE_DIFFERENCE_URL = 'https://dak-spotthedifference.netlify.app/'
 export const UPPERCASE_URL = 'https://dak-uppercase.netlify.app/'
 export const VIDEO_JIGSAW_URL = 'https://dak-videojigsaw.netlify.app/'
-export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDataTest1/'
 export const PROJECT_MANAGEMENT_URL = 'https://dak-constructionprojectdashboard.netlify.app/'
 export const PROJECT_COORDINATION_URL = 'https://coordinator-console.netlify.app/'
 export const MOBILE_LENS_URL = 'https://dak-mobilelens.netlify.app/'
@@ -769,18 +767,6 @@ export const projects = [
             alt: 'Project management dashboard showing a calendar view and task list',
             caption: 'Calendar & Task Dashboard',
             href: PROJECT_MANAGEMENT_URL,
-          },
-        ],
-      },
-      {
-        heading: 'Realtor Dashboard',
-        media: [
-          {
-            type: 'image',
-            src: realtorDashboardScreenshot,
-            alt: 'Realtor dashboard showing parcel map lookup and census demographics data',
-            caption: 'Parcel Lookup & Census Demographics',
-            href: REALTOR_DASHBOARD_URL,
           },
         ],
       },

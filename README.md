@@ -41,8 +41,7 @@ To bring in real photos/renders for a section:
    section's `gallery(...)` call with a real media array (see `exteriorsMedia`
    for the pattern — `{ type: 'image', src, alt, caption }`)
 
-For any project with `externalUrl: ''` (Storybook, Realtor Dashboard, Project
-Management), fill in the real link. For Ferris AI video clips, either pass a
+For any project with `externalUrl: ''` (Storybook, Project Management), fill in the real link. For Ferris AI video clips, either pass a
 YouTube video ID to `<VideoEmbed youtubeId="..." />` or a local file via `src`.
 
 **Exception:** the Architecture project's Interiors and Exteriors sections
