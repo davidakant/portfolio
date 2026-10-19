@@ -18,7 +18,6 @@ import cameralotScreenshot from '../assets/projects/cameralot/homepage/cameralot
 import interactiveStorybookScreenshot from '../assets/projects/web-games/interactive-storybook/storybook-cover-updated.webp'
 import spotTheDifferenceScreenshot from '../assets/projects/web-games/spot-the-difference/spotdiff-puzzle.webp'
 import uppercaseGameScreenshot from '../assets/projects/web-games/uppercase-game/uppercase-game-screenshot.webp'
-import codeBreakerScreenshot from '../assets/projects/web-games/codebreaker-game/codebreaker-game-screenshot.webp'
 import videoJigsawScreenshot from '../assets/projects/web-games/video-jigsaw/jigsaw-gameplay.webp'
 import miniGamesScreenshot from '../assets/projects/mini-games/homepage/mg-harbor2.webp'
 
@@ -515,7 +514,6 @@ const ferrisStillsSections = [
 export const INTERACTIVE_STORYBOOK_URL = 'https://storybook-norascolorfulworld.netlify.app/'
 export const SPOT_THE_DIFFERENCE_URL = 'https://dak-spotthedifference.netlify.app/'
 export const UPPERCASE_URL = 'https://dak-uppercase.netlify.app/'
-export const CODE_BREAKER_URL = 'https://davidakant.github.io/CodeBreaker/'
 export const VIDEO_JIGSAW_URL = 'https://dak-videojigsaw.netlify.app/'
 export const REALTOR_DASHBOARD_URL = 'https://davidakant.github.io/ThirdPartyDataTest1/'
 export const PROJECT_MANAGEMENT_URL = 'https://dak-constructionprojectdashboard.netlify.app/'
@@ -849,21 +847,6 @@ export const projects = [
             // Portrait game board (390 × 844) — overrides MediaGallery's
             // default 4:3 landscape crop so the full board shows uncropped.
             aspectRatio: '390 / 844',
-            scale: '75%',
-          },
-        ],
-      },
-      {
-        heading: 'Code Breaker',
-        media: [
-          {
-            type: 'image',
-            src: codeBreakerScreenshot,
-            alt: 'Screenshot of Code Breaker, a digital-display number-guessing game',
-            href: CODE_BREAKER_URL,
-            // Portrait game UI (366 × 590) — overrides MediaGallery's default
-            // 4:3 landscape crop so the full module shows uncropped.
-            aspectRatio: '366 / 590',
             scale: '75%',
           },
         ],

@@ -7,7 +7,6 @@ import {
   INTERACTIVE_STORYBOOK_URL,
   SPOT_THE_DIFFERENCE_URL,
   UPPERCASE_URL,
-  CODE_BREAKER_URL,
   VIDEO_JIGSAW_URL,
 } from '../data/projects'
 import HudBackground from '../components/HudBackground'
@@ -25,7 +24,6 @@ const SECTION_LINKS = {
   'Interactive Digital Storybook': INTERACTIVE_STORYBOOK_URL,
   'Spot the Difference': SPOT_THE_DIFFERENCE_URL,
   Uppercase: UPPERCASE_URL,
-  'Code Breaker': CODE_BREAKER_URL,
   'Video Jigsaw': VIDEO_JIGSAW_URL,
 }
 
@@ -128,37 +126,6 @@ const UPPERCASE_HIGHLIGHT = {
     '. The interface is built to feel the same on a desktop and a tablet. Taking it from the initial concept to a deployed game is the part I wanted to show.',
 }
 
-const CODE_BREAKER_INTRO =
-  'A digital version of a classic code-breaking game. The rules already existed, and the job was to get them exactly right in software.'
-
-const CODE_BREAKER_BULLETS = [
-  {
-    label: 'Precise Rule Execution:',
-    text: ' The fixed mechanics of a known game, carried into a custom build. It worked like building to a product spec.',
-  },
-  {
-    label: 'Feedback Logic:',
-    text: ' Every guess is scored against the hidden sequence on the spot, and the win and loss conditions are worked out as you go.',
-  },
-  {
-    label: 'State Management:',
-    text: ' Every attempt is tracked and stored, and the interface updates without lag or a page reload.',
-  },
-  {
-    label: 'Responsive UI Design:',
-    text: ' A clean layout that keeps the focus on the puzzle, at any screen size.',
-  },
-]
-
-// Split around the phrase called out in the accent color, same pattern as the other
-// highlighted phrases on this page and on Applications.
-const CODE_BREAKER_HIGHLIGHT = {
-  before:
-    'This is a digital adaptation of a classic code-breaking puzzle game. The concept is familiar, and the technical work was in translating its strict, pre-defined rules into a browser game. That meant precise logic to evaluate each guess against a hidden sequence, return accurate feedback right away, and keep the state of the game across every attempt. In the end, recreating this game was an exercise in ',
-  text: 'taking a strict set of predefined rules and translating them',
-  after: ' into a reliable, straightforward interface.',
-}
-
 const VIDEO_JIGSAW_INTRO =
   'A jigsaw puzzle where the pieces are cut from a video that never stops playing. Built for the iPad.'
 
@@ -244,11 +211,6 @@ const SECTION_DESCRIPTIONS = {
     intro: UPPERCASE_INTRO,
     bullets: UPPERCASE_BULLETS,
     highlight: UPPERCASE_HIGHLIGHT,
-  },
-  'Code Breaker': {
-    intro: CODE_BREAKER_INTRO,
-    bullets: CODE_BREAKER_BULLETS,
-    highlight: CODE_BREAKER_HIGHLIGHT,
   },
   'Video Jigsaw': {
     intro: VIDEO_JIGSAW_INTRO,
